@@ -1,0 +1,195 @@
+"*":
+  "atom-beautify":
+    _analyticsUserId: "d37d4d49-4d1b-41ef-8126-cd6a27f1ea80"
+  "atom-ctags":
+    extraTagFiles: "tags"
+  "atom-language-rust":
+    colors:
+      documentation: "#65737e"
+      macro: "#96b5b4"
+      parameter: "#c0c5ce"
+  "atom-terminal-panel": {}
+  build:
+    buildOnSave: true
+    saveOnBuild: true
+    scrollOnError: true
+  "build-cargo":
+    cargoCheck: true
+    cargoClippy: true
+    jsonErrors: true
+    openDocs: true
+    showBacktrace: true
+  "cargo-test-runner": {}
+  core:
+    disabledPackages: [
+      "tidy-markdown"
+      "clojure-eval-in-repl"
+      "r-exec"
+      "scala-worksheet"
+      "atom-live-grammar-reload"
+      "haskell-pointfree"
+      "symbols-view"
+      "typewriter"
+      "nrepl"
+      "open-terminal-here"
+      "cargo-test-runner"
+      "gradle-ci"
+      "sbt"
+      "language-rust"
+      "wrap-guide"
+      "tokamak-terminal"
+      "tokamak"
+      "linter-write-good"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "Thumbs.db"
+      ".gradle"
+      ".idea"
+      ".iml"
+      ".ipr"
+      ".iws"
+      ".sublime-workspace"
+    ]
+    projectHome: "/Users/hawk/Development"
+    themes: [
+      "spacegray-dark-ui"
+      "base16-ocean-dark-spacegray-lighter-invisibles"
+    ]
+  docblockr:
+    align_tags: "shallow"
+    auto_add_method_tag: true
+    deep_indent: true
+  editor:
+    autoIndent: false
+    backUpBeforeSaving: true
+    fontFamily: "Pragmata Pro"
+    fontSize: 11
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+    zoomFontWhenCtrlScrolling: true
+  "exception-reporting":
+    userId: "255e7065-c317-52d7-dd5b-8b9a82ef3345"
+  "gist-it": {}
+  "git-plus": {}
+  "haskell-ghc-mod":
+    ghcModPath: "/Users/hawk/.cabal/bin/ghc-mod"
+  "ide-haskell": {}
+  latex:
+    alwaysOpenResultInAtom: true
+    enableShellEscape: true
+    texPath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/"
+  latexer: {}
+  linter:
+    errorPanelHeight: 172
+  "linter-chktex":
+    executablePath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/chktex"
+  "linter-rust":
+    cargoCommand: "check"
+    jobsNumber: 4
+  "linter-scalac":
+    scalacExecutablePath: "/usr/local/bin/scalac"
+  "linter-write-good": {}
+  "markdown-preview": {}
+  "markdown-preview-katex": {}
+  "markdown-preview-opener": {}
+  "markdown-preview-plus": {}
+  "markdown-writer": {}
+  "merge-conflicts": {}
+  metrics:
+    userId: "a7630cb430c5986364488e28ca0c77d2b0210374"
+  minimap:
+    useHardwareAcceleration: false
+  "one-dark-ui":
+    layoutMode: "Compact"
+    tabSizing: "Even"
+  "open-terminal-here": {}
+  "project-quick-open": {}
+  racer:
+    rustSrcPath: "/Users/hawk/Development/rust/src/"
+  "spell-check": {}
+  "symbols-tree-view":
+    autoHide: true
+  tablr: {}
+  tabs:
+    enableVcsColoring: true
+    tabScrolling: true
+    usePreviewTabs: true
+  "terminal-panel": {}
+  tokamak: {}
+  "tool-bar":
+    fullWidth: false
+    iconSize: "16px"
+    position: "Left"
+    visible: false
+  "travis-ci-status":
+    personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
+    useTravisCiPro: true
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  typewriter:
+    scopes: "text.md,source.gfm,text.html,mediawiki,text.tex.latex,text.tex.latex.beamer"
+  wakatime:
+    apikey: "Saved in your ~/.wakatime.cfg file"
+    ignore: [
+      "^/var/"
+      "^/tmp/"
+      "^/private/"
+      "COMMIT_EDITMSG$"
+      "PULLREQ_EDITMSG$"
+      "MERGE_MSG$"
+    ]
+  "wakatime-hidden":
+    lastInit: 1469902995
+  welcome:
+    showOnStartup: false
+".asm.source.x86_64":
+  editor:
+    tabLength: 4
+".cabal.source":
+  editor:
+    preferredLineLength: 120
+".diff.source":
+  editor:
+    preferredLineLength: 120
+".haskell.latex.tex.text":
+  editor:
+    preferredLineLength: 120
+".haskell.source":
+  editor:
+    preferredLineLength: 120
+".ini.source":
+  editor:
+    preferredLineLength: 120
+".json.source":
+  editor:
+    tabLength: 4
+".latex.tex.text":
+  editor:
+    autoIndent: true
+".processing.source":
+  editor:
+    tabLength: 2
+".rust.source":
+  editor:
+    autoIndent: true
+    preferredLineLength: 80
+".scala.source":
+  editor:
+    preferredLineLength: 80
+    tabLength: 2
+".source.yaml":
+  editor:
+    preferredLineLength: 120
+    tabLength: 2
+"text.latex.tex":
+  editor:
+    softWrap: true

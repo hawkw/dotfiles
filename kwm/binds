@@ -1,0 +1,86 @@
+////////////// Custom Keybinds //////////////
+
+// Quit Kwm
+// since I've installed kwm with Homebrew, i need to tell brew service to stop it
+kwmc bind cmd+alt+ctrl-q sys brew service stop homebrew/binary/kwm stop
+
+// Launch iTerm2
+kwmc bind cmd-return sys open -na /Applications/iTerm2.app
+
+// Reload configuration
+// kwmc bind cmd+ctrl+alt-r config reload
+
+// Switch windows
+kwmc config cycle-focus all
+kwmc bind cmd+ctrl+alt-left window -f prev
+kwmc bind cmd+ctrl+alt-right window -f next
+
+// Set the split mode
+kwmc bind cmd+ctrl+alt-h screen -s horizontal
+kwmc bind cmd+ctrl+alt-v screen -s vertical
+kwmc bind cmd+ctrl+alt-o screen -s optimal
+
+// Set Space Tiling Mode To BSP
+kwmc bind cmd+ctrl-a space -t bsp
+
+// Set Space Tiling Mode To Monocle
+kwmc bind cmd+ctrl-s space -t monocle
+
+// Set Space Tiling Mode To Floating
+kwmc bind cmd+ctrl-d space -t float
+
+// Rotate Window-Tree By 90* (Clockwise)
+kwmc bind cmd+ctrl-r tree rotate 90
+
+//////// Container Modifiers ////////
+//
+// Modify Container
+kwmc bind cmd+ctrl+alt-/ window -c split
+kwmc bind cmd+ctrl+alt-, window -c reduce 0.05
+kwmc bind cmd+ctrl+alt-. window -c expand 0.05
+
+// Set Temporary Window Container
+kwmc bind prefix-s window -t fullscreen
+kwmc bind prefix-a window -t parent
+kwmc bind cmd+ctrl+alt-space window -t parent
+
+//////// Window Movements ////////
+//
+// Give Focus To Window
+kwmc bind cmd+alt-left window -f west
+kwmc bind cmd+alt-right window -f east
+kwmc bind cmd+alt-down window -f south
+kwmc bind cmd+alt-up window -f north
+
+// Move Focused Window
+kwmc bind ctrl+alt-left window -s west
+kwmc bind ctrl+alt-down window -s south
+kwmc bind ctrl+alt-up window -s north
+kwmc bind ctrl+alt-right window -s east
+
+// Detach Focused Window And Reinsert In Direction
+kwmc bind ctrl+shift-up window -x north
+kwmc bind ctrl+shift-right window -x east
+kwmc bind ctrl+shift-down window -x south
+kwmc bind ctrl+shift-left window -x west
+
+////////// Operations with marked windows //////////
+
+// Mark Window
+kwmc bind cmd+ctrl-down mark -w focused
+
+// Swap With Marked Window
+kwmc bind cmd+ctrl-up window -s mark
+
+// Detach Marked Window And Reinsert At Focused Window
+kwmc bind cmd+ctrl+alt-down window -x mark
+// Autowrite
+kwmc bind cmd-7 write \
+kwmc bind cmd-8 write {
+kwmc bind cmd-9 write }
+
+//////////// Screen capture workaround
+kwmc bind cmd+shift-3 sys ~/.kwm/scripts/screencapture.sh
+kwmc bind cmd+shift-4 sys ~/.kwm/scripts/screencapture.sh -i
+kwmc bind ctrl+cmd+shift-3 sys ~/.kwm/scripts/screencapture.sh -c
+kwmc bind ctrl+cmd+shift-4 sys ~/.kwm/scripts/screencapture.sh -c -i

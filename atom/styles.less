@@ -1,0 +1,91 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed.
+ *
+ * If you are unfamiliar with LESS, you can read more about it here:
+ * http://www.lesscss.org
+ */
+
+/*
+atom-text-editor {
+  text-rendering: optimizeSpeed;
+  -webkit-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga" 1;
+}*/
+/*
+// Disable it for current line with https://github.com/richrace/highlight-line
+atom-text-editor::shadow {
+  // The cursor line important to use rgba for opacity, also requires !important
+  // to override any theme.
+  .line.highlight-line {
+    // background: rgba(255, 0, 0, 0.3) !important;
+      text-rendering: optimizeSpeed;
+      -webkit-font-feature-settings:  normal;
+      font-feature-settings: normal;
+  }
+
+  // Replace 'solid', with 'dashed' or 'dotted' depending of what you have
+  // set in the settings page.
+  // This is for the bottom line (underline)
+  .line.highlight-line-multi-line-solid-bottom {
+    border-bottom-color: red;
+  }
+
+  // This is for the top line when you have the selection borders enabled.
+  .line.highlight-line-multi-line-solid-top {
+    border-top-color: red;
+  }
+}
+*/
+
+atom-text-editor {
+    .git-commit.line-too-long.deprecated {
+      color: orange;
+      text-decoration: none;
+    }
+
+    .git-commit.line-too-long.illegal {
+      color: #fff;
+      background: #DA2C43;
+      opacity: 0.9;
+    }
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: "liga" 1, "calt" 1;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+
+ atom-text-editor::shadow .meta.attribute.rust {
+     color: #65737e;
+ }
+
+ atom-text-editor::shadow .source.rust {
+     text-rendering: optimizeLegibility;
+     -webkit-font-feature-settings: "liga" 1, "calt" 1;
+     font-feature-settings: "liga" 1, "calt" 1
+ }
+
+ atom-text-editor::shadow .keyword.operator.rust {
+     -webkit-font-feature-settings: "liga" on, "calt" on, "dlig" on;
+     font-feature-settings: "liga" on, "calt" on, "dlig" on;
+ }
+
+ atom-text-editor::shadow .keyword.other.unsafe.rust {
+     color:  #d0b770
+ }
+
+atom-text-editor::shadow .markup.definition.rust {
+    bg-color: #1c2028
+}
+
+ atom-text-editor::shadow .storage.modifier.lifetime.rust,
+ atom-text-editor::shadow .entity.name.lifetime.rust {
+   color: mix(#0ff, @syntax-text-color, 70%);
+ }
+
+
+ .theme-one-dark-ui {
+    font-face: "Pragmata Pro";
+ }

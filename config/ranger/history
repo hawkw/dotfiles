@@ -1,0 +1,13 @@
+
+search git status
+open_with Preview.app
+open_with skim
+open_with qlmanage
+shell ls
+open_with /usr/bin/qlmanage -p
+cd
+open_with open .
+open_wit:qh 
+open_with open
+open
+open_with 
