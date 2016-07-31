@@ -58,7 +58,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nano'
 else
-   export EDITOR='atom'
+   export EDITOR='atom-beta'
 fi
 
 # Compilation flags
