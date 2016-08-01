@@ -1,7 +1,7 @@
 --langdef=CoffeeScript
 --langmap=CoffeeScript:.coffee
---regex-CoffeeScript=/^[ \t]*(@?[a-zA-Z$_\.1-9]+)[ \t]*(=|\:)[ \t]*(\(.*\))?[ \t]*(-|=)>/\1/f,function/
---regex-CoffeeScript=/^[ \t]*([a-zA-Z$_1-9]+\:\:[a-zA-Z$_\.1-9]+)[ \t]*(=|\:)[ \t]*(\(.*\))?[ \t]*(-|=)>/\1/f,function/
+--regex-CoffeeScript=/^[ \t]*(@?[a-zA-Z$_\.0-9]+)[ \t]*(=|\:)[ \t]*(\(.*\))?[ \t]*(-|=)>/\1/f,function/
+--regex-CoffeeScript=/^[ \t]*([a-zA-Z$_0-9]+\:\:[a-zA-Z$_\.0-9]+)[ \t]*(=|\:)[ \t]*(\(.*\))?[ \t]*(-|=)>/\1/f,function/
 --regex-CoffeeScript=/^[ \t]*describe[ \t]"(.+)"[ \t]*,[ \t]+[-=]>/\1/f,function/
 --regex-CoffeeScript=/^[ \t]*describe[ \t]'(.+)'[ \t]*,[ \t]+[-=]>/\1/f,function/
 --regex-CoffeeScript=/^[ \t]*it[ \t]"([^"]+)"[ \t]*,[ \t]+[-=]>/\1/f,function/
@@ -14,23 +14,26 @@
 --regex-CoffeeScript=/^[ \t]*xdescribe[ \t]'(.+)'[ \t]*,[ \t]+[-=]>/disabled: \1/f,function/
 --regex-CoffeeScript=/^[ \t]*xit[ \t]"([^"]+)"[ \t]*,[ \t]+[-=]>/disabled: \1/f,function/
 --regex-CoffeeScript=/^[ \t]*xit[ \t]'([^']+)'[ \t]*,[ \t]+[-=]>/disabled: \1/f,function/
+--regex-CoffeeScript=/^[ \t]*class[ \t]*([a-zA-Z$_\.0-9]+)[ \t]*/\1/f,function/
 
 --langdef=Css
 --langmap=Css:.css
 --langmap=Css:+.less
---langmap=Css:+.sass
 --langmap=Css:+.scss
 --regex-Css=/^[ \t]*(.+)[ \t]*\{/\1/f,function/
 --regex-Css=/^[ \t]*(.+)[ \t]*,[ \t]*$/\1/f,function/
+--regex-Css=/^[ \t]*[@$]([a-zA-Z$_][-a-zA-Z$_0-9]*)[ \t]*:/\1/f,function/
 
---langdef=Markdown
---langmap=Markdown:.md
---langmap=Markdown:+.markdown
---langmap=Markdown:+.mdown
---langmap=Markdown:+.mkd
---langmap=Markdown:+.mkdown
---langmap=Markdown:+.ron
---regex-Markdown=/^#+[ \t]*([^#]+)/\1/f,function/
+--langdef=Sass
+--langmap=Sass:.sass
+--regex-Sass=/^[ \t]*([#.]*[a-zA-Z_0-9]+)[ \t]*$/\1/f,function/
+
+--langdef=Yaml
+--langmap=Yaml:.yaml
+--langmap=Yaml:+.yml
+--regex-Yaml=/^[ \t]*([a-zA-Z_0-9 ]+)[ \t]*\:[ \t]*/\1/f,function/
+
+--regex-Html=/^[ \t]*<([a-zA-Z]+)[ \t]*.*>/\1/f,function/
 
 --langdef=Json
 --langmap=Json:.json
@@ -39,10 +42,10 @@
 --langdef=Cson
 --langmap=Cson:.cson
 --langmap=Cson:+.gyp
---langmap=Cson:+.gypi
 --regex-Cson=/^[ \t]*'([^']+)'[ \t]*\:/\1/f,function/
 --regex-Cson=/^[ \t]*"([^"]+)"[ \t]*\:/\1/f,function/
 --regex-Cson=/^[ \t]*([^'"]+)[ \t]*\:/\1/f,function/
+
 
 --langmap=C++:+.mm
 
