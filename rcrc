@@ -1,2 +1,1 @@
-DOTFILES_DIRS="~/.dotfiles"
 EXCLUDES="*.md"
