@@ -1,38 +1,13 @@
-// This is a sample config for Kwm
-
-// Commands prefixed with 'kwmc' will call
-// local functions corresponding to the
-// kwmc syntax.
-
-// To run a system command, use the prefix
-// 'sys' and then the requested command
-// e.g 'sys mvim' would open macvim
-
-// Read file and execute commands as
-// if they were written inside kwmrc.
-
-// include filename
-
-// e.g: bind-commands in a separate file called 'binds'
-// include binds
-
-// Create variables that can be used in the below commands.
-// Variables are in file-scope and must be defined before
-// they can be used. Re-definition is also possible.
-// Variable names can not contain whitespace, where as
-// the value can.
-
-// define variable value
-
-// e.g: create a variable for the hyper-key
-// define hyper cmd+ctrl+alt+shift
-// kwmc bind hyper-h window -f west
+/*
+    kwm config
+    by Eliza Weisman (@hawkw)
+ */
 
 // Set default values for screen padding
 kwmc config padding 60 50 50 50
 
 // Set default values for container gaps
-kwmc config gap 15 15
+kwmc config gap 20 20
 
 // Default tiling mode for Kwm (bsp | monocle | float | off)
 kwmc config tiling bsp
@@ -42,6 +17,8 @@ kwmc config hotkeys on
 
 // Set prefix for Kwms hotkeys
 kwmc config prefix-key ctrl-s
+
+kwmc config lock-to-container on
 
 // Prefix is not applied globally
 kwmc config prefix-global off
@@ -55,7 +32,7 @@ kwmc config prefix-timeout 0.75
 kwmc config float-non-resizable on
 
 // Automatically resize the window to its container
-kwmc config lock-to-container on
+kwmc config lock-to-container off
 
 // Set focus-follows-mouse-mode to off
 kwmc config focus-follows-mouse off
@@ -64,31 +41,28 @@ kwmc config focus-follows-mouse off
 // a floating window has focus
 kwmc config standby-on-float on
 
+/* Center window when made floating */
+kwmc config center-on-float on
+
 // The mouse will automatically move to the center
 // of the focused window
-kwmc config mouse-follows-focus on
+kwmc config mouse-follows-focus off
 
 // Allow window focus to wrap-around
 kwmc config cycle-focus screen
 
-// Override default settings for space 1 on screen 0
-kwmc config space 0 1 mode monocle
-kwmc config space 0 1 padding 60 50 50 50
-kwmc config space 0 1 gap 40 40
-
-// Override default settings for screen 1
-// kwmc config display 1 mode bsp
-// kwmc config display 1 padding 100 100 100 100
-// kwmc config display 1 gap 40 40
-
 // Set default container split-ratio
 kwmc config split-ratio 0.5
 
-// New splits become the left leaf-node
+// New splits become the right leaf-node
 kwmc config spawn right
 
+/*
+    Window borders
+ */
+
 // Enable border for focused window
-kwmc config focused-border off
+kwmc config focused-border on
 kwmc config focused-border size 3
 kwmc config focused-border color ff65727f
 kwmc config focused-border radius 6
@@ -105,5 +79,21 @@ kwmc config prefix-border size 2
 kwmc config prefix-border color FF458588
 kwmc config prefix-border radius 6
 
+/*
+    Spaces
+ */
+
+// space 1 - browser, etc
+kwmc config space 0 1 mode monocle
+kwmc config space 0 1 padding 60 50 50 50
+kwmc config space 0 1 gap 40 40
+
+// space 2 - workspace
+kwmc config space 0 2 name workspace
+
+// space 4 - comm center
+kwmc config space 0 4 name comms
+
 include binds
 include rules
+include bsp-layout
