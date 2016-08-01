@@ -5,15 +5,36 @@
 // AXWindowRole and AXStandardWindowSubRole
 kwmc rule owner="iTerm2" properties={role="AXDialog"}
 
-// The following command creates a rule that
-// captures an application to the given screen,
-// if the screen exists.
-//
-// kwmc rule owner="iTunes" properties={display="1"}
+/*
+    Windows to float
+    Floated windows are excluded from kwm's tiling.
+ */
 
-// The following command blacklists a specific application
-// from Kwm's tiling (PS: The app name is case-sensitive)
-// If the name consist of multiple words, the command
-// looks like: kwmc config float Google Chrome
-kwmc rule owner="Steam" properties={float="true"}
-kwmc rule owner="Photoshop" properties={float="true"}
+// float anything named "Preferences"
+kwmc rule properties={float="true"} name="Preferences"
+
+// float the following applications:
+kwmc rule properties={float="true"} owner="Steam"
+kwmc rule properties={float="true"} owner="Photoshop"
+kwmc rule properties={float="true"} owner="App Store"
+kwmc rule properties={float="true"} owner="System Preferences"
+kwmc rule properties={float="true"} owner="Archive Utility"
+kwmc rule properties={float="true"} owner="The Unarchiver"
+
+/*
+    Space assignment
+    Automatically put specific applications in specific spaces.
+ */
+
+// space 1
+kwmc rule properties={space="1"} owner="Safari"
+
+// space 2: workspace
+kwmc rule properties={space="2"} owner="Atom"
+kwmc rule properties={space="1"} owner="HyperTerm"
+
+// space 4: comm center
+kwmc rule properties={space="4"} owner="Slack"
+kwmc rule properties={space="4"} owner="Messenger"
+kwmc rule properties={space="4"} owner="Goofy"
+kwmc rule properties={space="4"} owner="Telegram"
