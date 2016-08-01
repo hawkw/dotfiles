@@ -11,7 +11,7 @@ $kwmc config focused-border disable
 $kwmc config prefix-border disable
 $kwmc config marked-border disable
 
-$screencapture $@ ~/Desktop/$(date +%s).png
+$screencapture $@ ~/Desktop/Screen Shot-$(date +%s).png
 
 if [ "$FOCUSED_BORDER" = "1" ]
 then
