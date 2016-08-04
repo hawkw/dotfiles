@@ -1,60 +1,89 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 11,
 
     // font family with optional fallbacks
     fontFamily: 'Pragmata Pro, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.75)',
+    cursorColor: '#c0c5ce',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: 'BLOCK',
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: '#c0c5ce',
 
     // terminal background color
-    backgroundColor: '#000',
+    backgroundColor: '#2b303b',
 
     // border color (window, tabs)
-    borderColor: '#333',
+    borderColor: '#2b303b',
 
     // custom css to embed in the main window
-    css: '',
+    css:
+ `
+        .header_header {
+          top: 0;
+          right: 0;
+          left: 0;
+        }
+        .tabs_list {
+          background-color: #1c1f26 !important;
+          border-bottom-color: #1c1f26  !important;
+        }
+        .tab_tab.tab_active {
+          font-weight: 500;
+          background-color: #2b303b;
+            border-color: #2b303b !important;
+        }
+        .tab_tab.tab_active::before {
+            border-bottom-color: #2b303b ;
+        }
+    `,
 
     // custom css to embed in the terminal window
-    termCSS: '',
+    termCSS:
+    `
+    .cursor-node {
+        mix-blend-mode: difference;
+    }
+    * {
+        text-rendering: optimizeLegibility;
+        -webkit-font-feature-settings: "liga" on, "calt" on;
+        font-feature-settings: "liga" on, "calt" on;
+    }
+`,
 
     // custom padding (css format, i.e.: `top right bottom left`)
-    padding: '20px 24px',
+    padding: '18px 20px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
-      red: '#ff0000',
-      green: '#33ff00',
-      yellow: '#ffff00',
-      blue: '#0066ff',
-      magenta: '#cc00ff',
-      cyan: '#00ffff',
-      white: '#d0d0d0',
-      lightBlack: '#808080',
-      lightRed: '#ff0000',
-      lightGreen: '#33ff00',
-      lightYellow: '#ffff00',
-      lightBlue: '#0066ff',
-      lightMagenta: '#cc00ff',
-      lightCyan: '#00ffff',
-      lightWhite: '#ffffff'
+        black: '#65727f',
+        red: '#bf616a',
+        green: '#98be8c',
+        yellow: '#ebcb8b',
+        blue: '#8fa1b3',
+        magenta: '#b48ea7',
+        cyan: '#96b5b4',
+        white: '#c0c5ce',
+        lightBlack: '#65727f',
+        lightRed: '#bf616a',
+        lightGreen: '#98be8c',
+        lightYellow: '#ebcb8b',
+        lightBlue: '#8fa1b3',
+        lightMagenta: '#b48ea7',
+        lightCyan: '#96b5b4',
+        lightWhite: '#c0c5ce'
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: ''
+    shell: "zsh"
 
     // for advanced config flags please refer to https://hyperterm.org/#cfg
   },
@@ -65,7 +94,8 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: [
+    ],
 
   // in development, you can create a directory under
   // `~/.hyperterm_plugins/local/` and include it here
