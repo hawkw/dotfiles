@@ -8,23 +8,31 @@
  * http://www.lesscss.org
  */
 
+@color-foreground: #c0c5ce;
+@color-background: #2b303b;
+@font-mono: 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
+          , Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 
+/*
+ *      Styles for all text editor windows
+ */
 atom-text-editor {
     /*
-     * Font rendering
+     *      Font rendering
      *
-     * These settings enable ligatures and contextual alternate glyphs
-     * to make Atom render all the available ligatures in typefaces like
-     * Pragmata Pro, Monoid, and Hasklig.
+     *      These settings enable ligatures and contextual alternate glyphs
+     *      to make Atom render all the available ligatures in typefaces like
+     *       Pragmata Pro, Monoid, and Hasklig.
      */
     text-rendering: optimizeLegibility;
     -webkit-font-feature-settings: "liga" 1, "calt" 1;
     font-feature-settings: "liga" 1, "calt" 1;
 
+    /*
+     *      Custom colors for overly-long lines in git commits
+     */
     .git-commit.line-too-long {
-        /*
-         * Custom colors for overly-long lines in git commits
-         */
+
         .deprecated {
             color: orange;
             text-decoration: none;
@@ -37,7 +45,7 @@ atom-text-editor {
     }
 
     /*
-     * Rust language-specific settings.
+     *      Rust language-specific settings.
      */
     ::shadow .meta.attribute.rust {
          color: #65737e;
@@ -69,13 +77,36 @@ atom-text-editor {
 
 
 .theme-one-dark-ui {
-    font-face: "Pragmata Pro";
+    font-face: @font-mono;
 }
 
 /*
- * Tokamak terminal
+ *      tokamak-terminal plugin
  */
 .tokamak-terminal .xterm {
-   background-color: #2b303b;
-   color: #c0c5ce;
+
+   background-color: @color-background;
+   color: @color-foreground;
+
+    ::selection {
+        background-color: @color-foreground;
+    }
+
+    .terminal-cursor {
+        background-color: @color-foreground;
+    }
+ }
+
+/*
+ *      atom-build plugin
+ */
+.build {
+
+     font-family: @font-mono;
+
+    .output.override-theme {
+        // Change output panel colors to match theme colors
+        color: @color-foreground;
+        background-color: @color-background;
+    }
  }
