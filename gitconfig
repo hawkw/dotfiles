@@ -1,3 +1,9 @@
+[color]
+	# Colour terminal command output when possible.
+	ui = auto
+[gist]
+	# Open GitHub Gist in browser after submission.
+	browse = true
 [filter "media"]
     required = true
     clean    = git media clean %f
@@ -7,7 +13,7 @@
     name     = Hawk Weisman
     email    = hi@hawkweisman.me
 [core]
-    editor   = nano
+    editor   = atom-beta
     autocrlf = input
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
