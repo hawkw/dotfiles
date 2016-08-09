@@ -12,6 +12,7 @@ brew keybase
 brew htop-osx
 brew scala
 brew nasm
+brew ag
 
 brew install zsh-completions
 
