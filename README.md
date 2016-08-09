@@ -3,7 +3,7 @@ Eliza's Dotfiles
 
 Eliza Weisman's personal dotfiles, managed using Thoughtbot's [rcm](https://github.com/thoughtbot/rcm) tool.
 
-My configurations are biased towards Mac OS X and Atom; there's minimal support for other OSes and tools currently. Lots of support for Rust and Scala, my languages of choice.
+My configurations are biased towards Mac OS X, [Atom](https://atom.io), and [HyperTerm](https://hyperterm.org); there's minimal support for other OSes and tools currently. Lots of support for Rust and Scala, my languages of choice.
 
 Install
 -------
