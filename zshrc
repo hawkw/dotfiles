@@ -1,3 +1,12 @@
+#
+#   ZSH runtime config
+#   by Eliza Weisman
+#
+
+# load shared shell configuration
+source $HOME/.zshenv
+source $HOME/.shrc.sh
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -31,7 +40,7 @@ CASE_SENSITIVE="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -49,17 +58,13 @@ plugins=(atom git gitfast ssh z brew gradle osx pip python sbt scala cabal zsh-s
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Add Homebrew zsh completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# User configuration ########################################################
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nano'
-else
-   export EDITOR='atom-beta'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
