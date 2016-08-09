@@ -43,31 +43,44 @@ atom-text-editor {
           opacity: 0.9;
         }
     }
+}
+
+atom-text-editor::shadow {
 
     /*
      *      Rust language-specific settings.
+     *
+     *      This mostly just changes a bunch of ugly colors in the
+     *      atom-language-rust package that I don't like.
      */
-    ::shadow .meta.attribute.rust {
-         color: #65737e;
+    .meta.attribute.rust {
+        // Change the really disgusting color for attributes to soemthing
+        // pretty.
+        color: #65737e;
     }
-    ::shadow .markup.definition.rust {
+    .markup.definition.rust {
         bg-color: #1c2028
     }
-    ::shadow .keyword.other.unsafe.rust {
+    .keyword.other.unsafe.rust {
+        // make `unsafe` a nice yellow warning color.
         color:  #d0b770
     }
-    ::shadow .storage.modifier.lifetime.rust,
-    ::shadow .entity.name.lifetime.rust {
+    .storage.modifier.lifetime.rust,
+    .entity.name.lifetime.rust {
         // Non-ugly colors for Rust lifetimes
         color: mix(#0ff, @syntax-text-color, 70%);
     }
-    ::shadow .source.rust {
+
+    /*
+     *      Fix issue where Atom doesn't render some ligatures in Rust source
+     */
+    .source.rust {
         // force Atom to draw ligatures in Rust source
         text-rendering: optimizeLegibility;
         -webkit-font-feature-settings: "liga" 1, "calt" 1;
         font-feature-settings: "liga" 1, "calt" 1
     }
-    ::shadow .keyword.operator.rust {
+    .keyword.operator.rust {
         // force Atom to draw all ligatures in Rust operators
         -webkit-font-feature-settings:
             "liga" on, "calt" on, "dlig" on !important;
