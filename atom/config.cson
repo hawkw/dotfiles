@@ -14,8 +14,9 @@
     saveOnBuild: true
     scrollOnError: true
   "build-cargo":
-    cargoCheck: true
-    cargoClippy: true
+    extCommands:
+      cargoCheck: true
+      cargoClippy: true
     jsonErrors: true
     openDocs: true
     showBacktrace: true
@@ -29,17 +30,14 @@
       "atom-live-grammar-reload"
       "haskell-pointfree"
       "symbols-view"
-      "typewriter"
       "nrepl"
       "open-terminal-here"
       "cargo-test-runner"
-      "gradle-ci"
       "sbt"
       "language-rust"
       "wrap-guide"
-      "tokamak-terminal"
-      "tokamak"
       "linter-write-good"
+      "typewriter"
     ]
     ignoredNames: [
       ".git"
@@ -64,7 +62,6 @@
     auto_add_method_tag: true
     deep_indent: true
   editor:
-    autoIndent: false
     backUpBeforeSaving: true
     fontFamily: "Pragmata Pro"
     fontSize: 11
@@ -93,7 +90,9 @@
     executablePath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/chktex"
   "linter-rust":
     cargoCommand: "check"
+    cargoPath: "/Users/hawk/.cargo/bin/cargo"
     jobsNumber: 4
+    rustcPath: "/Users/hawk/.cargo/bin/rustc"
   "linter-scalac":
     scalacExecutablePath: "/usr/local/bin/scalac"
   "linter-write-good": {}
@@ -113,7 +112,7 @@
   "open-terminal-here": {}
   "project-quick-open": {}
   racer:
-    rustSrcPath: "/Users/hawk/Development/rust/src/"
+    rustSrcPath: "/usr/local/src/rust/src"
   "spell-check": {}
   "symbols-tree-view":
     autoHide: true
@@ -123,12 +122,132 @@
     tabScrolling: true
     usePreviewTabs: true
   "terminal-panel": {}
-  tokamak: {}
+  tokamak:
+    cargoBinPath: "$HOME/.cargo/bin/cargo"
+    multirustBinPath: "/Users/hawk/.cargo/bin/multirust"
+    rustcBinPath: "$HOME/.cargo/bin/cargo"
+  "tokamak-terminal":
+    ansiColors:
+      normal:
+        black:
+          red: 101
+          green: 114
+          blue: 128
+          alpha: 1
+        blue:
+          red: 143
+          green: 161
+          blue: 178
+          alpha: 1
+        cyan:
+          red: 150
+          green: 181
+          blue: 180
+          alpha: 1
+        green:
+          red: 152
+          green: 190
+          blue: 141
+          alpha: 1
+        magenta:
+          red: 180
+          green: 143
+          blue: 168
+          alpha: 1
+        red:
+          red: 193
+          green: 96
+          blue: 105
+          alpha: 1
+        white:
+          red: 192
+          green: 197
+          blue: 206
+          alpha: 1
+        yellow:
+          red: 235
+          green: 202
+          blue: 139
+          alpha: 1
+      zBright:
+        brightBlack:
+          red: 101
+          green: 114
+          blue: 128
+          alpha: 1
+        brightBlue:
+          red: 143
+          green: 161
+          blue: 178
+          alpha: 1
+        brightCyan:
+          red: 150
+          green: 181
+          blue: 180
+          alpha: 1
+        brightGreen:
+          red: 152
+          green: 190
+          blue: 141
+          alpha: 1
+        brightMagenta:
+          red: 180
+          green: 143
+          blue: 168
+          alpha: 1
+        brightRed:
+          red: 193
+          green: 96
+          blue: 105
+          alpha: 1
+        brightYellow:
+          red: 235
+          green: 202
+          blue: 139
+          alpha: 1
+    iconColors:
+      blue:
+        red: 143
+        green: 161
+        blue: 178
+        alpha: 1
+      cyan:
+        red: 152
+        green: 190
+        blue: 141
+        alpha: 1
+      green:
+        red: 152
+        green: 190
+        blue: 141
+        alpha: 1
+      magenta:
+        red: 180
+        green: 143
+        blue: 168
+        alpha: 1
+      orange:
+        red: 246
+        green: 157
+        blue: 92
+        alpha: 1
+      red:
+        red: 193
+        green: 96
+        blue: 105
+        alpha: 1
+      yellow:
+        red: 235
+        green: 202
+        blue: 139
+        alpha: 1
+    style:
+      fontFamily: "Pragmata Pro"
+    toggles:
+      autoClose: true
   "tool-bar":
-    fullWidth: false
-    iconSize: "16px"
+    iconSize: "12px"
     position: "Left"
-    visible: false
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
@@ -148,7 +267,7 @@
       "MERGE_MSG$"
     ]
   "wakatime-hidden":
-    lastInit: 1469902995
+    lastInit: 1470758685
   welcome:
     showOnStartup: false
 ".asm.source.x86_64":
@@ -190,6 +309,9 @@
   editor:
     preferredLineLength: 120
     tabLength: 2
+"source.gfm":
+  editor:
+    softWrap: true
 "text.latex.tex":
   editor:
     softWrap: true
