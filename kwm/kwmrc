@@ -31,11 +31,11 @@ kwmc config prefix-timeout 0.75
 // Automatically float windows that fail to resize
 kwmc config float-non-resizable on
 
-// Automatically resize the window to its container
-kwmc config lock-to-container off
-
 // Set focus-follows-mouse-mode to off
 kwmc config focus-follows-mouse off
+// The mouse will automatically move to the center
+// of the focused window
+kwmc config mouse-follows-focus off
 
 // Focus-follows-mouse is temporarily disabled when
 // a floating window has focus
@@ -43,10 +43,6 @@ kwmc config standby-on-float on
 
 /* Center window when made floating */
 kwmc config center-on-float on
-
-// The mouse will automatically move to the center
-// of the focused window
-kwmc config mouse-follows-focus off
 
 // Allow window focus to wrap-around
 kwmc config cycle-focus screen
@@ -93,6 +89,10 @@ kwmc config space 0 2 name workspace
 
 // space 4 - comm center
 kwmc config space 0 4 name comms
+
+/*
+    Prefix mode
+ */
 
 include binds
 include rules
