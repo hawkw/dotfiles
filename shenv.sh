@@ -5,7 +5,7 @@
 
 # PATH configuration #########################################################
 # prioritize Homebrew bin
-export PATH=`brew --prefix`/bin
+export PATH="/usr/local/bin"
 # other bin dirs
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 # latex bin
