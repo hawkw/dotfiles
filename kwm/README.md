@@ -32,6 +32,11 @@ $ kwmc config reload
 Keybindings
 -----------
 
++ prefix: <kbd>⌃</kbd>+<kbd>s</kbd>
++ hyper: <kbd>⌘</kbd>+<kbd>⌃</kbd>+<kbd>⌥</kbd>
++ <kbd>⌘</kbd>
+    - <kbd>return</kbd>: opens a new HyperTerm window
+
 Files
 -----
 
@@ -44,3 +49,4 @@ Files
 ├── rules           # rules for configuring kwm for specific applications
 └── scripts
     └── screencapture.sh
+```

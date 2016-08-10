@@ -26,15 +26,15 @@ kwmc rule properties={float="true"} owner="The Unarchiver"
     Automatically put specific applications in specific spaces.
  */
 
-// space 1
-kwmc rule properties={space="1"} owner="Safari"
-
-// space 2: workspace
-kwmc rule properties={space="2"} owner="Atom"
-kwmc rule properties={space="1"} owner="HyperTerm"
-
-// space 4: comm center
-kwmc rule properties={space="4"} owner="Slack"
-kwmc rule properties={space="4"} owner="Messenger"
-kwmc rule properties={space="4"} owner="Goofy"
-kwmc rule properties={space="4"} owner="Telegram"
+// // space 1
+// kwmc rule properties={space="1"} owner="Safari"
+//
+// // space 2: workspace
+// kwmc rule properties={space="2"} owner="Atom"
+// kwmc rule properties={space="2"} owner="HyperTerm"
+//
+// // space 4: comm center
+// kwmc rule properties={space="4"} owner="Slack"
+// kwmc rule properties={space="4"} owner="Messenger"
+// kwmc rule properties={space="4"} owner="Goofy"
+// kwmc rule properties={space="4"} owner="Telegram"
