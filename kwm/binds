@@ -3,25 +3,28 @@
     by Eliza Weisman (@hawkw)
  */
 
+define HYPER cmd+alt+ctrl
+define PREFIX ctrl-s
+
 // Quit Kwm
 // since I've installed kwm with Homebrew, i need to tell brew service to stop it
-kwmc bindsym cmd+alt+ctrl-q sys brew service stop homebrew/binary/kwm stop
+kwmc bindsym HYPER-q sys brew service stop homebrew/binary/kwm stop
 
 // Launch iTerm2
 kwmc bindsym cmd-return sys open -na /Applications/Hyperterm.app
 
 // Reload configuration
-kwmc bindsym cmd+ctrl+alt-r config reload
+kwmc bindsym HYPER-r config reload
 
 // Switch windows
 kwmc config cycle-focus all
-kwmc bindsym cmd+ctrl+alt-left window -f prev
-kwmc bindsym cmd+ctrl+alt-right window -f next
+kwmc bindsym HYPER-left window -f prev
+kwmc bindsym HYPER-right window -f next
 
 // Set the split mode
-kwmc bindsym cmd+ctrl+alt-h screen -s horizontal
-kwmc bindsym cmd+ctrl+alt-v screen -s vertical
-kwmc bindsym cmd+ctrl+alt-o screen -s optimal
+kwmc bindsym HYPER-h screen -s horizontal
+kwmc bindsym HYPER-v screen -s vertical
+kwmc bindsym HYPER-o screen -s optimal
 
 // Set Space Tiling Mode To BSP
 kwmc bindsym cmd+ctrl-a space -t bsp
@@ -40,14 +43,14 @@ kwmc bindsym cmd+ctrl-r tree rotate 90
  */
 
 // Modify Container
-kwmc bindsym cmd+ctrl+alt-/ window -c split
-kwmc bindsym cmd+ctrl+alt-, window -c reduce 0.05
-kwmc bindsym cmd+ctrl+alt-. window -c expand 0.05
+kwmc bindsym HYPER-/ window -c split
+kwmc bindsym HYPER-, window -c reduce 0.05
+kwmc bindsym HYPER-. window -c expand 0.05
 
 // Set Temporary Window Container
 kwmc bindsym prefix-s window -t fullscreen
 kwmc bindsym prefix-a window -t parent
-kwmc bindsym cmd+ctrl+alt-space window -t parent
+kwmc bindsym HYPER-space window -t parent
 
 /*
     Window movements
@@ -82,7 +85,7 @@ kwmc bindsym cmd+ctrl-down mark -w focused
 kwmc bindsym cmd+ctrl-up window -s mark
 
 // Detach Marked Window And Reinsert At Focused Window
-kwmc bindsym cmd+ctrl+alt-down window -x mark
+kwmc bindsym HYPER-down window -x mark
 // Autowrite
 kwmc bindsym cmd-7 write \
 kwmc bindsym cmd-8 write {
