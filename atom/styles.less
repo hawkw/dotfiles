@@ -8,8 +8,9 @@
  * http://www.lesscss.org
  */
 
-@color-foreground: #c0c5ce;
-@color-background: #2b303b;
+@import "syntax-variables";
+@import "ui-variables";
+
 @font-mono: 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
           , Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 
@@ -90,23 +91,22 @@ atom-text-editor::shadow {
 
 
 .theme-one-dark-ui {
-    font-face: @font-mono;
+    font-face: @font-family;
 }
 
 /*
  *      tokamak-terminal plugin
  */
 .tokamak-terminal .xterm {
-
-   background-color: @color-background;
-   color: @color-foreground;
+   background-color: @tool-panel-background-color;
+   color: @text-color;
 
     ::selection {
-        background-color: @color-foreground;
+        background-color: @text-color-highlight;
     }
 
     .terminal-cursor {
-        background-color: @color-foreground;
+        background-color: @text-color-highlight;
     }
  }
 
@@ -119,7 +119,7 @@ atom-text-editor::shadow {
 
     .output.override-theme {
         // Change output panel colors to match theme colors
-        color: @color-foreground;
-        background-color: @color-background;
+        color: @text-color;
+        background-color: @tool-panel-background-color;
     }
  }
