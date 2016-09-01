@@ -1,9 +1,4 @@
-[color]
-	# Colour terminal command output when possible.
-	ui = auto
-[gist]
-	# Open GitHub Gist in browser after submission.
-	browse = true
+
 [filter "media"]
     required = true
     clean    = git media clean %f

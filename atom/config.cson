@@ -53,10 +53,12 @@
       ".sublime-workspace"
     ]
     projectHome: "/Users/hawk/Development"
+    telemetryConsent: "limited"
     themes: [
       "spacegray-dark-ui"
       "base16-ocean-dark-spacegray-lighter-invisibles"
     ]
+    useCustomTitleBar: true
   docblockr:
     align_tags: "shallow"
     auto_add_method_tag: true
@@ -123,124 +125,37 @@
     usePreviewTabs: true
   "terminal-panel": {}
   tokamak:
-    cargoBinPath: "$HOME/.cargo/bin/cargo"
+    cargoBinPath: "/Users/hawk/.cargo/bin/cargo"
     multirustBinPath: "/Users/hawk/.cargo/bin/multirust"
-    rustcBinPath: "$HOME/.cargo/bin/cargo"
+    rustcBinPath: "/Users/hawk/.cargo/bin/rustc"
+    toolBinPath: "/Users/hawk/.cargo/bin/rustup"
   "tokamak-terminal":
     ansiColors:
       normal:
-        black:
-          red: 101
-          green: 114
-          blue: 128
-          alpha: 1
-        blue:
-          red: 143
-          green: 161
-          blue: 178
-          alpha: 1
-        cyan:
-          red: 150
-          green: 181
-          blue: 180
-          alpha: 1
-        green:
-          red: 152
-          green: 190
-          blue: 141
-          alpha: 1
-        magenta:
-          red: 180
-          green: 143
-          blue: 168
-          alpha: 1
-        red:
-          red: 193
-          green: 96
-          blue: 105
-          alpha: 1
-        white:
-          red: 192
-          green: 197
-          blue: 206
-          alpha: 1
-        yellow:
-          red: 235
-          green: 202
-          blue: 139
-          alpha: 1
+        black: "#657280"
+        blue: "#8fa1b2"
+        cyan: "#96b5b4"
+        green: "#98be8d"
+        magenta: "#b48fa8"
+        red: "#c16069"
+        white: "#c0c5ce"
+        yellow: "#ebca8b"
       zBright:
-        brightBlack:
-          red: 101
-          green: 114
-          blue: 128
-          alpha: 1
-        brightBlue:
-          red: 143
-          green: 161
-          blue: 178
-          alpha: 1
-        brightCyan:
-          red: 150
-          green: 181
-          blue: 180
-          alpha: 1
-        brightGreen:
-          red: 152
-          green: 190
-          blue: 141
-          alpha: 1
-        brightMagenta:
-          red: 180
-          green: 143
-          blue: 168
-          alpha: 1
-        brightRed:
-          red: 193
-          green: 96
-          blue: 105
-          alpha: 1
-        brightYellow:
-          red: 235
-          green: 202
-          blue: 139
-          alpha: 1
+        brightBlack: "#657280"
+        brightBlue: "#8fa1b2"
+        brightCyan: "#96b5b4"
+        brightGreen: "#98be8d"
+        brightMagenta: "#b48fa8"
+        brightRed: "#c16069"
+        brightYellow: "#ebca8b"
     iconColors:
-      blue:
-        red: 143
-        green: 161
-        blue: 178
-        alpha: 1
-      cyan:
-        red: 152
-        green: 190
-        blue: 141
-        alpha: 1
-      green:
-        red: 152
-        green: 190
-        blue: 141
-        alpha: 1
-      magenta:
-        red: 180
-        green: 143
-        blue: 168
-        alpha: 1
-      orange:
-        red: 246
-        green: 157
-        blue: 92
-        alpha: 1
-      red:
-        red: 193
-        green: 96
-        blue: 105
-        alpha: 1
-      yellow:
-        red: 235
-        green: 202
-        blue: 139
-        alpha: 1
+      blue: "#8fa1b2"
+      cyan: "#98be8d"
+      green: "#98be8d"
+      magenta: "#b48fa8"
+      orange: "#f69d5c"
+      red: "#c16069"
+      yellow: "#ebca8b"
     style:
       fontFamily: "Pragmata Pro"
     toggles:
@@ -248,6 +163,7 @@
   "tool-bar":
     iconSize: "12px"
     position: "Left"
+    visible: false
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
@@ -267,7 +183,7 @@
       "MERGE_MSG$"
     ]
   "wakatime-hidden":
-    lastInit: 1470758685
+    lastInit: 1472752653
   welcome:
     showOnStartup: false
 ".asm.source.x86_64":
