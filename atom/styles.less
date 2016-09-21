@@ -99,26 +99,27 @@ atom-text-editor::shadow {
 }
 
 /*
- *      tokamak-terminal plugin
+ *      tokamak-terminal and platformIO terminal plugins
  */
-.tokamak-terminal .xterm {
-   background-color: @tool-panel-background-color;
-   color: @text-color;
+.tokamak-terminal, .platformio-ide-terminal {
+    .xterm {
+        background-color: @tool-panel-background-color;
+        color: @text-color;
 
-    ::selection {
-        background-color: @text-color-highlight;
-    }
+        ::selection {
+            background-color: @text-color-highlight;
+        }
 
-    .terminal-cursor {
-        background-color: @text-color-highlight;
+        .terminal-cursor {
+            background-color: @text-color-highlight;
+        }
     }
- }
+}
 
 /*
  *      atom-build plugin
  */
 .build {
-
      font-family: @font-mono;
 
     .output.override-theme {
