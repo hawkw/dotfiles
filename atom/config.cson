@@ -119,8 +119,38 @@
   "platformio-ide":
     showPlatformIOFiles: true
   "platformio-ide-terminal":
+    ansiColors:
+      normal:
+        black: "#657280"
+        blue: "#8fa1b2"
+        cyan: "#96b5b4"
+        green: "#98be8d"
+        magenta: "#b48fa8"
+        red: "#c16069"
+        white: "#c0c5ce"
+        yellow: "#ebca8b"
+      zBright:
+        brightBlack: "#657280"
+        brightBlue: "#8fa1b2"
+        brightCyan: "#96b5b4"
+        brightGreen: "#98be8d"
+        brightMagenta: "#b48fa8"
+        brightRed: "#c16069"
+        brightYellow: "#ebca8b"
     core:
       autoRunCommand: "export PATH=/Users/eliza/.atom/packages/platformio-ide/penv/bin:/Users/eliza/.local/bin:/Users/eliza/.cabal/bin:/Applications/ghc-7.10.2.app/Contents/bin:/Users/eliza/opt/cross/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:/Applications/Julia-0.3.0.app/Contents/Resources/julia/bin:/usr/local/bin/go:/Users/eliza/Development/go/bin:/Users/eliza/perl5/bin:/usr/local/opt/llvm/bin/:/Users/eliza/.cargo/bin:/usr/local/bin"
+    iconColors:
+      blue: "#8fa1b2"
+      cyan: "#98be8d"
+      green: "#98be8d"
+      magenta: "#b48fa8"
+      orange: "#f69d5c"
+      red: "#c16069"
+      yellow: "#ebca8b"
+    style:
+      fontFamily: "Pragmata Pro"
+    toggles:
+      autoClose: true
   "project-quick-open": {}
   racer:
     rustSrcPath: "/usr/local/src/rust/src"
