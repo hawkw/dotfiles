@@ -51,6 +51,10 @@
       ".ipr"
       ".iws"
       ".sublime-workspace"
+      ".pioenvs"
+      ".piolibdeps"
+      ".clang_complete"
+      ".gcc-flags.json"
     ]
     projectHome: "/Users/hawk/Development"
     telemetryConsent: "limited"
@@ -66,7 +70,7 @@
   editor:
     backUpBeforeSaving: true
     fontFamily: "Pragmata Pro"
-    fontSize: 11
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -87,7 +91,7 @@
     texPath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/"
   latexer: {}
   linter:
-    errorPanelHeight: 172
+    errorPanelHeight: 84
   "linter-chktex":
     executablePath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/chktex"
   "linter-rust":
@@ -112,6 +116,11 @@
     layoutMode: "Compact"
     tabSizing: "Even"
   "open-terminal-here": {}
+  "platformio-ide":
+    showPlatformIOFiles: true
+  "platformio-ide-terminal":
+    core:
+      autoRunCommand: "export PATH=/Users/eliza/.atom/packages/platformio-ide/penv/bin:/Users/eliza/.local/bin:/Users/eliza/.cabal/bin:/Applications/ghc-7.10.2.app/Contents/bin:/Users/eliza/opt/cross/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:/Applications/Julia-0.3.0.app/Contents/Resources/julia/bin:/usr/local/bin/go:/Users/eliza/Development/go/bin:/Users/eliza/perl5/bin:/usr/local/opt/llvm/bin/:/Users/eliza/.cargo/bin:/usr/local/bin"
   "project-quick-open": {}
   racer:
     rustSrcPath: "/usr/local/src/rust/src"
@@ -161,14 +170,12 @@
     toggles:
       autoClose: true
   "tool-bar":
-    iconSize: "12px"
     position: "Left"
     visible: false
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
   "tree-view":
-    hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   typewriter:
     scopes: "text.md,source.gfm,text.html,mediawiki,text.tex.latex,text.tex.latex.beamer"
@@ -183,7 +190,7 @@
       "MERGE_MSG$"
     ]
   "wakatime-hidden":
-    lastInit: 1472752653
+    lastInit: 1474396473
   welcome:
     showOnStartup: false
 ".asm.source.x86_64":
