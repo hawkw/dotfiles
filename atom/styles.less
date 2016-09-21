@@ -98,21 +98,24 @@ atom-text-editor::shadow {
     font-face: @font-family;
 }
 
+.tree-view.full-menu {
+    background-color: @tool-panel-background-color;
+}
+
 /*
  *      tokamak-terminal and platformIO terminal plugins
  */
-.tokamak-terminal, .platformio-ide-terminal {
-    .xterm {
-        background-color: @tool-panel-background-color;
-        color: @text-color;
+.tokamak-terminal .xterm,
+.platformio-ide-terminal .xterm {
+    background-color: @tool-panel-background-color;
+    color: @text-color;
 
-        ::selection {
-            background-color: @text-color-highlight;
-        }
+    ::selection {
+        background-color: @text-color-highlight;
+    }
 
-        .terminal-cursor {
-            background-color: @text-color-highlight;
-        }
+    .terminal-cursor {
+        background-color: @text-color-highlight;
     }
 }
 
