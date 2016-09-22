@@ -14,12 +14,11 @@
     saveOnBuild: true
     scrollOnError: true
   "build-cargo":
+    backtraceType: "Compact"
     extCommands:
       cargoCheck: true
       cargoClippy: true
-    jsonErrors: true
     openDocs: true
-    showBacktrace: true
   "cargo-test-runner": {}
   core:
     disabledPackages: [
@@ -117,6 +116,7 @@
     tabSizing: "Even"
   "open-terminal-here": {}
   "platformio-ide":
+    showHomeScreen: false
     showPlatformIOFiles: true
   "platformio-ide-terminal":
     ansiColors:
@@ -200,8 +200,8 @@
     toggles:
       autoClose: true
   "tool-bar":
-    position: "Left"
-    visible: false
+    iconSize: "16px"
+    visible: true
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
@@ -220,7 +220,7 @@
       "MERGE_MSG$"
     ]
   "wakatime-hidden":
-    lastInit: 1474396473
+    lastInit: 1474550751
   welcome:
     showOnStartup: false
 ".asm.source.x86_64":
