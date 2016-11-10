@@ -24,6 +24,7 @@ export PATH="$PATH:/usr/local/opt/llvm/bin/"
 export PATH="$HOME/opt/cross/bin:$PATH"
 # Rust apps installed with cargo
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/opt/bin/"
 # Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
 export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
 if [ -d "$GHC_DOT_APP" ];
@@ -49,8 +50,8 @@ export CARGO_TOKEN="h12iJk5JKCcVY1CR9OQpGpXdpQldzPoY"
 export VERSIONEYE_API_KEY="022c68589ca94418c558"
 
 # Disable emoji in Homebrew (this makes Hyperterm unhappy) ###################
-[ "$TERM_PROGRAM" = "HyperTerm" ] && export HYPERTERM=1
-if [ $HYPERTERM ]
+[ "$TERM_PROGRAM" = "Hyper" ] && export HYPER=1
+if [ $HYPER ]
 then
   export HOMEBREW_NO_EMOJI=1
 fi
