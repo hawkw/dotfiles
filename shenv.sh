@@ -26,12 +26,13 @@ export PATH="$HOME/opt/cross/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/opt/bin/"
 # Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
-export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
-if [ -d "$GHC_DOT_APP" ];
-then
-  export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
+# export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
+# if [ -d "$GHC_DOT_APP" ];
+# then
+#   export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+# fi
 
+export PATH="$PATH:${HOME}/.local/bin:$HOME/.cabal/bin"
 # Other path environment variables ############################################
 export GOPATH="$HOME/Development/go"
 # Rust sources (racer needs this)

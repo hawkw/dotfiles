@@ -14,33 +14,39 @@
 @font-mono: 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
           , Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 
+
 /*
- *      Styles for all text editor windows
+    Styles for all text editor windows
  */
 atom-text-editor {
     /*
-     *      Font rendering
-     *
-     *      These settings enable ligatures and contextual alternate glyphs
-     *      to make Atom render all the available ligatures in typefaces like
-     *       Pragmata Pro, Monoid, and Hasklig.
+        Font rendering
+
+        These settings enable ligatures and contextual alternate glyphs
+        to make Atom render all the available ligatures in typefaces like
+        Pragmata Pro, Monoid, and Hasklig.
+
      */
     text-rendering: optimizeLegibility;
     -webkit-font-feature-settings: "liga" 1, "calt" 1;
     font-feature-settings: "liga" 1, "calt" 1;
 
+    .keyword {
+        text-decoration: bold !important;
+    }
+    
     /*
-     *      Custom colors for overly-long lines in git commits
+        Custom colors for overly-long lines in git commits
      */
     .git-commit.line-too-long {
 
         .deprecated {
-            color: orange;
+            color: #d08770;
             text-decoration: none;
         }
         .illegal {
           color: #fff;
-          background: #DA2C43;
+          background: #bf616a;
           opacity: 0.9;
         }
     }
@@ -48,11 +54,12 @@ atom-text-editor {
 
 atom-text-editor::shadow {
 
+
     /*
-     *      Rust language-specific settings.
-     *
-     *      This mostly just changes a bunch of ugly colors in the
-     *      atom-language-rust package that I don't like.
+        Rust language-specific settings.
+
+        This mostly just changes a bunch of ugly colors in the
+        atom-language-rust package that I don't like.
      */
     .meta.attribute.rust {
         // Change the really disgusting color for attributes to soemthing
@@ -60,16 +67,18 @@ atom-text-editor::shadow {
         color: #65737e;
     }
     .markup.definition.rust {
-        bg-color: #1c2028
+        bg-color: #1c2028;
     }
     .keyword.other.unsafe.rust {
         // make `unsafe` a nice yellow warning color.
-        color:  #d0b770
+        color:  #ebcb8b;
     }
     .storage.modifier.lifetime.rust,
     .entity.name.lifetime.rust {
         // Non-ugly colors for Rust lifetimes
-        color: mix(#0ff, @syntax-text-color, 70%);
+        color:
+            // #ab7967;
+            mix(#0ff, @syntax-text-color, 70%);
     }
 
     /*
@@ -94,6 +103,23 @@ atom-text-editor::shadow {
   visibility: hidden;
 }
 
+
+/*
+    tool-bar package
+ */
+.tool-bar {
+    border: 1px solid @tool-panel-background-color;
+    background-color: @tool-panel-background-color;
+
+    button.tool-bar-btn {
+        background-color: inherit;
+    }
+
+    &.tool-bar-horizontal .tool-bar-spacer {
+            border-left: 1px solid @text-color-subtle;
+    }
+}
+
 .theme-one-dark-ui {
     font-face: @font-family;
 }
@@ -103,11 +129,12 @@ atom-text-editor::shadow {
 }
 
 /*
- *      tokamak-terminal and platformIO terminal plugins
+        tokamak-terminal and platformIO terminal plugins
  */
 .tokamak-terminal .xterm,
 .platformio-ide-terminal .xterm {
     background-color: @tool-panel-background-color;
+
     color: @text-color;
 
     ::selection {
@@ -120,7 +147,7 @@ atom-text-editor::shadow {
 }
 
 /*
- *      atom-build plugin
+        atom-build plugin
  */
 .build {
      font-family: @font-mono;

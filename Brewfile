@@ -27,6 +27,7 @@ cask atom
 cask goofy
 cask github-desktop
 cask iterm2
+cask hyper
 cask intellij-idea-eap
 cask spotify
 # cask slack
@@ -38,7 +39,7 @@ tap thoughtbot/formulae
 brew rcm
 
 # Install 'kwm' from 'koekeishiya/kwm'
-brew koekeishiya/kwm/kwm
+brew koekeishiya/formulae/kwm
 
 # Mac App Store
 mas 'Remote Desktop', id: 409907375

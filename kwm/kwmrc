@@ -94,6 +94,6 @@ kwmc config space 0 4 name comms
     Prefix mode
  */
 
-include binds
+// include binds
 include rules
 include bsp-layout

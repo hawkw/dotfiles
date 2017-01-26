@@ -5,9 +5,12 @@
     extraTagFiles: "tags"
   "atom-language-rust":
     colors:
+      attribute: "#65737e"
       documentation: "#65737e"
+      lifetime: "#d08770"
       macro: "#96b5b4"
-      parameter: "#c0c5ce"
+      parameter: "#8fa1b3"
+      token: "#8fa1b3"
   "atom-terminal-panel": {}
   build:
     buildOnSave: true
@@ -27,7 +30,6 @@
       "r-exec"
       "scala-worksheet"
       "atom-live-grammar-reload"
-      "haskell-pointfree"
       "symbols-view"
       "nrepl"
       "open-terminal-here"
@@ -37,6 +39,7 @@
       "wrap-guide"
       "linter-write-good"
       "typewriter"
+      "docblockr"
     ]
     ignoredNames: [
       ".git"
@@ -55,7 +58,7 @@
       ".clang_complete"
       ".gcc-flags.json"
     ]
-    projectHome: "/Users/hawk/Development"
+    projectHome: "/Users/eliza/Development"
     telemetryConsent: "limited"
     themes: [
       "spacegray-dark-ui"
@@ -80,9 +83,11 @@
   "exception-reporting":
     userId: "255e7065-c317-52d7-dd5b-8b9a82ef3345"
   "gist-it": {}
-  "git-plus": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "3987b4b2-c9a8-4200-b06f-5d9bcca4a6b8"
   "haskell-ghc-mod":
-    ghcModPath: "/Users/hawk/.cabal/bin/ghc-mod"
+    ghcModPath: "/Users/eliza/.cabal/bin/ghc-mod"
   "ide-haskell": {}
   latex:
     alwaysOpenResultInAtom: true
@@ -90,14 +95,14 @@
     texPath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/"
   latexer: {}
   linter:
-    errorPanelHeight: 84
+    errorPanelHeight: 135
   "linter-chktex":
     executablePath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/chktex"
   "linter-rust":
     cargoCommand: "check"
-    cargoPath: "/Users/hawk/.cargo/bin/cargo"
+    cargoPath: "/Users/eliza/.cargo/bin/cargo"
     jobsNumber: 4
-    rustcPath: "/Users/hawk/.cargo/bin/rustc"
+    rustcPath: "/Users/eliza/.cargo/bin/rustc"
   "linter-scalac":
     scalacExecutablePath: "/usr/local/bin/scalac"
   "linter-write-good": {}
@@ -153,6 +158,7 @@
       autoClose: true
   "project-quick-open": {}
   racer:
+    cargoHome: "/Users/eliza/.cargo/"
     rustSrcPath: "/usr/local/src/rust/src"
   "spell-check": {}
   "symbols-tree-view":
@@ -164,10 +170,11 @@
     usePreviewTabs: true
   "terminal-panel": {}
   tokamak:
-    cargoBinPath: "/Users/hawk/.cargo/bin/cargo"
-    multirustBinPath: "/Users/hawk/.cargo/bin/multirust"
-    rustcBinPath: "/Users/hawk/.cargo/bin/rustc"
-    toolBinPath: "/Users/hawk/.cargo/bin/rustup"
+    binaryDetection: false
+    cargoBinPath: "/Users/eliza/.cargo/bin/cargo"
+    cargoHomePath: "/Users/eliza/.cargo/"
+    rustcBinPath: "/Users/eliza/.cargo/bin/rustc"
+    toolBinPath: "/Users/eliza/.cargo/bin/rustup"
   "tokamak-terminal":
     ansiColors:
       normal:
@@ -200,8 +207,8 @@
     toggles:
       autoClose: true
   "tool-bar":
-    iconSize: "16px"
-    visible: true
+    iconSize: "12px"
+    visible: false
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
@@ -220,7 +227,7 @@
       "MERGE_MSG$"
     ]
   "wakatime-hidden":
-    lastInit: 1474550751
+    lastInit: 1485436107
   welcome:
     showOnStartup: false
 ".asm.source.x86_64":
