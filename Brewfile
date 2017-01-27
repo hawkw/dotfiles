@@ -13,6 +13,7 @@ brew htop-osx
 brew scala
 brew nasm
 brew ag
+brew gdb args: ['with-python', 'with-all-targets']
 
 brew install zsh-completions
 
