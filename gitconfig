@@ -8,7 +8,7 @@
     name     = Eliza Weisman
     email    = hi@hawkweisman.me
 [core]
-	editor = atom-beta --wait
+	editor = atom --add --wait
     autocrlf = input
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
