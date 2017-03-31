@@ -4,7 +4,7 @@ module.exports = {
       fontSize: 11,
 
       // font family with optional fallbacks
-      fontFamily: 'Pragmata Pro, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+      fontFamily: '"Pragmata Pro", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
       cursorColor: '#c0c5ce',
@@ -55,6 +55,11 @@ module.exports = {
           -webkit-font-feature-settings: "liga" on, "calt" on;
           font-feature-settings: "liga" on, "calt" on;
       }
+      .unicode-node {
+        display: inline !important;
+        vertical-align: top !important;
+        width: 1.14em !important;
+    }
   `,
 
       // custom padding (css format, i.e.: `top right bottom left`)
