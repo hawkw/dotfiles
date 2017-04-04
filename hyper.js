@@ -1,10 +1,10 @@
 module.exports = {
   config: {
       // default font size in pixels for all tabs
-      fontSize: 11,
+      fontSize: 12,
 
       // font family with optional fallbacks
-      fontFamily: '"Pragmata Pro", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+      fontFamily: '"Iosevka Nerd Font", "Iosevka Term"',
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
       cursorColor: '#c0c5ce',
@@ -56,12 +56,12 @@ module.exports = {
           font-feature-settings: "liga" on, "calt" on;
       }
       .unicode-node {
-        display: inline !important;
-        vertical-align: top !important;
-        width: 1.14em !important;
+          display: inline !important;
+           vertical-align: top !important;
+           width: 1em !important;
     }
   `,
-
+    // ``,
       // custom padding (css format, i.e.: `top right bottom left`)
       padding: '18px 20px',
 
@@ -74,18 +74,18 @@ module.exports = {
         red: '#bf616a',
         green: '#98be8c',
         yellow: '#ebcb8b',
-        blue: '#8fa1b3',
+        blue: '#4e5a66',
         magenta: '#b48ea7',
-        cyan: '#96b5b4',
+        cyan: '#8abeb7',
         white: '#c0c5ce',
-        lightBlack: '#65727f',
-        lightRed: '#bf616a',
+        lightBlack: '#1C1F26',
+        lightRed: '#de935f',
         lightGreen: '#98be8c',
         lightYellow: '#ebcb8b',
-        lightBlue: '#8fa1b3',
+        lightBlue: '#65737E',
         lightMagenta: '#b48ea7',
         lightCyan: '#96b5b4',
-        lightWhite: '#c0c5ce'
+        lightWhite: '#e2e4ea'
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -127,7 +127,9 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [//   "hyperline",
   "hyperlinks", "hypercwd", "hyperlayout", "hyper-statusline", // "hyperminimal"
-  "hyperterm-paste", 'hyperterm-base16-ocean-dark', "hyper-tabs-enhanced",
+  "hyperterm-paste"
+  // 'hyperterm-base16-ocean-dark'
+  , "hyper-tabs-enhanced",
    // "hypertile"
 ],
 

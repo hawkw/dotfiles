@@ -32,6 +32,7 @@ export PATH="$PATH:$HOME/opt/bin/"
 #   export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
 # fi
 
+export PATH="$PATH:/usr/local/bin/rust-os-gdb/bin"
 export PATH="$PATH:${HOME}/.local/bin:$HOME/.cabal/bin"
 # Other path environment variables ############################################
 export GOPATH="$HOME/Development/go"
@@ -43,19 +44,19 @@ export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
 # LeJOS EV3
 export EV3_HOME="/opt/lejos-ev3"
 # OpenSSL bits
-export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
-export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
+# export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
+# export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
 
 export GH_TOKEN="6353fb099fc52f91067d5ee1c97e60af292a2612"
 export CARGO_TOKEN="h12iJk5JKCcVY1CR9OQpGpXdpQldzPoY"
 export VERSIONEYE_API_KEY="022c68589ca94418c558"
 
 # Disable emoji in Homebrew (this makes Hyperterm unhappy) ###################
-[ "$TERM_PROGRAM" = "Hyper" ] && export HYPER=1
-if [ $HYPER ]
-then
-  export HOMEBREW_NO_EMOJI=1
-fi
+# [ "$TERM_PROGRAM" = "Hyper" ] && export HYPER=1
+# if [ $HYPER ]
+# then
+#   # export HOMEBREW_NO_EMOJI=1
+# fi
 
 # Enable Terminal.app folder icons ###########################################
 [ "$TERM_PROGRAM" = "Apple_Terminal" ] && export TERMINALAPP=1
