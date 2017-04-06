@@ -33,7 +33,7 @@ The list of all the available styles can be obtained with (from GDB itself):
     python from pygments.styles import get_all_styles as styles
     python for s in styles(): print(s)
 """,
-                'default': 'vim',
+                'default': 'base16_ocean_dark',
                 'type': str
             },
             # prompt
