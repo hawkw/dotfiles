@@ -4,7 +4,7 @@ module.exports = {
       fontSize: 12,
 
       // font family with optional fallbacks
-      fontFamily: '"Iosevka Nerd Font", "Iosevka Term"',
+      fontFamily: '"Iosevka Nerd Font", "Iosevka Term", Iosevka, Menlo, Monaco, monospace',
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
       cursorColor: '#c0c5ce',
@@ -52,8 +52,8 @@ module.exports = {
       }
       * {
           text-rendering: optimizeLegibility;
-          -webkit-font-feature-settings: "liga" on, "calt" on;
-          font-feature-settings: "liga" on, "calt" on;
+          -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on;
+          font-feature-settings: "liga" on, "calt" on, "ss08" on;
       }
       .unicode-node {
           display: inline !important;

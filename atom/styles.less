@@ -11,7 +11,7 @@
 @import "syntax-variables";
 @import "ui-variables";
 
-@font-mono: 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
+@font-mono: 'Iosevka', 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
           , Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 
 
@@ -24,17 +24,27 @@ atom-text-editor {
 
         These settings enable ligatures and contextual alternate glyphs
         to make Atom render all the available ligatures in typefaces like
-        Pragmata Pro, Monoid, and Hasklig.
+        Iosevka, Pragmata Pro, Monoid, and Hasklig.
 
      */
     text-rendering: optimizeLegibility;
-    -webkit-font-feature-settings: "liga" 1, "calt" 1;
-    font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-feature-settings:
+        "liga" on // render ligatures
+      , "calt" on // render all "contextual alternate" glyphs
+      , "ss08" on // use Iosevka's "Pragmata Pro-like" stylistic set;
+      ;
+    font-feature-settings: "liga" on, "calt" on, "ss08" on;
+
+    // turn off ligatures & contextual alternates in regexes
+    .editor .syntax--string.syntax--quoted,
+    .editor .syntax--string.syntax--regexp {
+      -webkit-font-feature-settings: "liga" off, "calt" off;
+    }
 
     .keyword {
         text-decoration: bold !important;
     }
-    
+
     /*
         Custom colors for overly-long lines in git commits
      */
@@ -54,6 +64,47 @@ atom-text-editor {
 
 atom-text-editor::shadow {
 
+    .source.haskell, .text.tex.latex.haskell,
+    .source.c2hs, .source.cabal, .source.hsc2hs {
+        /*
+            Turn on Iosevka Language-Specific Ligations for Haskell
+         */
+         -webkit-font-feature-settings: "XHS0" on;
+         font-feature-settings: "XHS0" on;
+    }
+
+    .source.scala {
+        /*
+            Turn on Iosevka Language-Specific Ligations for Scala
+            (using the Haskell ligation set)
+         */
+         -webkit-font-feature-settings: "XHS0" on;
+         font-feature-settings: "XHS0" on;
+    }
+
+    .source.swift {
+        /*
+            Turn on Iosevka Language-Specific Ligations for Swift
+         */
+         -webkit-font-feature-settings:"SWFT" on;
+         font-feature-settings: "SWFT" on;
+    }
+
+    .source.elm {
+        /*
+            Turn on Iosevka Language-Specific Ligations for Elm
+         */
+         -webkit-font-feature-settings: "XELM" on;
+         font-feature-settings: "XELM" on;
+    }
+
+    .source.purscript {
+        /*
+            Turn on Iosevka Language-Specific Ligations for PureScript
+         */
+         -webkit-font-feature-settings: "PURS" on;
+         font-feature-settings: "PURS" on;
+    }
 
     /*
         Rust language-specific settings.
@@ -82,19 +133,23 @@ atom-text-editor::shadow {
     }
 
     /*
-     *      Fix issue where Atom doesn't render some ligatures in Rust source
+        Fix issue where Atom doesn't render some ligatures in Rust source
      */
     .source.rust {
         // force Atom to draw ligatures in Rust source
         text-rendering: optimizeLegibility;
-        -webkit-font-feature-settings: "liga" 1, "calt" 1;
-        font-feature-settings: "liga" 1, "calt" 1
+        -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
+        font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
     }
     .keyword.operator.rust {
         // force Atom to draw all ligatures in Rust operators
         -webkit-font-feature-settings:
-            "liga" on, "calt" on, "dlig" on !important;
-        font-feature-settings: "liga" on, "calt" on, "dlig" on !important;
+            "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
+        font-feature-settings: "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
+    }
+    .markup.definition.rust {
+        background-color: inherit;
+        border: 0px;
     }
 }
 
