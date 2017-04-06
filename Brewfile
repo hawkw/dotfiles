@@ -1,11 +1,10 @@
-# taps
+#
+#   Brewfile
+#   by Eliza Weisman
+#
+
+### taps ####################################################################
 tap 'billzajac/tap'
-
-tap 'caskroom/cask'
-tap 'caskroom/versions'
-
-tap 'hawkw/grub'
-tap 'hawkw/x86_64-pc-elf'
 
 tap 'homebrew/binary'
 tap 'homebrew/boneyard'
@@ -19,10 +18,16 @@ tap 'homebrew/services'
 tap 'homebrew/versions'
 tap 'homebrew/x11'
 
+tap 'hawkw/grub'
+tap 'hawkw/x86_64-pc-elf'
+
 tap 'koekeishiya/formulae'
 tap 'neovim/neovim'
 tap 'telemachus/desc'
 tap 'thoughtbot/formulae'
+
+### `brew install` packages #################################################
+# these will be built from source
 
 brew 'a2ps'
 brew 'ant'
@@ -195,19 +200,30 @@ brew 'weechat'
 brew 'xorriso'
 brew 'yasm'
 brew 'zsh-completions'
-brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-binutils'
-brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-gcc'
+
+# packages from official Homebrew taps
+
 brew 'homebrew/boneyard/libiomp'
 brew 'homebrew/boneyard/clang-omp'
 brew 'homebrew/games/ckan'
 brew 'homebrew/games/nethack'
 brew 'homebrew/science/opencv'
 brew 'homebrew/science/r'
+
+# packages from third party taps
+
+brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-binutils'
+brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-gcc'
+
 brew 'koekeishiya/formulae/kwm'
 brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/rcm'
 
-# casks
+### casks ###################################################################
+# binary packages installed using Caskroom (https://caskroom.github.io)
+
+tap 'caskroom/cask'
+tap 'caskroom/versions'
 
 cask 'alfred'
 cask 'atom-beta'
@@ -220,7 +236,15 @@ cask 'spotify'
 cask 'vagrant'
 cask 'x2goclient'
 
-# Mac App Store
+### fonts ###################################################################
+# installed using https://github.com/caskroom/homebrew-fonts
+
+
+cask 'iosevka'
+cask 'iosevka-nerd-font'        # iosevka w/ nerd font support
+cask 'iosevka-nerd-font-mono'   # iosevka nerd font, monospace version
+
+### Mac App Store ###########################################################
 
 mas 'Tumblr', id: 929285034
 mas 'WriteRoom', id: 417967324
