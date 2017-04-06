@@ -1,9 +1,16 @@
 Eliza's Dotfiles
 ================
 
-Eliza Weisman's personal dotfiles, managed using Thoughtbot's [rcm](https://github.com/thoughtbot/rcm) tool.
+Eliza Weisman's personal dotfiles, managed using Thoughtbot's [`rcm`](https://github.com/thoughtbot/rcm) tool.
 
-My configurations are biased towards Mac OS X, [Atom](https://atom.io), and [HyperTerm](https://hyperterm.org); there's minimal support for other OSes and tools currently. Lots of support for Rust and Scala, my languages of choice.
+#### Note on Support
+My configurations are biased towards macOS, [Atom](https://atom.io), and [Hyper](https://hyper.is); there's minimal support for other OSes and tools currently. Lots of support for Rust, Haskell, and Scala, my languages of choice. Most packages are installed using [Homebrew](https://brew.sh), so if your system uses another package manager, you may not get everything you need to make all my configurations work right off the bat.
+
+#### Note on Fonts
+My terminals and text editors are typeset using [Iosevka](https://be5invis.github.io/Iosevka/), a slender monospace sans-serif and slab-serif typeface designed for code. If you install using the `Brewfile` in this repository, Iosevka (and its [Nerd Fonts](http://nerdfonts.com) patched version) will be installed automagically, along with a number of other open-source fonts that I like.
+
+ While you can, of course, change the default editor and terminal fonts to whatever font you prefer, do note that my `zsh` prompt is currently configured to use a [Nerd Fonts](http://nerdfonts.com) patched font. If you use a non-patched font, some glyphs may not show up as expected.
+
 
 Install
 -------
