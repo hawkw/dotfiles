@@ -11,6 +11,24 @@ source $HOME/.shrc.sh
 export ZSH=$HOME/.oh-my-zsh
 export DEFAULT_USER=eliza
 
+# Print Rust version number
+prompt_rustup_version() {
+  local rust_version
+  local rustup_string
+  rustup_string=$(rustup show 2>&1)
+
+  # check if we're in the system default rust environment
+  if [[ -n "$rustup_string" && "$rustup_string" != *"(default)"* ]]; then
+    # extract the rust version from the result of `rustup show`
+    rust_version=$(echo "$rustup_string" | grep -oe "^rustc\s*[^ ]*" | grep -o '[0-9.a-z\\\-]*$')
+
+    if [[ -n "$rust_version" ]]; then
+      echo "Rust $rust_version $(print_icon "RUST_ICON")"
+    fi
+
+  fi
+}
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -68,8 +86,12 @@ POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_COLOR="255"
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="008"
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="012"
 
+POWERLEVEL9K_CUSTOM_RUSTUP_VERSION="prompt_rustup_version"
+POWERLEVEL9K_CUSTOM_RUSTUP_VERSION_BACKGROUND="216"
+
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time virtualenv rbenv rvm background_jobs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time custom_rustup_version virtualenv rbenv rvm background_jobs status)
 
 COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line to use case-sensitive completion.
