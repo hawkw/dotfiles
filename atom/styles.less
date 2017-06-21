@@ -14,7 +14,6 @@
 @font-mono: 'Iosevka', 'Pragmata Pro', Monoid, Hasklig, 'Fira Code', Menlo
           , Monaco, Consolas, 'DejaVu Sans Mono', monospace;
 
-
 /*
     Styles for all text editor windows
  */
@@ -35,11 +34,106 @@ atom-text-editor {
       ;
     font-feature-settings: "liga" on, "calt" on, "ss08" on;
 
-    // turn off ligatures & contextual alternates in regexes
-    .editor .syntax--string.syntax--quoted,
-    .editor .syntax--string.syntax--regexp {
-      -webkit-font-feature-settings: "liga" off, "calt" off;
+    &.editor {
+        .syntax-- {
+            // turn off ligatures & contextual alternates in regexes
+            &string.syntax--quoted,
+            &string.syntax--regexp {
+              -webkit-font-feature-settings: "liga" off, "calt" off;
+            }
+
+            &source.syntax--haskell, &text.syntax--tex.syntax--latex.syntax--haskell,
+            &source.c2hs,
+            &source.cabal,
+            &source.syntax--hsc2hs {
+                /*
+                    Turn on Iosevka Language-Specific Ligations for Haskell
+                 */
+                 -webkit-font-feature-settings: "XHS0" on;
+                 font-feature-settings: "XHS0" on;
+            }
+
+            &source.syntax--scala {
+                /*
+                    Turn on Iosevka Language-Specific Ligations for Scala
+                    (using the Haskell ligation set)
+                 */
+                 -webkit-font-feature-settings: "XHS0" on;
+                 font-feature-settings: "XHS0" on;
+            }
+
+            &source.syntax--swift {
+                /*
+                    Turn on Iosevka Language-Specific Ligations for Swift
+                 */
+                 -webkit-font-feature-settings:"SWFT" on;
+                 font-feature-settings: "SWFT" on;
+            }
+
+            &source.syntax--elm {
+                /*
+                    Turn on Iosevka Language-Specific Ligations for Elm
+                 */
+                 -webkit-font-feature-settings: "XELM" on;
+                 font-feature-settings: "XELM" on;
+            }
+
+            &source.syntax--purscript {
+                /*
+                    Turn on Iosevka Language-Specific Ligations for PureScript
+                 */
+                 -webkit-font-feature-settings: "PURS" on;
+                 font-feature-settings: "PURS" on;
+            }
+            &markup.syntax--definition.syntax--rust {
+                bg-color: #1c2028;
+            }
+            &keyword.syntax--other.syntax--unsafe.syntax--rust {
+                // make `unsafe` a nice yellow warning color.
+                color:  #ebcb8b;
+            }
+            &storage.syntax--modifier.syntax--lifetime.syntax--rust,
+            &entity.syntax--name.syntax--lifetime.syntax--rust {
+                // Non-ugly colors for Rust lifetimes
+                color:
+                    // #ab7967;
+                    mix(#0ff, @syntax-text-color, 70%);
+            }
+
+            /*
+                Rust language-specific settings.
+
+                This mostly just changes a bunch of ugly colors in the
+                atom-language-rust package that I don't like.
+             */
+             &meta.syntax--attribute.syntax--rust {
+                 // Change the really disgusting color for attributes to soemthing
+                 // pretty.
+                 color: #65737e !important;
+             }
+            /*
+                Fix issue where Atom doesn't render some ligatures in Rust source
+             */
+            &source.syntax--rust {
+                // force Atom to draw ligatures in Rust source
+                text-rendering: optimizeLegibility;
+                -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
+                font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
+            }
+            &keyword.syntax--operator.syntax--rust {
+                // force Atom to draw all ligatures in Rust operators
+                -webkit-font-feature-settings:
+                    "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
+                font-feature-settings: "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
+            }
+            &markup.syntax--definition.syntax--rust {
+                background-color: inherit;
+                border: 0px;
+            }
+        }
+
     }
+
 
     .keyword {
         text-decoration: bold !important;
@@ -62,96 +156,6 @@ atom-text-editor {
     }
 }
 
-atom-text-editor::shadow {
-
-    .source.haskell, .text.tex.latex.haskell,
-    .source.c2hs, .source.cabal, .source.hsc2hs {
-        /*
-            Turn on Iosevka Language-Specific Ligations for Haskell
-         */
-         -webkit-font-feature-settings: "XHS0" on;
-         font-feature-settings: "XHS0" on;
-    }
-
-    .source.scala {
-        /*
-            Turn on Iosevka Language-Specific Ligations for Scala
-            (using the Haskell ligation set)
-         */
-         -webkit-font-feature-settings: "XHS0" on;
-         font-feature-settings: "XHS0" on;
-    }
-
-    .source.swift {
-        /*
-            Turn on Iosevka Language-Specific Ligations for Swift
-         */
-         -webkit-font-feature-settings:"SWFT" on;
-         font-feature-settings: "SWFT" on;
-    }
-
-    .source.elm {
-        /*
-            Turn on Iosevka Language-Specific Ligations for Elm
-         */
-         -webkit-font-feature-settings: "XELM" on;
-         font-feature-settings: "XELM" on;
-    }
-
-    .source.purscript {
-        /*
-            Turn on Iosevka Language-Specific Ligations for PureScript
-         */
-         -webkit-font-feature-settings: "PURS" on;
-         font-feature-settings: "PURS" on;
-    }
-
-    /*
-        Rust language-specific settings.
-
-        This mostly just changes a bunch of ugly colors in the
-        atom-language-rust package that I don't like.
-     */
-    .meta.attribute.rust {
-        // Change the really disgusting color for attributes to soemthing
-        // pretty.
-        color: #65737e;
-    }
-    .markup.definition.rust {
-        bg-color: #1c2028;
-    }
-    .keyword.other.unsafe.rust {
-        // make `unsafe` a nice yellow warning color.
-        color:  #ebcb8b;
-    }
-    .storage.modifier.lifetime.rust,
-    .entity.name.lifetime.rust {
-        // Non-ugly colors for Rust lifetimes
-        color:
-            // #ab7967;
-            mix(#0ff, @syntax-text-color, 70%);
-    }
-
-    /*
-        Fix issue where Atom doesn't render some ligatures in Rust source
-     */
-    .source.rust {
-        // force Atom to draw ligatures in Rust source
-        text-rendering: optimizeLegibility;
-        -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
-        font-feature-settings: "liga" on, "calt" on, "ss08" on, "XHS0" on;
-    }
-    .keyword.operator.rust {
-        // force Atom to draw all ligatures in Rust operators
-        -webkit-font-feature-settings:
-            "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
-        font-feature-settings: "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
-    }
-    .markup.definition.rust {
-        background-color: inherit;
-        border: 0px;
-    }
-}
 
 .title-bar {
   height: 25px;
@@ -188,6 +192,7 @@ atom-text-editor::shadow {
  */
 .tokamak-terminal .xterm,
 .platformio-ide-terminal .xterm {
+    font-family: "Iosevka Nerd Font";
     background-color: @tool-panel-background-color;
 
     color: @text-color;
