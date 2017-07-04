@@ -24,6 +24,7 @@
     openDocs: true
   "cargo-test-runner": {}
   core:
+    closeEmptyWindows: false
     disabledPackages: [
       "tidy-markdown"
       "clojure-eval-in-repl"
@@ -40,6 +41,9 @@
       "linter-write-good"
       "typewriter"
       "docblockr"
+      "busy-signal"
+      "rust-api-docs-helper"
+      "tokamak"
     ]
     ignoredNames: [
       ".git"
@@ -57,6 +61,7 @@
       ".piolibdeps"
       ".clang_complete"
       ".gcc-flags.json"
+      "*racertmp*"
     ]
     projectHome: "/Users/eliza/Development"
     telemetryConsent: "limited"
@@ -64,14 +69,14 @@
       "spacegray-dark-ui"
       "base16-ocean-dark-spacegray-lighter-invisibles"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   docblockr:
     align_tags: "shallow"
     auto_add_method_tag: true
     deep_indent: true
   editor:
     backUpBeforeSaving: true
-    fontFamily: "Pragmata Pro"
+    fontFamily: "Iosevka"
     fontSize: 12
     invisibles: {}
     showIndentGuide: true
@@ -94,17 +99,20 @@
     enableShellEscape: true
     texPath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/"
   latexer: {}
-  linter:
-    errorPanelHeight: 135
+  linter: {}
   "linter-chktex":
     executablePath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/chktex"
   "linter-rust":
     cargoCommand: "check"
     cargoPath: "/Users/eliza/.cargo/bin/cargo"
     jobsNumber: 4
+    rustcBuildTest: true
     rustcPath: "/Users/eliza/.cargo/bin/rustc"
   "linter-scalac":
     scalacExecutablePath: "/usr/local/bin/scalac"
+  "linter-ui-default":
+    panelHeight: 66
+    showPanel: true
   "linter-write-good": {}
   "markdown-preview": {}
   "markdown-preview-katex": {}
@@ -122,7 +130,6 @@
   "open-terminal-here": {}
   "platformio-ide":
     showHomeScreen: false
-    showPlatformIOFiles: true
   "platformio-ide-terminal":
     ansiColors:
       normal:
@@ -142,8 +149,7 @@
         brightMagenta: "#b48fa8"
         brightRed: "#c16069"
         brightYellow: "#ebca8b"
-    core:
-      autoRunCommand: "export PATH=/Users/eliza/.atom/packages/platformio-ide/penv/bin:/Users/eliza/.local/bin:/Users/eliza/.cabal/bin:/Applications/ghc-7.10.2.app/Contents/bin:/Users/eliza/opt/cross/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:/Applications/Julia-0.3.0.app/Contents/Resources/julia/bin:/usr/local/bin/go:/Users/eliza/Development/go/bin:/Users/eliza/perl5/bin:/usr/local/opt/llvm/bin/:/Users/eliza/.cargo/bin:/usr/local/bin"
+    core: {}
     iconColors:
       blue: "#8fa1b2"
       cyan: "#98be8d"
@@ -171,7 +177,6 @@
   "terminal-panel": {}
   tokamak:
     binaryDetection: false
-    cargoBinPath: "/Users/eliza/.cargo/bin/cargo"
     cargoHomePath: "/Users/eliza/.cargo/"
     rustcBinPath: "/Users/eliza/.cargo/bin/rustc"
     toolBinPath: "/Users/eliza/.cargo/bin/rustup"
@@ -208,11 +213,12 @@
       autoClose: true
   "tool-bar":
     iconSize: "12px"
-    visible: false
+    visible: true
   "travis-ci-status":
     personalAccessToken: "96bfb2300560e726f0c2c9f19b482ec30eee5d6a"
     useTravisCiPro: true
   "tree-view":
+    hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   typewriter:
     scopes: "text.md,source.gfm,text.html,mediawiki,text.tex.latex,text.tex.latex.beamer"
