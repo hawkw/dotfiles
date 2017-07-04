@@ -5,8 +5,8 @@
     smudge   = git media smudge %f
 
 [user]
-    name     = Eliza Weisman
-    email    = hi@hawkweisman.me
+	name = Eliza Weisman
+	email = eliza@buoyant.io
 [core]
 	editor = atom-beta --add --wait
     autocrlf = input

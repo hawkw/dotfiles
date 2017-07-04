@@ -165,3 +165,11 @@ PERL_MM_OPT="INSTALL_BASE=/Users/hawk/perl5"; export PERL_MM_OPT;
 ZSH_TMUX_AUTOSTART=false;
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source ~/.docker/dockerrc
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eliza/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/eliza/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eliza/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/eliza/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
