@@ -1,0 +1,14 @@
+[registry]
+token = "h12iJk5JKCcVY1CR9OQpGpXdpQldzPoY"
+
+[target.x86_64-unknown-intermezzos-gnu]
+linker = "/usr/local/bin/x86_64-pc-elf-gcc"
+
+[target.x86_64-unknown-sos-gnu]
+linker = "/Users/eliza/opt/bin/x86_64-pc-elf-gcc"
+
+[target.x86_64-sos-kernel-gnu]
+linker = "/usr/local/bin/x86_64-pc-elf-gcc"
+
+[target.x86_32-sos-bootstrap-gnu]
+linker = "/usr/local/bin/x86_64-pc-elf-gcc"
