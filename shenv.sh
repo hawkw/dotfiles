@@ -21,12 +21,6 @@ export PATH="$HOME/opt/cross/bin:$PATH"
 # Rust apps installed with cargo
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/opt/bin/"
-# Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
-# export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
-# if [ -d "$GHC_DOT_APP" ];
-# then
-#   export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-# fi
 
 export PATH="$PATH:/usr/local/bin/rust-os-gdb/bin"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cabal/bin"
@@ -50,9 +44,3 @@ export EV3_HOME="/opt/lejos-ev3"
 export GH_TOKEN="50d27932f63f848fc91e49aed480715c1ac877a5"
 export CARGO_TOKEN="h12iJk5JKCcVY1CR9OQpGpXdpQldzPoY"
 export VERSIONEYE_API_KEY="022c68589ca94418c558"
-
-
-# if [ $HYPER ]
-# then
-#   # export HOMEBREW_NO_EMOJI=1
-# fi
