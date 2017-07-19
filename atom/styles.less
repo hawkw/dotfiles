@@ -85,13 +85,13 @@ atom-text-editor {
                  -webkit-font-feature-settings: "PURS" on;
                  font-feature-settings: "PURS" on;
             }
-            &markup.syntax--definition.syntax--rust {
-                bg-color: #1c2028;
-            }
-            &keyword.syntax--other.syntax--unsafe.syntax--rust {
-                // make `unsafe` a nice yellow warning color.
-                color:  #ebcb8b;
-            }
+            // &markup.syntax--definition.syntax--rust {
+            //     bg-color: #1c2028;
+            // }
+            // &keyword.syntax--other.syntax--unsafe.syntax--rust {
+            //     // make `unsafe` a nice yellow warning color.
+            //     color:  #ebcb8b;
+            // }
             &storage.syntax--modifier.syntax--lifetime.syntax--rust,
             &entity.syntax--name.syntax--lifetime.syntax--rust {
                 // Non-ugly colors for Rust lifetimes
@@ -106,11 +106,11 @@ atom-text-editor {
                 This mostly just changes a bunch of ugly colors in the
                 atom-language-rust package that I don't like.
              */
-             &meta.syntax--attribute.syntax--rust {
-                 // Change the really disgusting color for attributes to soemthing
-                 // pretty.
-                 color: #65737e !important;
-             }
+            //  &meta.syntax--attribute.syntax--rust {
+            //      // Change the really disgusting color for attributes to soemthing
+            //      // pretty.
+            //      color: #65737e !important;
+            //  }
             /*
                 Fix issue where Atom doesn't render some ligatures in Rust source
              */
@@ -126,10 +126,10 @@ atom-text-editor {
                     "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
                 font-feature-settings: "liga" on, "calt" on, "dlig" on, "ss08" on, "XHS0" on !important;
             }
-            &markup.syntax--definition.syntax--rust {
-                background-color: inherit;
-                border: 0px;
-            }
+            // &markup.syntax--definition.syntax--rust {
+            //     background-color: inherit;
+            //     border: 0px;
+            // }
         }
 
     }

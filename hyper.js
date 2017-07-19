@@ -1,25 +1,28 @@
 module.exports = {
   config: {
       // default font size in pixels for all tabs
-      fontSize: 12,
+      fontSize: 14,
 
       // font family with optional fallbacks
-      fontFamily: '"Iosevka Nerd Font", "Iosevka Term", Iosevka, Menlo, Monaco, monospace',
+      fontFamily: "Iosevka Nerd Font",
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-      cursorColor: '#c0c5ce',
+    //   cursorColor: '#c0c5ce',
+    cursorColor: '#F8F8F2',
 
       // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
       cursorShape: 'BLOCK',
 
       // color of the text
-      foregroundColor: '#c0c5ce',
+    //   foregroundColor: '#c0c5ce',
+    foregroundColor: "#F8F8F2",
 
       // terminal background color
-      backgroundColor: '#2b303b',
+    //   backgroundColor: '#2b303b',
+    backgroundColor: '#5A5475',
 
       // border color (window, tabs)
-      borderColor: '#2b303b',
+      borderColor: '#5A5475',
 
       // custom css to embed in the main window
       css:
@@ -70,15 +73,18 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-        black: '#2B303B',
-        red: '#bf616a',
-        green: '#98be8c',
+        // black: '#2B303B',
+        black: '#5A5475',
+        // red: '#bf616a',
+        red: '#FFB8D1',
+        // green: '#98be8c',
+        green: '#C2FFDF',
         yellow: '#ebcb8b',
         blue: '#4e5a66',
         magenta: '#b48ea7',
         cyan: '#8abeb7',
         white: '#c0c5ce',
-        lightBlack: '#1C1F26',
+        lightBlack: '#C5A3FF',
         lightRed: '#de935f',
         lightGreen: '#98be8c',
         lightYellow: '#ebcb8b',
@@ -86,11 +92,12 @@ module.exports = {
         lightMagenta: '#b48ea7',
         lightCyan: '#96b5b4',
         lightWhite: '#e2e4ea'
+
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: '',
+    shell: '/usr/local/bin/zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
     // by default ['--login'] will be used
@@ -107,16 +114,16 @@ module.exports = {
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
-
-    // for advanced config flags please refer to https://hyper.is/#cfg
-    // hyperline: {
-    //     color: 'yellow',
-    // }
-     hyperStatusLine: { fontSize: 12
-                      , dirtyColor: '#ebcb8b'
-                      , arrowsColor: '#b48ea7'
-                    //   , footerTransparent: false
-                      }
+    // 
+    // // for advanced config flags please refer to https://hyper.is/#cfg
+    // // hyperline: {
+    // //     color: 'yellow',
+    // // }
+    //  hyperStatusLine: { fontSize: 12
+    //                   , dirtyColor: '#ebcb8b'
+    //                   , arrowsColor: '#b48ea7'
+    //                 //   , footerTransparent: false
+    //                   }
   },
 
   // a list of plugins to fetch and install from npm
@@ -125,13 +132,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [//   "hyperline",
-  "hyperlinks", "hypercwd", "hyperlayout", "hyper-statusline", // "hyperminimal"
-  "hyperterm-paste"
-  // 'hyperterm-base16-ocean-dark'
-  , "hyper-tabs-enhanced",
-   // "hypertile"
-],
+  plugins: [],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

@@ -3,17 +3,15 @@
     _analyticsUserId: "d37d4d49-4d1b-41ef-8126-cd6a27f1ea80"
   "atom-ctags":
     extraTagFiles: "tags"
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui": {}
   "atom-language-rust":
     colors:
-      attribute: "#65737e"
-      documentation: "#65737e"
-      lifetime: "#d08770"
       macro: "#96b5b4"
-      parameter: "#8fa1b3"
       token: "#8fa1b3"
   "atom-terminal-panel": {}
   build:
-    buildOnSave: true
+    panelVisibility: "Show on Error"
     saveOnBuild: true
     scrollOnError: true
   "build-cargo":
@@ -36,14 +34,17 @@
       "open-terminal-here"
       "cargo-test-runner"
       "sbt"
-      "language-rust"
       "wrap-guide"
       "linter-write-good"
       "typewriter"
       "docblockr"
-      "busy-signal"
       "rust-api-docs-helper"
       "tokamak"
+      "language-rust"
+      "linter"
+      "atom-language-rust"
+      "language-scala"
+      "rustsym"
     ]
     ignoredNames: [
       ".git"
@@ -63,11 +64,11 @@
       ".gcc-flags.json"
       "*racertmp*"
     ]
-    projectHome: "/Users/eliza/Development"
+    projectHome: "/Users/eliza/Code"
     telemetryConsent: "limited"
     themes: [
-      "spacegray-dark-ui"
-      "base16-ocean-dark-spacegray-lighter-invisibles"
+      "one-dark-ui"
+      "fairygloss"
     ]
     titleBar: "custom"
   docblockr:
@@ -77,7 +78,6 @@
   editor:
     backUpBeforeSaving: true
     fontFamily: "Iosevka"
-    fontSize: 12
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -95,8 +95,9 @@
     ghcModPath: "/Users/eliza/.cabal/bin/ghc-mod"
   "ide-haskell": {}
   latex:
-    alwaysOpenResultInAtom: true
     enableShellEscape: true
+    engine: "xelatex"
+    opener: "preview"
     texPath: "/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/"
   latexer: {}
   linter: {}
@@ -111,7 +112,7 @@
   "linter-scalac":
     scalacExecutablePath: "/usr/local/bin/scalac"
   "linter-ui-default":
-    panelHeight: 66
+    panelHeight: 69
     showPanel: true
   "linter-write-good": {}
   "markdown-preview": {}
@@ -125,7 +126,6 @@
   minimap:
     useHardwareAcceleration: false
   "one-dark-ui":
-    layoutMode: "Compact"
     tabSizing: "Even"
   "open-terminal-here": {}
   "platformio-ide":
