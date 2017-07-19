@@ -37,6 +37,13 @@ export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
 # LeJOS EV3
 export EV3_HOME="/opt/lejos-ev3"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc'; fi
+
 # OpenSSL bits
 # export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
 # export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
