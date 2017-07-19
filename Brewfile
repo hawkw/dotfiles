@@ -121,8 +121,8 @@ brew 'go'
 brew 'gource'
 brew 'gpgme'
 brew 'gradle'
-brew 'graphviz'
-brew 'grub', args: ['HEAD', 'with-x86_64-pc-elf']
+#brew 'graphviz'
+#brew 'grub', args: ['HEAD', 'with-x86_64-pc-elf']
 brew 'gsettings-desktop-schemas'
 brew 'hicolor-icon-theme'
 brew 'gtk+'
@@ -210,20 +210,20 @@ brew 'zsh-completions'
 
 # packages from official Homebrew taps
 
-brew 'homebrew/boneyard/libiomp'
-brew 'homebrew/boneyard/clang-omp'
-brew 'homebrew/games/ckan'
-brew 'homebrew/games/nethack'
-brew 'homebrew/science/opencv'
-brew 'homebrew/science/r'
+# brew 'homebrew/boneyard/libiomp'
+# brew 'homebrew/boneyard/clang-omp'
+# brew 'homebrew/games/ckan'
+# brew 'homebrew/games/nethack'
+# brew 'homebrew/science/opencv'
+# brew 'homebrew/science/r'
 
 # packages from third party taps
+#
+# brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-binutils'
+# brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-gcc'
 
-brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-binutils'
-brew 'hawkw/x86_64-pc-elf/x86_64-pc-elf-gcc'
-
-brew 'koekeishiya/formulae/kwm'
-brew 'neovim/neovim/neovim', args: ['HEAD']
+# brew 'koekeishiya/formulae/kwm'
+# brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/rcm'
 
 ### casks ###################################################################
@@ -234,9 +234,7 @@ tap 'caskroom/versions'
 
 cask 'alfred'
 cask 'atom-beta'
-cask 'font-iosevka'
-cask 'font-iosevka-nerd-font'
-cask 'font-iosevka-nerd-font-mono'
+
 cask 'github-desktop'
 cask 'goofy'
 cask 'haskell-platform'
@@ -250,10 +248,9 @@ cask 'x2goclient'
 ### fonts ###################################################################
 # installed using https://github.com/caskroom/homebrew-fonts
 
-
-cask 'iosevka'
-cask 'iosevka-nerd-font'        # iosevka w/ nerd font support
-cask 'iosevka-nerd-font-mono'   # iosevka nerd font, monospace version
+cask 'font-iosevka'
+cask 'font-iosevka-nerd-font'           # iosevka w/ nerd font support
+cask 'font-iosevka-nerd-font-mono' # iosevka nerd font, monospace version
 
 cask 'font-hack-nerd-font'
 
