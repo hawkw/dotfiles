@@ -131,3 +131,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 	clean = git-lfs clean %f
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
