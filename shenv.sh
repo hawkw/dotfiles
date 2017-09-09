@@ -37,6 +37,10 @@ export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
 # LeJOS EV3
 export EV3_HOME="/opt/lejos-ev3"
 
+# RLS
+export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-apple-darwin/lib
+export RLS_ROOT=${HOME}/git/rust/rls
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc'; fi
