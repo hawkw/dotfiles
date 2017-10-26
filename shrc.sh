@@ -12,7 +12,7 @@ fi
 
 ### Hyper Compatability #############################################
 [ "$TERM_PROGRAM" = "Hyper" ] && export HYPER=1
-if [ $HYPER ] then
+if [[ $HYPER ]]; then
     # (see https://github.com/zeit/hyperterm/issues/360)
     export LANG="en_US.UTF-8"
     export LC_COLLATE="en_US.UTF-8"
@@ -23,3 +23,5 @@ if [ $HYPER ] then
     export LC_TIME="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
 fi
+
+export LSCOLORS="Fxfxcxdxbxegedabagacad"

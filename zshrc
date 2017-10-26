@@ -4,11 +4,7 @@
 #
 
 # load shared shell configuration
-
-source $HOME/.zshenv
 source $HOME/.shrc.sh
-
-[ "$TERM_PROGRAM" = "Hyper" ] && export HYPER=1
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -64,7 +60,18 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(atom git command-not-found history ssh z brew gradle osx sbt scala cabal zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(
+    git
+    cargo
+    z
+    brew
+    osx
+    sbt
+    scala
+    cabal
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,13 +100,11 @@ alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias apm=apm-beta
 alias atom=atom-beta
 
-PERL_MB_OPT="--install_base \"/Users/hawk/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/hawk/perl5"; export PERL_MM_OPT;
-
 ZSH_TMUX_AUTOSTART=false;
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+# if [ $ITERM ] then;
+#     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# fi
 # source ~/.docker/dockerrc
 
 # Print Rust version number
@@ -120,10 +125,32 @@ prompt_rustup_version() {
   fi
 }
 
-#
-POWERLEVEL9K_HOME_SUB_ICON=" $(print_icon 'HOME_ICON') "
-POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
+# Kubernetes Current Context
+prompt_my_kubecontext() {
+  local kube_version="$(kubectl version --client 2>/dev/null)"
 
+  if [[ -n "$kube_version" ]]; then
+    # Get the current Kubernetes config context's namespaece
+    local k8s_namespace=$(kubectl config get-contexts --no-headers | grep '*' | awk '{print $5}')
+    # Get the current Kuberenetes context
+    local k8s_context=$(kubectl config current-context)
+
+    if [[ -z "$k8s_namespace" ]]; then
+      k8s_namespace="default"
+    fi
+    if [[ "$k8s_context" == "${POWERLEVEL9K_CUSTOM_KUBECONTEXT_DEFAULT_CONTEXT}" ]]; then
+            echo "$k8s_namespace $(print_icon "KUBERNETES_ICON")"
+    else
+        echo "$k8s_context/$k8s_namespace $(print_icon "KUBERNETES_ICON")"
+    fi
+  fi
+}
+
+POWERLEVEL9K_HOME_SUB_ICON="$(print_icon 'HOME_ICON')"
+POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DELIMITER=".."
+POWERLEVEL9K_HOME_FOLDER_ABBREVIATION=""
 POWERLEVEL9K_DIR_HOME_BACKGROUND="008"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="000"
 POWERLEVEL9K_DIR_HOME_VISUAL_IDENTIFIER_COLOR="000"
@@ -131,15 +158,19 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="008"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="000"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_VISUAL_IDENTIFIER_COLOR="000"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="008"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="012"
-POWERLEVEL9K_DIR_DEFAULT_VISUAL_IDENTIFIER_COLOR="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="000"
+POWERLEVEL9K_DIR_DEFAULT_VISUAL_IDENTIFIER_COLOR="000"
+
+POWERLEVEL9K_DIR_DEFAULT_SUBFOLDER_BACKGROUND="008"
+POWERLEVEL9K_DIR_DEFAULT_SUBFOLDER_FOREGROUND="000"
+POWERLEVEL9K_DIR_DEFAULT_SUBFOLDER_VISUAL_IDENTIFIER_COLOR="000"
 
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="255"
 POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="red"
 POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND="255"
 
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="008"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="012"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="012"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="008"
 
 POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
 POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
@@ -160,24 +191,37 @@ POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
 POWERLEVEL9K_HISTORY_FOREGROUND="007"
 POWERLEVEL9K_HISTORY_BACKGROUND="004"
 
-POWERLEVEL9K_STATUS_OK_BACKGROUND="008"
-POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_COLOR="green"
-POWERLEVEL9K_STATUS_OK_FOREGROUND="012"
+POWERLEVEL9K_STATUS_OK_BACKGROUND="012"
+POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_COLOR="008"
+POWERLEVEL9K_STATUS_OK_FOREGROUND="008"
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND="255"
 POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_COLOR="255"
 
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="008"
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="012"
+POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="012"
+POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="008"
 
 POWERLEVEL9K_CUSTOM_RUSTUP_VERSION="prompt_rustup_version"
 POWERLEVEL9K_CUSTOM_RUSTUP_VERSION_BACKGROUND="216"
 
+POWERLEVEL9K_CUSTOM_KUBECONTEXT="prompt_my_kubecontext"
+POWERLEVEL9K_CUSTOM_KUBECONTEXT_DEFAULT_CONTEXT="gke_buoyant-hosted_us-central1-b_hosted-n1-standard-32"
+POWERLEVEL9K_CUSTOM_KUBECONTEXT_BACKGROUND="008"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time custom_rustup_version virtualenv rbenv rvm background_jobs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+    custom_rustup_version
+    aws
+    custom_kubecontext
+    virtualenv
+    rbenv
+    rvm
+    docker_machine
+    background_jobs
+    status
+    command_execution_time
+    )
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/eliza/Code/google-cloud-sdk/path.zsh.inc'; fi
+export LSCOLORS="Fxfxcxdxbxegedabagacad"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc'; fi
+# added by travis gem
+[ -f /Users/eliza/.travis/travis.sh ] && source /Users/eliza/.travis/travis.sh
