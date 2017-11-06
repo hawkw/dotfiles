@@ -8,14 +8,14 @@ module.exports = {
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     //   cursorColor: '#c0c5ce',
-    cursorColor: '#F8F8F2',
+    cursorColor: '#ffffff',
 
       // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
       cursorShape: 'BLOCK',
 
       // color of the text
     //   foregroundColor: '#c0c5ce',
-    foregroundColor: "#F8F8F2",
+    foregroundColor: "#ffffff",
 
       // terminal background color
     //   backgroundColor: '#2b303b',
@@ -76,21 +76,28 @@ module.exports = {
         // black: '#2B303B',
         black: '#5A5475',
         // red: '#bf616a',
-        red: '#FFB8D1',
+        red: '#FF857F',
         // green: '#98be8c',
         green: '#C2FFDF',
         yellow: '#ebcb8b',
-        blue: '#4e5a66',
-        magenta: '#b48ea7',
+        blue: '#406495',
+        // magenta: '#b48ea7',
+        magenta: '#FFB8D1',
         cyan: '#8abeb7',
-        white: '#c0c5ce',
-        lightBlack: '#C5A3FF',
-        lightRed: '#de935f',
+        white: '#ffffff',
+        lightBlack: //'#272432',
+        '#C5A3FF',
+        // lightRed: '#de935f',
+        lightRed: '#F92672',
         lightGreen: '#98be8c',
-        lightYellow: '#ebcb8b',
-        lightBlue: '#65737E',
-        lightMagenta: '#b48ea7',
-        lightCyan: '#96b5b4',
+        // lightYellow: '#ebcb8b',
+        lightYellow: "#FFF352",
+        // lightBlue: '#708ab3',
+        lightBlue: '#272432',
+        // lightMagenta: '#b48ea7',
+        lightMagenta: '#FFB8D1',
+        // lightCyan: '#96b5b4',
+        lightCyan: '#C5A3FF',
         lightWhite: '#e2e4ea'
 
     },
@@ -114,7 +121,7 @@ module.exports = {
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
-    // 
+    //
     // // for advanced config flags please refer to https://hyper.is/#cfg
     // // hyperline: {
     // //     color: 'yellow',
@@ -132,7 +139,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: ["hyperlinks", "hyper-tabs-enhanced", "hyperterm-paste", "hypercwd"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
