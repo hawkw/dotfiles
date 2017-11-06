@@ -71,6 +71,7 @@ plugins=(
     cabal
     zsh-syntax-highlighting
     zsh-autosuggestions
+    thefuck
     )
 
 source $ZSH/oh-my-zsh.sh

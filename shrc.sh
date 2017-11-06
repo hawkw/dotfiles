@@ -24,4 +24,6 @@ if [[ $HYPER ]]; then
     export LC_ALL="en_US.UTF-8"
 fi
 
-export LSCOLORS="Fxfxcxdxbxegedabagacad"
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias fuck)
