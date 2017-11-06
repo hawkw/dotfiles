@@ -9,16 +9,16 @@ source $HOME/.shrc.sh
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export DEFAULT_USER=eliza
-
+export TERM=xterm-256color
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
-if [ $HYPER ]
-then
+# if [ $HYPER ]
+# then
     POWERLEVEL9K_MODE='nerdfont-fontconfig'
-fi
+# fi
 POWERLEVEL9K_COLOR_SCHEME='dark'
 
 COMPLETION_WAITING_DOTS="true"
@@ -146,6 +146,13 @@ prompt_my_kubecontext() {
   fi
 }
 
+# Change the current Kubernetes NS
+change-ns() {
+  local current_context
+  current_context=`kubectl config current-context`
+  kubectl config set-context $current_context --namespace=$1
+}
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_HOME_SUB_ICON="$(print_icon 'HOME_ICON')"
 POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
