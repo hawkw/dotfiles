@@ -1,0 +1,7 @@
+project/build.properties
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db

@@ -22,6 +22,7 @@
     # Prevent showing files whose names contain non-ASCII symbols as unversioned.
     # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
     precomposeunicode = false
+	excludesfile = /Users/eliza/.gitignore
 
 [push]
     default = simple
@@ -29,10 +30,21 @@
 [alias]
     outta-here = push origin master
     over-here  = pull origin master
-    uncommit   = reset HEAD --hard
+    uncommit   = reset --hard HEAD
     ls         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lt         = log --graph --oneline --decorate --all
+	st=status --short --branch
+	stu=status -uno
+	co=checkout
+	ci=commit
+	pr=!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr
+	lol=log --graph --decorate --pretty=oneline --abbrev-commit
+	lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
+	please=push --force-with-lease
+	commend=commit --amend --no-edit
+	fuckit=reset --hard HEAD
+	squash=merge --squash
 	##############################################################################
 	# Aliases by @robmiller on GitHub: https://gist.github.com/robmiller/6018582 #
 	##############################################################################
@@ -126,11 +138,12 @@
 #
 #     insteadOf = "gist:"
 [credential]
-	helper = cache
+	helper = osxkeychain
 [filter "lfs"]
-	smudge = git-lfs smudge %f
 	required = true
-	clean = git-lfs clean %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [commit]
 	gpgsign = true
 [gpg]
