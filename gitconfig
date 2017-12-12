@@ -28,6 +28,8 @@
     default = simple
 
 [alias]
+    # sign the last commit
+    sign=commit --amend --reuse-message=HEAD -sS
     outta-here = push origin master
     over-here  = pull origin master
     uncommit   = reset --hard HEAD
