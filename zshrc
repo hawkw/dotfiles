@@ -3,6 +3,13 @@
 #   by Eliza Weisman
 #
 
+
+# Another profiling method to easily find slow plugins/themes/functions is zsh/zprof. Just add this to the top of your .zshrc and then run env ZSH_PROF= zsh -ic zprof:
+
+# if [[ -v ZSH_PROF ]]; then
+  zmodload zsh/zprof
+# fi
+
 # load shared shell configuration
 source $HOME/.shrc.sh
 
@@ -61,23 +68,36 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    # git
+    docker
     cargo
     z
-    brew
+    # brew
     osx
-    sbt
-    scala
-    cabal
+    # sbt
+    # scala
+    # cabal
     zsh-syntax-highlighting
     zsh-autosuggestions
+    # zsh-iterm-touchbar
+    golang
     thefuck
+    # zsh-iterm-touchbar
+    iterm2
     )
 
 source $ZSH/oh-my-zsh.sh
 
 # Add Homebrew zsh completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# autoload -Uz compinit
+# if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
+# 	compinit -d $ZSH_COMPDUMP;
+# else
+# 	compinit -C;
+# fi;
+
 
 # User configuration ########################################################
 
@@ -96,7 +116,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 alias zshconfig="nano ~/.zshrc && source ~/.zshrc"
 alias tmuxconfig "nano ~/.tmux.conf"
 alias ohmyzsh="atom ~/.oh-my-zsh"
-alias git=hub # use GitHub's hub script for Git. See https://hub.github.com
+# alias git=hub # use GitHub's hub script for Git. See https://hub.github.com
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias apm=apm-beta
 alias atom=atom-beta
@@ -215,7 +235,13 @@ POWERLEVEL9K_CUSTOM_KUBECONTEXT="prompt_my_kubecontext"
 POWERLEVEL9K_CUSTOM_KUBECONTEXT_DEFAULT_CONTEXT="gke_buoyant-hosted_us-central1-b_hosted-n1-standard-32"
 POWERLEVEL9K_CUSTOM_KUBECONTEXT_BACKGROUND="008"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+    context
+    root_indicator
+    dir
+    dir_writable
+    vcs
+    )
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     custom_rustup_version
     aws
