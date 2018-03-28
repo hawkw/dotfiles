@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "workbench.colorTheme": "Material Theme Italicize",
+    "workbench.iconTheme": "material-icon-theme"
+}
