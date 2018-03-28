@@ -31,8 +31,10 @@ ZSH_THEME="spaceship-prompt/spaceship"
 #     ;;
 # esac
 
+ICON_MODE='nerdfont-fontconfig'
 case $ZSH_THEME in
   spaceship*)
+    source $HOME/.scripts/icons.zsh
     source $HOME/.spaceshiprc.sh
     ;;
   powerlevel9k*)

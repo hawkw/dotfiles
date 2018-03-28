@@ -34,3 +34,5 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
+# SPACESHIP_GOLANG_SYMBOL=$(print_icon GO_ICON)
+SPACESHIP_RUST_SYMBOL=$(print_icon "RUST_ICON")

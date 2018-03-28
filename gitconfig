@@ -7,8 +7,9 @@
 [user]
 	name = Eliza Weisman
 	email = eliza@buoyant.io
+	signingkey = 0ACCC7BEE3D46F10597EB88DF9C1A595C3814436
 [core]
-	editor = atom-beta --add --wait
+	editor = code --wait
     autocrlf = input
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line

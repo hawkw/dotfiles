@@ -20,6 +20,9 @@ export PATH="$PATH:/usr/local/opt/llvm/bin/"
 export PATH="$HOME/opt/cross/bin:$PATH"
 # Rust apps installed with cargo
 export PATH="$PATH:$HOME/.cargo/bin"
+# Rustup aftercargo bin
+export PATH="$PATH:$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/bin/:$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/bin/"
+
 export PATH="$PATH:$HOME/opt/bin/"
 
 export PATH="$PATH:/usr/local/bin/rust-os-gdb/bin"
@@ -37,9 +40,8 @@ export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
 # LeJOS EV3
 export EV3_HOME="/opt/lejos-ev3"
 
-# RLS
-export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-apple-darwin/lib
-export RLS_ROOT=${HOME}/git/rust/rls
+# # RLS
+# export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-apple-darwin/lib
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -53,5 +55,7 @@ if [ -f '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc' ]; then source '
 # export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
 
 export GH_TOKEN="50d27932f63f848fc91e49aed480715c1ac877a5"
+export GITHUB_USER="hawkw"
+export GITHUB_TOKEN="0a3a1e46534dee37bc9b37b33c28a4b3a087b68a"
 export CARGO_TOKEN="h12iJk5JKCcVY1CR9OQpGpXdpQldzPoY"
 export VERSIONEYE_API_KEY="022c68589ca94418c558"
