@@ -31,15 +31,15 @@ chunkc set global_desktop_offset_right   20
 chunkc set global_desktop_offset_gap     15
 
 chunkc set 1_desktop_offset_top          60
-chunkc set 1_desktop_offset_bottom       50
-chunkc set 1_desktop_offset_left         30
-chunkc set 1_desktop_offset_right        30
-chunkc set 1_desktop_offset_gap          15
+chunkc set 1_desktop_offset_bottom       60
+chunkc set 1_desktop_offset_left         60
+chunkc set 1_desktop_offset_right        60
+chunkc set 1_desktop_offset_gap          20
 
-chunkc set 3_desktop_offset_top          60
+chunkc set 3_desktop_offset_top          50
 chunkc set 3_desktop_offset_bottom       50
-chunkc set 3_desktop_offset_left         30
-chunkc set 3_desktop_offset_right        30
+chunkc set 3_desktop_offset_left         50
+chunkc set 3_desktop_offset_right        50
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
@@ -65,7 +65,7 @@ chunkc set window_float_topmost          0
 
 chunkc core::load tiling.so
 # chunkc core::load ffm.so
-chunkc core::load border.so
+# chunkc core::load border.so
 chunkc core::load purify.so
 
 chunkc tiling::rule --owner \"System Preferences\" --state tile
