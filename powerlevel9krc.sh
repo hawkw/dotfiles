@@ -38,7 +38,7 @@ prompt_my_kubecontext() {
   fi
 }
 
-POWERLEVEL9K_MODE='nerdfont-fontconfig'
+POWERLEVEL9K_MODE="$ICON_MODE"
 
 POWERLEVEL9K_COLOR_SCHEME='dark'
 
