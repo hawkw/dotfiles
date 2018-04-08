@@ -3,7 +3,7 @@ Eliza's Dotfiles
 
 Eliza Weisman's personal dotfiles, managed using Thoughtbot's [`rcm`](https://github.com/thoughtbot/rcm) tool.
 
-![screenshot](/img/screenshot01.png)
+![screenshot](/img/screenshot_01.png)
 
 #### Note on Support
 My configurations are biased towards macOS, [Atom](https://atom.io), and [Hyper](https://hyper.is); there's minimal support for other OSes and tools currently. Lots of support for Rust, Haskell, and Scala, my languages of choice. Most packages are installed using [Homebrew](https://brew.sh), so if your system uses another package manager, you may not get everything you need to make all my configurations work right off the bat.
