@@ -4,9 +4,9 @@ module.exports = {
       fontSize: 14,
 
       // font family with optional fallbacks
-      fontFamily: "Iosevka Nerd Font",
-      fontWeight: '300',
-      fontWeightBold: '500',
+      fontFamily: 'Iosevka, "Iosevka Nerd Font"',
+      fontWeight: '100',
+      fontWeightBold: 'normal',
 
       // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     //   cursorColor: '#c0c5ce',
@@ -59,7 +59,7 @@ module.exports = {
           mix-blend-mode: difference;
       }
       * {
-          // text-rendering: optimizeLegibility;
+          text-rendering: optimizeLegibility;
           -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on;
           font-feature-settings: "liga" on, "calt" on, "ss08" on;
       }

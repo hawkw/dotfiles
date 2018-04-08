@@ -1,8 +1,41 @@
 {
     "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "bounded",
     "editor.renderWhitespace": "all",
     "workbench.colorTheme": "Material Theme Italicize",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "normal",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": true,
+    "terminal.external.osxExec": "Hyper.app",
+    "files.associations": {
+        "Dockerfile*": "dockerfile",
+    },
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.codeLens.scopes": [
+        "document",
+        // "blocks",
+        // "containers"
+    ],
+    "rust.all_targets": true,
+    "rust.unstable_features": true,
+    "rust-client.logToFile": false,
+    "rust-client.revealOutputChannelOn": "warn",
+    "rust-client.updateOnStartup": true,
+    "rust.cfg_test": true,
+    "rust.goto_def_racer_fallback": true,
+    "editor.wordWrapColumn": 100,
 }
