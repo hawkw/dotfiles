@@ -54,10 +54,6 @@ module.exports = {
       // custom css to embed in the terminal window
       termCSS:
       `
-
-      .cursor-node {
-          mix-blend-mode: difference;
-      }
       * {
           text-rendering: optimizeLegibility;
           -webkit-font-feature-settings: "liga" on, "calt" on, "ss08" on;
@@ -155,11 +151,12 @@ module.exports = {
   //   `project#1.0.1`
   plugins:
     [ "hyperlinks"
-    , "hyper-tabs-enhanced"
+    // , "hyper-tabs-enhanced"
     , "hyperterm-paste"
-    , "hypercwd"
+    // , "hypercwd"
     , 'hyper-statusline'
-    , "hyper-tab-icons-plus"
+    // , "hyper-tab-icons-plus"
+    // , "hyperterm-lastpass"
     // , 'hyper-material-theme'
     ],
 

@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
     "editor.wordWrap": "bounded",
     "editor.renderWhitespace": "all",
     "workbench.colorTheme": "Material Theme Italicize",
@@ -13,6 +13,8 @@
     "terminal.external.osxExec": "Hyper.app",
     "files.associations": {
         "Dockerfile*": "dockerfile",
+        "zshrc": "shellscript",
+        "Vagrantfile": "ruby"
     },
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
@@ -38,4 +40,6 @@
     "rust.cfg_test": true,
     "rust.goto_def_racer_fallback": true,
     "editor.wordWrapColumn": 100,
+    "window.zoomLevel": 0,
+    "terminal.integrated.rendererType": "dom",
 }

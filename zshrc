@@ -7,7 +7,7 @@
 # Another profiling method to easily find slow plugins/themes/functions is zsh/zprof. Just add this to the top of your .zshrc and then run env ZSH_PROF= zsh -ic zprof:
 
 # if [[ -v ZSH_PROF ]]; then
-  zmodload zsh/zprof
+#   zmodload zsh/zprof
 # fi
 
 # load shared shell configuration
@@ -95,8 +95,7 @@ plugins=(
     zsh-autosuggestions
     # zsh-iterm-touchbar
     golang
-    thefuck
-    # zsh-iterm-touchbar
+    # thefuck
     iterm2
     )
 
@@ -132,11 +131,11 @@ alias zshconfig="nano ~/.zshrc && source ~/.zshrc"
 alias tmuxconfig "nano ~/.tmux.conf"
 alias ohmyzsh="atom ~/.oh-my-zsh"
 # alias git=hub # use GitHub's hub script for Git. See https://hub.github.com
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+# alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias apm=apm-beta
 alias atom=atom-beta
 
-ZSH_TMUX_AUTOSTART=false;
+export ZSH_TMUX_AUTOSTART=false;
 
 # if [ $ITERM ]; then
 #     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
