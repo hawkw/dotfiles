@@ -21,18 +21,16 @@ SPACESHIP_PROMPT_ORDER=(
   docker        # Docker section
   aws           # Amazon Web Services section
   venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  dotnet        # .NET section
-  ember         # Ember.js section
   kubecontext   # Kubectl context section
   exec_time     # Execution time
   line_sep      # Line break
   battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
 )
 # SPACESHIP_GOLANG_SYMBOL=$(print_icon GO_ICON)
-SPACESHIP_RUST_SYMBOL=$(print_icon "RUST_ICON")
+SPACESHIP_RUST_SYMBOL="🦀"
+SPACESHIP_EXIT_CODE_SHOW=true
+SPACESHIP_BATTERY_SHOW=true
+SPACESHIP_BATTERY_THRESHOLD=20
