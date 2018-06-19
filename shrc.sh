@@ -8,6 +8,7 @@ if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nano'
 else
    export EDITOR='code'
+   export KUBE_EDITOR='code -w'
 fi
 
 ### Hyper Compatability #############################################
@@ -23,7 +24,3 @@ if [[ $HYPER ]]; then
     export LC_TIME="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
 fi
-
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias fuck)
