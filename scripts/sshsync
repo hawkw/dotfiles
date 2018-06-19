@@ -1,0 +1,25 @@
+#!/bin/bash
+USAGE="Usage: $0 SRC [USER@]HOST:DEST [RSYNC OPTIONS]..."
+
+if [ "$#" -lt "2" ]; then
+	echo "$USAGE"
+	exit 1
+fi
+
+src=$1
+shift
+
+dest=$1
+shift
+
+run_rsync() {
+    rsync -azPv -e ssh \
+        --exclude ".*/" --exclude ".*" \
+        --exclude "tmp/" --exclude "target/" \
+        "$@" "$src" "$dest"
+}
+
+run_rsync;
+fswatch -o "$src" | while read -r f; do
+    run_rsync;
+done
