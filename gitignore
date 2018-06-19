@@ -40,3 +40,4 @@ Thumbs.db
 ####################
 project/build.properties
 .cargo/config
+.vagrant
