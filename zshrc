@@ -149,6 +149,18 @@ change-ns() {
   kubectl config set-context $current_context --namespace=$1
 }
 
+yelling_git() {
+  cmd=$1
+  shift
+  if [ "$cmd" '==' "add" ] && [ "$1" '==' "." ]; then
+    echo "NO YOU DON'T, DUMBASS!!!!"
+  else
+    "$( where -p git )" "$cmd" "$@"
+  fi
+
+}
+alias git='yelling_git'
+
 export LSCOLORS="Fxfxcxdxbxegedabagacad"
 
 # added by travis gem
