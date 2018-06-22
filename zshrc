@@ -32,13 +32,6 @@ export TERM=xterm-256color
 # time that oh-my-zsh is loaded.
 ZSH_THEME="spaceship"
 
-# set powerlevel9k mode based on current terminal
-# case $TERM_PROGRAM in
-#   iTerm2.app|Hyper)
-
-#     ;;
-# esac
-
 ICON_MODE='nerdfont-fontconfig'
 case $ZSH_THEME in
   spaceship*)
@@ -96,55 +89,27 @@ plugins=(
     z
     brew
     osx
-    # sbt
-    # scala
-    # cabal
     zsh-syntax-highlighting
     zsh-autosuggestions
     httpie,
     # zsh-iterm-touchbar
     golang
-    # thefuck
     iterm2
     )
 
 source $ZSH/oh-my-zsh.sh
 
-# if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
-# 	compinit -d $ZSH_COMPDUMP;
-# else
-# 	compinit -C;
-# fi;
-
-
 # User configuration ########################################################
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
 alias zshconfig="nano ~/.zshrc && source ~/.zshrc"
 alias tmuxconfig "nano ~/.tmux.conf"
 alias ohmyzsh="atom ~/.oh-my-zsh"
-# alias git=hub # use GitHub's hub script for Git. See https://hub.github.com
-# alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias apm=apm-beta
 alias atom=atom-beta
-
-export ZSH_TMUX_AUTOSTART=false;
-
-# if [ $ITERM ]; then
-#     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# fi
-# source ~/.docker/dockerrc
 
 # Change the current Kubernetes NS
 change-ns() {
