@@ -13,6 +13,15 @@
 # load shared shell configuration
 source $HOME/.shrc.sh
 
+# Add Homebrew zsh completions
+fpath=(
+  /usr/local/share/zsh-completions
+  $HOME/.zfunc
+  $fpath
+)
+autoload -Uz compinit
+autoload -Uz async && async
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export DEFAULT_USER=eliza
@@ -21,8 +30,7 @@ export TERM=xterm-256color
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="spaceship-prompt/spaceship"
-ZSH_THEME="spaceship-prompt/spaceship"
+ZSH_THEME="spaceship"
 
 # set powerlevel9k mode based on current terminal
 # case $TERM_PROGRAM in
@@ -82,17 +90,18 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    # git
+    git
     docker
     cargo
     z
-    # brew
+    brew
     osx
     # sbt
     # scala
     # cabal
     zsh-syntax-highlighting
     zsh-autosuggestions
+    httpie,
     # zsh-iterm-touchbar
     golang
     # thefuck
@@ -101,11 +110,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Add Homebrew zsh completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-fpath+=~/.zfunc
-
-autoload -Uz compinit
 # if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
 # 	compinit -d $ZSH_COMPDUMP;
 # else
@@ -152,12 +156,39 @@ change-ns() {
 yelling_git() {
   cmd=$1
   shift
+  real_git="$( where -p git )"
   if [ "$cmd" '==' "add" ] && [ "$1" '==' "." ]; then
-    echo "NO YOU DON'T, DUMBASS!!!!"
-  else
-    "$( where -p git )" "$cmd" "$@"
-  fi
+    dry_run=$(
+      $real_git add . --dry-run | while IFS= read -r line; do
+        echo " - $line\n"
+      done
+    )
+    msg=$(cowsay -W70 <<EOM
+NO YOU DON'T, DUMBASS!!!!
 
+If you actually ran that command, the following files would be committed:
+
+$dry_run
+
+Are you SURE [y/N]?
+EOM
+)
+  msg+=$'\n'
+  read -r "response?$msg"
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+    "$real_git" add -v .
+  fi
+  elif [ "$cmd" '==' "push" ] && [ "$1" '==' "--force" ]; then
+    msg=$(cowsay <<EOM
+NICE TRY, IDIOT!!!!
+
+Maybe you should use 'git push --force-with-lease' instead...
+EOM
+)
+  (>&2 echo "$msg")
+  else
+    "$real_git" "$cmd" "$@"
+  fi
 }
 alias git='yelling_git'
 
