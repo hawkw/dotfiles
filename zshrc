@@ -15,12 +15,17 @@ source $HOME/.shrc.sh
 
 # Add Homebrew zsh completions
 fpath=(
+  $HOME/.zsh
   /usr/local/share/zsh-completions
   $HOME/.zfunc
   $fpath
 )
 autoload -Uz compinit
 autoload -Uz async && async
+
+# autoload znt-history-widget
+# zle -N znt-history-widget
+# bindkey "^R" znt-history-widget
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -91,7 +96,9 @@ plugins=(
     osx
     zsh-syntax-highlighting
     zsh-autosuggestions
-    httpie,
+    # zsh-navigation-tools
+    httpie
+    kubectl
     # zsh-iterm-touchbar
     golang
     iterm2
@@ -101,6 +108,18 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration ########################################################
 
+export LSCOLORS="Fxfxcxdxbxegedabagacad"
+
+# added by travis gem
+[ -f /Users/eliza/.travis/travis.sh ] && source /Users/eliza/.travis/travis.sh
+
+## Zsh Navigation Tools #####################################################
+
+# export znt_panelize_active_text="underline"
+# znt_history_nlist_coloring_color="cyan"
+# znt_list_colorpair="white/black"
+
+## Aliases ##################################################################
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -111,12 +130,22 @@ alias ohmyzsh="atom ~/.oh-my-zsh"
 alias apm=apm-beta
 alias atom=atom-beta
 
+
 # Change the current Kubernetes NS
 change-ns() {
   local current_context
   current_context=`kubectl config current-context`
   kubectl config set-context $current_context --namespace=$1
 }
+
+kube-list() {
+  kubectl get "$1" | grep "$2" | cut -f1 -d " "
+}
+
+kube-tear() {
+  kube-list "$1" "$2" | xargs kubectl delete "$2"
+}
+
 
 yelling_git() {
   cmd=$1
@@ -156,8 +185,6 @@ EOM
   fi
 }
 alias git='yelling_git'
+compdef git='git'
+setopt complete_aliases
 
-export LSCOLORS="Fxfxcxdxbxegedabagacad"
-
-# added by travis gem
-[ -f /Users/eliza/.travis/travis.sh ] && source /Users/eliza/.travis/travis.sh
