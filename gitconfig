@@ -1,5 +1,8 @@
 [include]
-	path = ~/.gitconfig-local
+    # .gitconfig-local is where you should put your name, email address,
+    # signing key, et cetera --- anything you don't want to version along
+    # with the rest of the dotfiles.
+    path = ~/.gitconfig-local
 
 [filter "media"]
     required = true
@@ -7,7 +10,7 @@
     smudge   = git media smudge %f
 
 [core]
-	editor = code --wait
+    editor = code --wait
     autocrlf = input
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
@@ -21,14 +24,14 @@
     # Prevent showing files whose names contain non-ASCII symbols as unversioned.
     # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
     precomposeunicode = false
-	excludesfile = /Users/eliza/.gitignore
+    excludesfile = /Users/eliza/.gitignore
 
 [push]
     default = simple
 
 [alias]
-	rb = rebase
-	rbct = rebase --continue
+    rb = rebase
+    rbct = rebase --continue
     # sign the last commit
     sign=commit --amend --reuse-message=HEAD -sS
     outta-here = push origin master
@@ -37,81 +40,81 @@
     ls         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lt         = log --graph --oneline --decorate --all
-	st=status --short --branch
-	stu=status -uno
-	co=checkout
-	ci=commit
-	pr=!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr
-	lol=log --graph --decorate --pretty=oneline --abbrev-commit
-	lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
-	please=push --force-with-lease
-	commend=commit --amend --no-edit
-	fuckit=reset --hard HEAD
-	squash=merge --squash
-	##############################################################################
-	# Aliases by @robmiller on GitHub: https://gist.github.com/robmiller/6018582 #
-	##############################################################################
-	#
-	# Working with branches
-	#
+    st=status --short --branch
+    stu=status -uno
+    co=checkout
+    ci=commit
+    pr=!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr
+    lol=log --graph --decorate --pretty=oneline --abbrev-commit
+    lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
+    please=push --force-with-lease
+    commend=commit --amend --no-edit
+    fuckit=reset --hard HEAD
+    squash=merge --squash
+    ##############################################################################
+    # Aliases by @robmiller on GitHub: https://gist.github.com/robmiller/6018582 #
+    ##############################################################################
+    #
+    # Working with branches
+    #
 
-	# Get the current branch name (not so useful in itself, but used in
-	# other aliases)
-	branch-name = "!git rev-parse --abbrev-ref HEAD"
-	# Push the current branch to the remote "origin", and set it to track
-	# the upstream branch
-	publish = "!git push -u origin $(git branch-name)"
-	# Delete the remote version of the current branch
-	unpublish = "!git push origin :$(git branch-name)"
-	# Delete a branch and recreate it from master — useful if you have, say,
-	# a development branch and a master branch and they could conceivably go
-	# out of sync
-	recreate = "!f() { [[ -n $@ ]] && git checkout \"$@\" && git unpublish && git checkout master && git branch -D \"$@\" && git checkout -b \"$@\" && git publish; }; f"
+    # Get the current branch name (not so useful in itself, but used in
+    # other aliases)
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Push the current branch to the remote "origin", and set it to track
+    # the upstream branch
+    publish = "!git push -u origin $(git branch-name)"
+    # Delete the remote version of the current branch
+    unpublish = "!git push origin :$(git branch-name)"
+    # Delete a branch and recreate it from master — useful if you have, say,
+    # a development branch and a master branch and they could conceivably go
+    # out of sync
+    recreate = "!f() { [[ -n $@ ]] && git checkout \"$@\" && git unpublish && git checkout master && git branch -D \"$@\" && git checkout -b \"$@\" && git publish; }; f"
 
-	# Fire up your difftool (e.g. Kaleidescope) with all the changes that
-	# are on the current branch.
-	code-review = difftool origin/master...
+    # Fire up your difftool (e.g. Kaleidescope) with all the changes that
+    # are on the current branch.
+    code-review = difftool origin/master...
 
-	# Given a merge commit, find the span of commits that exist(ed) on that
-	# branch. Again, not so useful in itself, but used by other aliases.
-	merge-span = "!f() { echo $(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f1)$1$(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f2); }; f"
+    # Given a merge commit, find the span of commits that exist(ed) on that
+    # branch. Again, not so useful in itself, but used by other aliases.
+    merge-span = "!f() { echo $(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f1)$1$(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f2); }; f"
 
-	# Find the commits that were introduced by a merge
-	merge-log = "!git log `git merge-span .. $1`"
-	# Show the changes that were introduced by a merge
-	merge-diff = "!git diff `git merge-span ... $1`"
-	# As above, but in your difftool
-	merge-difftool = "!git difftool `git merge-span ... $1`"
+    # Find the commits that were introduced by a merge
+    merge-log = "!git log `git merge-span .. $1`"
+    # Show the changes that were introduced by a merge
+    merge-diff = "!git diff `git merge-span ... $1`"
+    # As above, but in your difftool
+    merge-difftool = "!git difftool `git merge-span ... $1`"
 
-	# Interactively rebase all the commits on the current branch
-	rebase-branch = "!git rebase -i `git merge-base master HEAD`"
+    # Interactively rebase all the commits on the current branch
+    rebase-branch = "!git rebase -i `git merge-base master HEAD`"
 
-	#
-	# Working with files
-	#
+    #
+    # Working with files
+    #
 
-	# Unstage any files that have been added to the staging area
-	unstage = reset HEAD
-	# Show changes that have been staged
-	diffc = diff --cached
+    # Unstage any files that have been added to the staging area
+    unstage = reset HEAD
+    # Show changes that have been staged
+    diffc = diff --cached
 
-	# Mark a file as "assume unchanged", which means that Git will treat it
-	# as though there are no changes to it even if there are. Useful for
-	# temporary changes to tracked files
-	assume = update-index --assume-unchanged
-	# Reverse the above
-	unassume = update-index --no-assume-unchanged
-	# Show the files that are currently assume-unchanged
-	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    # Mark a file as "assume unchanged", which means that Git will treat it
+    # as though there are no changes to it even if there are. Useful for
+    # temporary changes to tracked files
+    assume = update-index --assume-unchanged
+    # Reverse the above
+    unassume = update-index --no-assume-unchanged
+    # Show the files that are currently assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 
-	# Checkout our version of a file and add it
-	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-	# Checkout their version of a file and add it
-	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+    # Checkout our version of a file and add it
+    ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+    # Checkout their version of a file and add it
+    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
-	# Delete any branches that have been merged into master
-	# See also: https://gist.github.com/robmiller/5133264
-	delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    # Delete any branches that have been merged into master
+    # See also: https://gist.github.com/robmiller/5133264
+    delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 
 [filter "hawser"]
@@ -119,35 +122,14 @@
     smudge = git hawser smudge %f
     required = true
 
-# URL shorthands
-#
-# [url "git@github.com:"]
-#
-#     insteadOf = "gh:"
-#     pushInsteadOf = "github:"
-#     pushInsteadOf = "git://github.com/"
-#
-# [url "git://github.com/"]
-#
-#     insteadOf = "github:"
-#
-# [url "git@gist.github.com:"]
-#
-#     insteadOf = "gst:"
-#     pushInsteadOf = "gist:"
-#     pushInsteadOf = "git://gist.github.com/"
-#
-# [url "git://gist.github.com/"]
-#
-#     insteadOf = "gist:"
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+    program = /usr/local/bin/gpg
