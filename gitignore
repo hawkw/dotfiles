@@ -41,3 +41,8 @@ Thumbs.db
 project/build.properties
 .cargo/config
 .vagrant
+rls
+
+# GDB stuff        #
+####################
+.gdb_history
