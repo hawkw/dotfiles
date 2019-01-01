@@ -139,11 +139,19 @@ change-ns() {
 }
 
 kube-list() {
+  if [ $# -ne 2 ]; then
+    echo "Usage: kube-list [resource] [regex]"
+    exit 85
+  fi
   kubectl get "$1" | grep "$2" | cut -f1 -d " "
 }
 
 kube-tear() {
-  kube-list "$1" "$2" | xargs kubectl delete "$2"
+  if [ $# -ne 2 ]; then
+    echo "Usage: kube-tear [resource] [regex]"
+    exit 85
+  fi
+  kube-list "$1" "$2" | xargs kubectl delete "$1"
 }
 
 
