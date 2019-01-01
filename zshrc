@@ -195,4 +195,5 @@ EOM
 alias git='yelling_git'
 compdef git='git'
 setopt complete_aliases
-
+alias cagro='cargo'
+alias carg='cargo'
