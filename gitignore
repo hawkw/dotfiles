@@ -36,6 +36,10 @@
 ehthumbs.db
 Thumbs.db
 
+####################
+### TOOLS ##########
+####################
+
 # build tool stuff #
 ####################
 project/build.properties
@@ -46,3 +50,7 @@ rls
 # GDB stuff        #
 ####################
 .gdb_history
+
+# VSCode            #
+#####################
+.vscode/**
