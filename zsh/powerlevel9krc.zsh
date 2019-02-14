@@ -1,4 +1,11 @@
 
+case $ZSH_THEME in
+  powerlevel9k*) ;;
+  *) return ;;
+esac
+
+export ICON_MODE='nerdfont-fontconfig'
+
 # Print Rust version number
 prompt_rustup_version() {
   local rust_version

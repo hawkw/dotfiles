@@ -32,7 +32,7 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.cabal/bin"
 # Rust source path for Racer
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/.scripts"
 
 # Go #########################################################################
 export GOPATH="$HOME/Code/go"

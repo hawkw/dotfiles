@@ -1,0 +1,5 @@
+
+[record]
+
+; List of environment variables to capture, default: SHELL,TERM
+env = SHELL,TERM,USER,PRESENTING
