@@ -25,14 +25,15 @@ SPACESHIP_GIT_STATUS_ADDED="+"
 SPACESHIP_GIT_STATUS_AHEAD="⇡"
 SPACESHIP_GIT_STATUS_BEHIND="⇣"
 SPACESHIP_GIT_STATUS_DIVERGED="⇕"
+SPACESHIP_CHAR_SUFFIX=" "
 
 if [[ -n "$PRESENTING" ]]; then
   # Override configs for a shorter prompt if in presentation mode.
-  SPACESHIP_PROMPT_ORDER=(user dir exit_code char)
-  SPACESHIP_PROMPT_SEPARATE_LINE=false
-  SPACESHIP_USER_SHOW="always"
+  export SPACESHIP_PROMPT_ORDER=(user dir exec_time exit_code char)
+  export SPACESHIP_PROMPT_SEPARATE_LINE=false
+  export SPACESHIP_USER_SHOW="always"
 else
-  SPACESHIP_PROMPT_ORDER=(
+  export SPACESHIP_PROMPT_ORDER=(
     time          # Time stampts section
     user          # Username section
     dir           # Current directory section
