@@ -33,11 +33,15 @@ if [[ -n "$PRESENTING" ]]; then
   export SPACESHIP_PROMPT_SEPARATE_LINE=false
   export SPACESHIP_USER_SHOW="always"
 else
+
+  # export SPACESHIP_USER_SHOW="always"
+
+  # export SPACESHIP_HOST_SHOW="always"
   export SPACESHIP_PROMPT_ORDER=(
     time          # Time stampts section
     user          # Username section
-    dir           # Current directory section
     host          # Hostname section
+    dir           # Current directory section
     #git           # Git section (git_branch + git_status)
     git_branch
     git_status

@@ -8,7 +8,7 @@ source $HOME/.shenv.local
 # prioritize Homebrew bin
 export PATH="/usr/local/bin"
 # other bin dirs
-export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # latex bin
 export PATH="$PATH:/usr/texbin"
 # latex bin on El Capitan
@@ -33,6 +33,10 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.cabal/bin"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 export PATH="$PATH:$HOME/.scripts"
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# export PATH="/usr/bin:$PATH"
 
 # Go #########################################################################
 export GOPATH="$HOME/Code/go"
