@@ -4,26 +4,14 @@
 #
 
 ### taps ####################################################################
-tap 'billzajac/tap'
+#tap 'billzajac/tap'
 
-tap 'homebrew/binary'
-tap 'homebrew/boneyard'
-tap 'homebrew/bundle'
-tap 'homebrew/completions'
-tap 'homebrew/core'
-tap 'homebrew/games'
-tap 'homebrew/python'
-tap 'homebrew/science'
-tap 'homebrew/services'
-tap 'homebrew/versions'
-tap 'homebrew/x11'
+# tap 'hawkw/grub'
+# tap 'hawkw/x86_64-pc-elf'
 
-tap 'hawkw/grub'
-tap 'hawkw/x86_64-pc-elf'
-
-tap 'osx-cross/avr'
-tap 'koekeishiya/formulae'
-tap 'neovim/neovim'
+# tap 'osx-cross/avr'
+# tap 'koekeishiya/formulae'
+# tap 'neovim/neovim'
 tap 'telemachus/desc'
 tap 'thoughtbot/formulae'
 
