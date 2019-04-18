@@ -16,6 +16,9 @@ do
   source $file
 done
 
+# load iterm2 shell integration
+source $HOME/.iterm2_shell_integration.zsh
+
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
