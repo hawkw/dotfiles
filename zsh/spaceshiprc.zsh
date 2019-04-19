@@ -37,6 +37,7 @@ else
   # export SPACESHIP_USER_SHOW="always"
 
   # export SPACESHIP_HOST_SHOW="always"
+  export SPACESHIP_PROMPT_SEPARATE_LINE=false
   export SPACESHIP_PROMPT_ORDER=(
     time          # Time stampts section
     user          # Username section
@@ -60,7 +61,7 @@ else
     #venv          # virtualenv section
     kubecontext   # Kubectl context section
     exec_time     # Execution time
-    line_sep      # Line break
+    # line_sep      # Line break
     #battery       # Battery level and status
     jobs          # Background jobs indicator
     exit_code     # Exit code section

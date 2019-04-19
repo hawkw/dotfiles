@@ -1,3 +1,12 @@
 [submodule "iterm2-material-design"]
 	path = iterm2-material-design
 	url = https://github.com/MartinSeeler/iterm2-material-design.git
+[submodule "oh-my-zsh/custom/plugins/zsh-async"]
+	path = oh-my-zsh/custom/plugins/zsh-async
+	url = https://github.com/mafredri/zsh-async.git
+[submodule "oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

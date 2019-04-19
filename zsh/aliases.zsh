@@ -39,7 +39,7 @@ kube-tear() {
 yelling_git() {
   cmd=$1
   shift
-  real_git="$( where -p git )"
+  real_git="$( where -p git | head -1 )"
   if [ "$cmd" '==' "add" ] && [ "$1" '==' "." ]; then
     dry_run=$(
       $real_git add . --dry-run | while IFS= read -r line; do

@@ -14,7 +14,7 @@ export TERM=xterm-256color
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="spaceship"
+export ZSH_THEME="spaceship-prompt/spaceship"
 
 export COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line to use case-sensitive completion.
