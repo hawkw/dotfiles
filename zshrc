@@ -17,7 +17,7 @@ do
 done
 
 # load iterm2 shell integration
-source $HOME/.iterm2_shell_integration.zsh
+# source $HOME/.iterm2_shell_integration.zsh
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
@@ -29,13 +29,14 @@ done
 autoload -Uz compinit
 compinit
 
+# autoload -Uz async && async
+source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
+
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
   source $file
 done
-
-autoload -Uz async && async
 
 source $ZSH/oh-my-zsh.sh
 
