@@ -42,7 +42,7 @@
     "git.confirmSync": false,
     "materialTheme.fixIconsRunning": false,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.fontFamily": "'Iosevka SS08'",
+    "terminal.integrated.fontFamily": "'Iosevka SS08', Iosevka",
     "terminal.integrated.fontSize": 13,
     "workbench.fontAliasing": "auto",
     "git.enableSmartCommit": true,
