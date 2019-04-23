@@ -6,6 +6,8 @@
 # load shared shell configuration
 source $HOME/.shrc.sh
 
+export ZPLUG_HOME=/usr/local/opt/zplug
+
 # all of our zsh files
 typeset -U config_files
 config_files=($HOME/.zsh/**/*.zsh)
@@ -25,12 +27,14 @@ do
   source $file
 done
 
+autoload -Uz async && async
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -Uz compinit
 compinit
 
-# autoload -Uz async && async
-source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
+#
+# source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
