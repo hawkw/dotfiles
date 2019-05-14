@@ -3,11 +3,12 @@
 # Spaceship theme
 # SPACESHIP_PROMPT_SEPARATE_LINE=false
 
-case $ZSH_THEME in
-  spaceship*) ;;
-  *) return ;;
-esac
+# case $ZSH_THEME in
+#   spaceship*) ;;
+#   *) return ;;
+# esac
 
+export SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_RUST_SYMBOL="🦀"
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_BATTERY_SHOW=true
@@ -29,15 +30,11 @@ SPACESHIP_CHAR_SUFFIX=" "
 
 if [[ -n "$PRESENTING" ]]; then
   # Override configs for a shorter prompt if in presentation mode.
+  export SPACESHIP_USER_SHOW=always
+  export SPACESHIP_HOST_SHOW=always
   export SPACESHIP_PROMPT_ORDER=(user dir exec_time exit_code char)
   export SPACESHIP_PROMPT_SEPARATE_LINE=false
-  export SPACESHIP_USER_SHOW="always"
 else
-
-  # export SPACESHIP_USER_SHOW="always"
-
-  # export SPACESHIP_HOST_SHOW="always"
-  export SPACESHIP_PROMPT_SEPARATE_LINE=false
   export SPACESHIP_PROMPT_ORDER=(
     time          # Time stampts section
     user          # Username section

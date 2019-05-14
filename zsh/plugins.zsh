@@ -1,8 +1,17 @@
 #!/usr/bin/zsh
 
 if [[ ! -e $ZPLUG_HOME/init.zsh ]]; then
+
+    debug "[zsh/plugins ]install zplug"
     brew install zplug
 fi
+
+ZPLUG_ARGS=""
+if [[ -v DOTFILE_DEBUG ]]; then
+    ZPLUG_ARGS="--verbose"
+fi
+
+debug "[zsh/plugins] load plugins"
 
 source $ZPLUG_HOME/init.zsh
 
@@ -23,6 +32,10 @@ zplug "maximbaz/spaceship-prompt", \
     use:"spaceship.zsh", \
     as:theme \
 
-zplug check || zplug install
+zplug check ${ZPLUG_ARGS} || zplug install ${ZPLUG_ARGS}
+zplug load ${ZPLUG_ARGS}
 
-zplug load
+
+if [[ -v DOTFILE_DEBUG ]]; then
+    echo "[zsh/plugins] $(zplug info)"
+fi
