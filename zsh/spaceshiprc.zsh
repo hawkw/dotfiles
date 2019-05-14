@@ -56,7 +56,7 @@ else
     # docker        # Docker section
     #aws           # Amazon Web Services section
     #venv          # virtualenv section
-    kubecontext   # Kubectl context section
+    # kubecontext   # Kubectl context section
     exec_time     # Execution time
     # line_sep      # Line break
     #battery       # Battery level and status
