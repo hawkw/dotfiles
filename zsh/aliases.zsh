@@ -39,14 +39,17 @@ kube-tear() {
 yelling_git() {
   cmd=$1
   shift
+  args=""
   real_git="$( where -p git | head -1 )"
-  if [ "$cmd" '==' "add" ] && [ "$1" '==' "." ]; then
-    dry_run=$(
-      $real_git add . --dry-run | while IFS= read -r line; do
-        echo " - $line\n"
-      done
-    )
-    msg=$(cowsay -W70 <<EOM
+  case "$cmd" in
+    'add')
+      if [ "$1" '==' "." ]; then
+        dry_run=$(
+          $real_git add . --dry-run | while IFS= read -r line; do
+            echo " - $line\n"
+          done
+        )
+        msg=$(cowsay -W70 <<EOM
 NO YOU DON'T, DUMBASS!!!!
 
 If you actually ran that command, the following files would be committed:
@@ -56,22 +59,34 @@ $dry_run
 Are you SURE [y/N]?
 EOM
 )
-  msg+=$'\n'
-  read -r "response?$msg"
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-    "$real_git" add -v .
-  fi
-  elif [ "$cmd" '==' "push" ] && [ "$1" '==' "--force" ]; then
-    msg=$(cowsay <<EOM
+      msg+=$'\n'
+      read -r "response?$msg"
+      if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+        return 1
+      fi
+    fi
+    ;;
+    'push')
+      if grep -q -- '--force' <<<"$@"; then
+        msg=$(cowsay <<EOM
 NICE TRY, IDIOT!!!!
 
 Maybe you should use 'git push --force-with-lease' instead...
 EOM
 )
-  (>&2 echo "$msg")
-  else
-    "$real_git" "$cmd" "$@"
-  fi
+        (>&2 echo "$msg")
+        return 1
+      fi
+      ;;
+    'commit')
+      if grep -qv -- '-s' <<<"$@"; then
+        args="-s"
+      fi
+      ;;
+    *)
+      ;;
+  esac
+  "$real_git" "$cmd" $args "$@"
 }
 
 alias git='yelling_git'
