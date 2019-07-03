@@ -9,6 +9,7 @@ debug() {
     fi
 }
 # load shared shell configuration
+debug "[zshrc] load shared config"
 source $HOME/.shrc.sh
 
 export ZPLUG_HOME=/usr/local/opt/zplug
