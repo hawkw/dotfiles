@@ -13,6 +13,14 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias cagro='cargo'
 alias carg='cargo'
 
+# if running the open-source version of Visual Studio Code, alias it to `code`.
+if ! which code > /dev/null; then
+  code_oss=$(which code-oss)
+  if [ "$?" -eq '0' ]; then 
+    alias code="$code_oss"
+  fi 
+fi
+
 # Change the current Kubernetes NS
 change-ns() {
   local current_context
