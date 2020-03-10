@@ -2,7 +2,11 @@
 #   General purpose shell environment portable to all shells
 #   by Eliza Weisman
 #
-source $HOME/.shenv.local
+
+# is there a local configuration? if so, load that first.
+if [ -f "$HOME/.shenv.local" ]; then
+    source $HOME/.shenv.local
+fi
 
 # PATH configuration #########################################################
 # prioritize Homebrew bin
@@ -64,3 +68,13 @@ if [ -f '/Users/eliza/Code/google-cloud-sdk/completion.zsh.inc' ]; then source '
 # export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
 
 export KUBE_EDITOR="code -w"
+
+# linux specific, figure that out
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+    if ! test -d "${XDG_RUNTIME_DIR}"; then
+        mkdir "${XDG_RUNTIME_DIR}"
+        chmod 0700 "${XDG_RUNTIME_DIR}"
+    fi
+fi
+
