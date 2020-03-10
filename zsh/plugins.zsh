@@ -32,6 +32,8 @@ zplug "maximbaz/spaceship-prompt", \
     use:"spaceship.zsh", \
     as:theme \
 
+zplug "agkozak/zsh-z", from:"github"
+
 zplug check ${ZPLUG_ARGS} || zplug install ${ZPLUG_ARGS}
 zplug load ${ZPLUG_ARGS}
 
