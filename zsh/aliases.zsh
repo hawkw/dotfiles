@@ -13,6 +13,18 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias cagro='cargo'
 alias carg='cargo'
 
+# if defined, alias a bunch of standard Unix utils with modern Rust versions.
+#
+# Note: since this script is only sourced for interactive sessions, this won't
+#       break any scripts or anything that rely on specific behaviors.
+if [[ ! -z "$RUST_UTILS" ]]; then
+  alias grep='rg'
+  alias top='ytop'
+  alias ps='procs'
+  alias ls='exa'
+  alias less='bat'
+fi
+
 # if running the open-source version of Visual Studio Code, alias it to `code`.
 if ! which code > /dev/null; then
   code_oss=$(which code-oss)
