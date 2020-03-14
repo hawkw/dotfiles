@@ -3,13 +3,13 @@
 # Spaceship theme
 # SPACESHIP_PROMPT_SEPARATE_LINE=false
 
-# case $ZSH_THEME in
-#   spaceship*) ;;
-#   *) return ;;
-# esac
+case $ZSH_THEME in
+  spaceship*) ;;
+  *) return ;;
+esac
 
-export SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_RUST_SYMBOL="🦀"
+SPACESHIP_PROMPT_SEPARATE_LINE=true
+SPACESHIP_RUST_SYMBOL="R"
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_BATTERY_SHOW=true
 SPACESHIP_BATTERY_THRESHOLD=20
@@ -27,6 +27,11 @@ SPACESHIP_GIT_STATUS_AHEAD="⇡"
 SPACESHIP_GIT_STATUS_BEHIND="⇣"
 SPACESHIP_GIT_STATUS_DIVERGED="⇕"
 SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_CHAR_SYMBOL=":;"
+SPACESHIP_CHAR_SYMBOL_ROOT="#"
+
+export SPACESHIP_USER_SHOW=always
+export SPACESHIP_HOST_SHOW=always
 
 if [[ -n "$PRESENTING" ]]; then
   # Override configs for a shorter prompt if in presentation mode.
@@ -46,7 +51,7 @@ else
     #hg            # Mercurial section (hg_branch  + hg_status)
     rust          # Rust section
     package       # Package version
-    node          # Node.js section
+    #node          # Node.js section
     #ruby          # Ruby section
     #elixir        # Elixir section
     xcode         # Xcode section
@@ -58,10 +63,10 @@ else
     #venv          # virtualenv section
     # kubecontext   # Kubectl context section
     exec_time     # Execution time
-    # line_sep      # Line break
     #battery       # Battery level and status
     jobs          # Background jobs indicator
     exit_code     # Exit code section
+    line_sep      # Line break
     char          # Prompt character
   )
 fi

@@ -26,11 +26,30 @@ zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 # this must be loaded after compinit, so use defer.
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# spaceship theme (but use asyncified version)
-zplug "maximbaz/spaceship-prompt", \
-    from:"github", \
-    use:"spaceship.zsh", \
-    as:theme \
+case "$ZSH_THEME" in
+    spaceship)    
+        # spaceship theme (but use asyncified version)
+        zplug "maximbaz/spaceship-prompt", \
+            from:"github", \
+            use:"spaceship.zsh", \
+            as:theme
+        ;;
+    powerlevel9k)
+        zplug "bhilburn/powerlevel9k", \
+            use:powerlevel9k.zsh-theme, \
+            as:theme
+        ;;
+    starship)
+        if [ -x $(which starship) ];  then
+            eval "$(starship init zsh)"
+        else
+            echo "could not find starship!"
+        fi
+        ;;
+    *)
+        echo "unknown ZSH_THEME value: $ZSH_THEME"
+        ;;
+esac
 
 zplug "agkozak/zsh-z", from:"github"
 

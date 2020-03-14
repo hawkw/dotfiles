@@ -8,11 +8,35 @@ debug() {
       echo "$1"
     fi
 }
+
+# Import colorscheme from 'wal' asynchronously
+(cat "${HOME}/.cache/wal/sequences" &)
+
+
+# To add support for TTYs this line can be optionally added.
+source "${HOME}/.cache/wal/colors-tty.sh"
+
 # load shared shell configuration
 debug "[zshrc] load shared config"
 source $HOME/.shrc.sh
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+# is there a local configuration? if so, load that first.
+if [ -f "$HOME/.zshrc.local" ]; then
+    source $HOME/.zshrc.local
+fi
+
+export ZPLUG_HOME=${HOME}/.zplug
+
+
+# if this is defined, a bunch of common unix utilities are aliased to use more 
+# modern Rust implementations. 
+#
+# note: since these aliases are only applied for *interactive* sessions, this
+#       shouldn't break any scripts that rely on specific behaviors of ls, ps, 
+#       cat, etc.
+RUST_UTILS=1
+
+ZSH_THEME=starship
 
 # all of our zsh files
 typeset -U config_files
@@ -45,8 +69,6 @@ do
   debug " source \"$file\""
   source $file
 done
-
-source $ZSH/oh-my-zsh.sh
 
 # added by travis gem
 [ -f /Users/eliza/.travis/travis.sh ] && source /Users/eliza/.travis/travis.sh
