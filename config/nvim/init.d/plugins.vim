@@ -1,0 +1,1 @@
+/home/eliza/dotfiles/vimrc.d/plugins.vim
