@@ -16,6 +16,9 @@ set number
 set ruler
 set nowrap
 
+" airline
+let g:airline_powerline_fonts = 1
+
 " " Initialize airline symbols dictionary.
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -30,7 +33,8 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '¶'
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" airline theme
+let g:airline_theme = 'wal'
+
 
 
