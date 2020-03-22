@@ -17,19 +17,19 @@ window:
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
-    columns: 120
+    columns: 99
     lines: 50
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 2
-    y: 2
+    x: 30
+    y: 30
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: false
+  # decorations: false
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 4
@@ -37,34 +37,35 @@ tabspaces: 4
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
+
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Iosevka Nerd Font
+    family: curie
     # Style can be specified to pick a specific face.
-    style: Light
+    style: Regular
 
   # The bold font face
   bold:
-    family: Iosevka Nerd Font
+    family: curie
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    family: Iosevka Nerd Font
+    family: curie
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 11
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
@@ -77,59 +78,91 @@ font:
   # for retina displays, but for non-retina you probably want this set to
   # false.
   use_thin_strokes: true
-
-# Should display the render timer
-render_timer: false
+  
+debug:
+  # Should display the render timer
+  render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-# Colors (Tomorrow Night Bright)
-colors:
-  # Default colors
-  primary:
-    background: '0x292D3E'
-    foreground: '0xA6ACCD'
+schemes:
+  # Colors (Ayu Dark)
+  ayu_dark: &ayu_dark
+    # Default colors
+    primary:
+      background: '#0A0E14'
+      foreground: '#B3B1AD'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
+    # Normal colors
+    normal:
+      black: '#01060E'
+      red: '#EA6C73'
+      green: '#91B362'
+      yellow: '#F9AF4F'
+      blue: '#53BDFA'
+      magenta: '#FAE994'
+      cyan: '#90E1C6'
+      white: '#C7C7C7'
 
-  # Normal colors
-  normal:
-    black:   '0x676E95'
-    red:     '0xFF5253'
-    green:   '0xC3E88B'
-    yellow:  '0xFFD740'
-    blue:    '0x40C4FF'
-    magenta: '0xFF4081'
-    cyan:    '0x64FCDA'
-    white:   '0xA6ACCD'
+    # Bright colors
+    bright:
+      black: '#686868'
+      red: '#F07178'
+      green: '#C2D94C'
+      yellow: '#FFB454'
+      blue: '#59C2FF'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
+  
+  eliza_hack: &eliza_hack
+    # Default colors
+    primary:
+      background: '0x000000'
+      foreground: '0xA6ACCD'
 
-  # Bright colors
-  bright:
-    black:   '0xB0B3C5'
-    red:     '0xFF7F86'
-    green:   '0xB9F6CA'
-    yellow:  '0xFFE37F'
-    blue:    '0x80D5FF'
-    magenta: '0xFF80AB'
-    cyan:    '0xA7FDE8'
-    white:   '0xC6D0F3'
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0x000000'
+      cursor: '0xffffff'
 
-  # # Dim colors (Optional)
-  # dim:
-  #   black:   '0x333333'
-  #   red:     '0xf2777a'
-  #   green:   '0x99cc99'
-  #   yellow:  '0xffcc66'
-  #   blue:    '0x6699cc'
-  #   magenta: '0xcc99cc'
-  #   cyan:    '0x66cccc'
-  #   white:   '0xdddddd'
+    # Normal colors
+    normal:
+      black:   '0x676E95'
+      red:     '0xFF5253'
+      green:   '0xC3E88B'
+      yellow:  '0xFFD740'
+      blue:    '0x40C4FF'
+      magenta: '0xFF4081'
+      cyan:    '0x64FCDA'
+      white:   '0xA6ACCD'
 
+    # Bright colors
+    bright:
+      black:   '0xB0B3C5'
+      red:     '0xFF7F86'
+      green:   '0xB9F6CA'
+      yellow:  '0xFFE37F'
+      blue:    '0x80D5FF'
+      magenta: '0xFF80AB'
+      cyan:    '0xA7FDE8'
+      white:   '0xC6D0F3'
+
+    # # Dim colors (Optional)
+    # dim:
+    #   black:   '0x333333'
+    #   red:     '0xf2777a'
+    #   green:   '0x99cc99'
+    #   yellow:  '0xffcc66'
+    #   blue:    '0x6699cc'
+    #   magenta: '0xcc99cc'
+    #   cyan:    '0x66cccc'
+    #   white:   '0xdddddd'
+  
+
+colors: *eliza_hack
 
 # Visual Bell
 #
