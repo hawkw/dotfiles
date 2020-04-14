@@ -40,16 +40,19 @@ export PATH="$PATH:$HOME/.scripts"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+export PATH="$PATH:$HOME/bin/script"
+
 # export PATH="/usr/bin:$PATH"
 
 # Go #########################################################################
-export GOPATH="$HOME/Code/go"
-export GOROOT="/usr/local/opt/go/libexec"
+# export GOPATH="$HOME/Code/go"
+# export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin"
+export PATH="$PATH:/usr/libexec/seahorse"
 
 # ssh
-export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
+# export SSH_KEY_PATH="$HOME/.ssh/id.rsa"
 # LeJOS EV3
 # export EV3_HOME="/opt/lejos-ev3"
 

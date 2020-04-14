@@ -1,3 +1,3 @@
 EXCLUDES="README.md LICENSE img"
 DOTFILES_DIRS="$HOME/dotfiles"
-UNDOTTED="Library"
+UNDOTTED="Library bin"

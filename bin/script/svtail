@@ -1,0 +1,11 @@
+#!/bin/bash
+# script for tailing `runit` service logs
+LOGDIR="/tmp/sv/log"
+
+if [[ -n "$1" ]]; then
+    LOG="${LOGDIR}/${1}/current"
+else
+    LOG="${LOGDIR}/*/current"
+fi
+
+tail -f $LOG
