@@ -16,8 +16,6 @@
 
   # Packages managed by Home Manager
   home.packages = with pkgs; [
-    nixfmt
-    direnv
     vscode
     rustup
   ];
@@ -52,5 +50,21 @@
     #   version = "0.117.1";
     # }
       ];
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      username.show_always = true;
+      hostname.ssh_only = false;
+
+      # Replace the "❯" symbol in the prompt with ":;"
+      #
+      # why use ":;" as the prompt character? it is a no-op in most (all?) unix shells, so copying and
+      # pasting a command including the prompt character will still work
+      character.symbol = ":;";
+      rust.symbol = "⚙️ ";
+      package.symbol = "";
+    };
   };
 }
