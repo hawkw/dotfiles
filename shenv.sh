@@ -81,3 +81,8 @@ if test -z "${XDG_RUNTIME_DIR}"; then
     fi
 fi
 
+# nix
+if [ -e /home/eliza/.nix-profile/etc/profile.d/nix.sh ]; 
+then 
+    source /home/eliza/.nix-profile/etc/profile.d/nix.sh
+fi
