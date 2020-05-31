@@ -1,0 +1,22 @@
+{
+    "editor.fontFamily": "'Iosevka', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": "'calt', 'dlig', 'ss08'",
+    "editor.renderWhitespace": "boundary",
+    "wal.tokenColorTheme": "Wal",
+    "terminal.explorerKind": "external",
+    "workbench.colorTheme": "Wal",
+    "window.titleBarStyle": "custom",
+    "workbench.preferredDarkColorTheme": "Wal",
+    "editor.fontSize": 16,
+    "files.associations": {
+        "zshrc": "shellscript"
+    },
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.reformat": true,
+    "editor.formatOnSave": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false,
+        "editor.formatOnSave": false,
+        "editor.trimAutoWhitespace": false,
+    },
+}
