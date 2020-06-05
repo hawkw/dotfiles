@@ -18,50 +18,15 @@
     let
       unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
     in [
-      # (pkgs.vscode-with-extensions.override {
-      #   vscodeExtensions = (with pkgs.vscode-extensions; [
-      #       # nix syntax highlighting
-      #       bbenoist.Nix
-      #       ms-vscode-remote.remote-ssh
-      #       ms-azuretools.vscode-docker
-      #       ms-kubernetes-tools.vscode-kubernetes-tools
-      #       # cmschuetz12.wal
-      #       # rust-analyzer
-      #       matklad.rust-analyzer
-      #       WakaTime.vscode-wakatime
-      #     ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-      #       name = "remote-ssh-edit";
-      #       publisher = "ms-vscode-remote";
-      #       version = "0.47.2";
-      #       sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-      #     }
-
-      #     # wal colorscheme
-      #     {
-      #       name = "wal-theme";
-      #       publisher = "dlasagno";
-      #       version = "1.0.4";
-      #       sha256 = "1kn38anhhac3l1yanmhjqwv8ga8iaijyy7f56c8ifyzgqqz5bbxf";
-      #     }
-      #     # {
-      #     #   name = "rewrap";
-      #     #   publisher = "stkb";
-      #     #   version = "1.0.1";
-      #     # }
-      #     # {
-      #     #   name = "remote-containers";
-      #     #   publisher = "ms-vscode-remote";
-      #     #   version = "0.117.1";
-      #     # }
-      #     ];
-      # })
-
       # toolchains
       vscode
       rustup
       clang
       llvmPackages.bintools
+
+      # images, etc
       ark
+
       # chat apps
       slack
       discord
@@ -73,7 +38,10 @@
       wpgtk
       pywal
       lm_sensors
-      # tar
+
+      # "crypto"
+      keybase
+      keybase-gui
 
       # fonts
       iosevka
@@ -83,6 +51,8 @@
       nix-prefetch-git
       nixfmt
     ];
+
+  home.sessionVariables = { EDITOR = "code --wait"; };
 
   # programs.vscode = {
   #   enable = true;
@@ -137,6 +107,14 @@
   #   # };
   # };
 
+  #############################################################################
+  ## Services                                                                 #
+  #############################################################################
+  services = { gpg-agent = { enable = true; }; };
+
+  #############################################################################
+  ## Programs                                                                 #
+  #############################################################################
   programs = {
     starship = {
       enable = true;
@@ -160,6 +138,10 @@
       enableAutosuggestions = true;
       enableCompletion = true;
       autocd = true;
+      history = {
+        ignoreDups = true;
+        share = true;
+      };
       initExtra = ''
         # Import colorscheme from 'wal' asynchronously
         (cat "''${HOME}/.cache/wal/sequences" &)
@@ -187,6 +169,10 @@
         }
       ];
     };
+
+    jq.enable = true;
+    bat.enable = true;
+    command-not-found.enable = true;
 
     broot = {
       enable = true;
@@ -224,6 +210,9 @@
         please = "push --force-with-lease";
         commend = "commit --amend --no-edit";
         squash = "merge --squash";
+        # Get the current branch name (not so useful in itself, but used in
+        # other aliases)
+        branch-name = "!git rev-parse --abbrev-ref HEAD";
         # Push the current branch to the remote "origin", and set it to track
         # the upstream branch
         publish = "!git push -u origin $(git branch-name)";
@@ -267,7 +256,7 @@
         # Font configuration (changes require restart)
         font = {
           # Point size of the font
-          size = 11;
+          size = 9;
           # The normal (roman) font face to use.
           normal = {
             family = "Iosevka";
@@ -285,6 +274,13 @@
           };
         };
       };
+    };
+
+    keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      enableXsessionIntegration = true;
+      keys = [ "id_ed25519" ];
     };
   };
 }
