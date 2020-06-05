@@ -57,7 +57,10 @@
   #############################################################################
   ## Services                                                                 #
   #############################################################################
-  services = { gpg-agent = { enable = true; }; };
+  services = {
+    gpg-agent = { enable = true; };
+
+  };
 
   #############################################################################
   ## Programs                                                                 #
@@ -172,6 +175,7 @@
 
     alacritty = {
       enable = true;
+      shell.program = "zsh";
       settings = {
         # Configuration for Alacritty, the GPU enhanced terminal emulator
         # Live config reload (changes require restart)
