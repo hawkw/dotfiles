@@ -24,6 +24,14 @@
       clang
       llvmPackages.bintools
 
+      # rusty unix utils
+      exa
+      bat
+      tokei
+      xsv
+      ripgrep
+      fd
+
       # images, etc
       ark
 
