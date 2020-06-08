@@ -14,6 +14,6 @@
   # changes in each release.
   home.stateVersion = "20.03";
 
-  imports = [ ./machine ./user/eliza.nix ];
+  imports = [ ./machine ./user/eliza ];
 
 }

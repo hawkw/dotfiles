@@ -6,6 +6,8 @@ let
     email = "eliza@buoyant.io";
   };
 in {
+  imports = [ ./fonts.nix ];
+
   home.sessionVariables = {
     EDITOR = "code --wait";
     BROWSER = "firefox";
@@ -50,10 +52,8 @@ in {
       # "crypto"
       keybase
       keybase-gui
-
-      # fonts
-      iosevka
-      unstable.cozette
+      kbfs
+      gnupg
 
       # nix stuff
       nix-prefetch-git
@@ -205,20 +205,20 @@ in {
         # Font configuration (changes require restart)
         font = {
           # Point size of the font
-          size = 9;
+          size = 8;
           # The normal (roman) font face to use.
           normal = {
-            family = "Iosevka";
+            family = "Cozette";
             style = "Regular";
           };
 
           bold = {
-            family = "Iosevka";
+            family = "Cozette";
             style = "Bold";
           };
 
           italic = {
-            family = "Iosevka";
+            family = "Cozette";
             style = "Italic";
           };
         };
@@ -236,5 +236,10 @@ in {
   #############################################################################
   ## Services                                                                 #
   #############################################################################
-  services = { gpg-agent = { enable = true; }; };
+  services = {
+    gpg-agent = { enable = true; };
+    kbfs.enable = true;
+    keybase.enable = true;
+    gnome-keyring.enable = true;
+  };
 }
