@@ -167,6 +167,15 @@ in {
         # Delete the remote version of the current branch
         unpublish = "!git push origin :$(git branch-name)";
       };
+
+      # If there is a file called `.git.private.nix` that defines an attribute
+      # "key", sign commits with that key.
+      signing = let path = ./git.private.nix;
+      in if builtins.pathExists path then {
+        key = with import path; key;
+        signByDefault = true;
+      } else
+        { };
     };
 
     htop.enable = true;
