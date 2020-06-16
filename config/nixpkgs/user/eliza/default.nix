@@ -26,13 +26,29 @@ in {
 
       # rusty unix utils
       exa
-      # bat # installed via `programs.bat` 
       tokei
       xsv
       ripgrep
       fd
-      bandwhich
       ytop
+      # bat # installed via `programs.bat` 
+
+      # networking tools
+      nmap-graphical
+      mtr-gui
+      slurm
+      bandwhich
+      # assorted wiresharks
+      wireshark
+      termshark
+
+      # kubernetes
+      kubectl
+      unstable.kube3d
+      kubectl
+      k9s
+      stern
+      helm
 
       # images, etc
       ark
@@ -214,20 +230,20 @@ in {
         # Font configuration (changes require restart)
         font = {
           # Point size of the font
-          size = 8;
+          size = 9;
           # The normal (roman) font face to use.
           normal = {
-            family = "Cozette";
+            family = "Iosevka";
             style = "Regular";
           };
 
           bold = {
-            family = "Cozette";
+            family = "Iosevka";
             style = "Bold";
           };
 
           italic = {
-            family = "Cozette";
+            family = "Iosevka";
             style = "Italic";
           };
         };
