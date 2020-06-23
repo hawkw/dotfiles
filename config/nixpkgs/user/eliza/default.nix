@@ -23,7 +23,7 @@ in {
       rustup
       clang
       llvmPackages.bintools
-
+      nodejs-12_x # required for vscode remote ssh
       # rusty unix utils
       exa
       tokei
@@ -45,7 +45,7 @@ in {
       # kubernetes
       kubectl
       unstable.kube3d
-      kubectl
+      kubectx
       k9s
       stern
       helm
@@ -202,6 +202,7 @@ in {
         # Configuration for Alacritty, the GPU enhanced terminal emulator
         # Live config reload (changes require restart)
         live_config_reload = true;
+        dynamic_title = true;
         shell.program = "zsh";
         window = {
           # Window dimensions in character columns and lines
