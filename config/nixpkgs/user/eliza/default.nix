@@ -203,7 +203,27 @@ in {
         { };
     };
 
-    htop.enable = true;
+    htop = {
+      enable = true;
+      highlightBaseName = true;
+      highlightThreads = true;
+      showThreadNames = true;
+      # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
+      # Because of that, when the whole path is shown, you need a really 
+      # wide terminal window, or else the program names are not really 
+      # readable. So let's turn off paths.
+      showProgramPath = false;
+      # This is rarely useful but it's cool to see, if you're me.
+      hideKernelThreads = false;
+
+      # I have entirely too many cores for the default meter configuration to
+      # be useable. :)
+      meters = {
+        left = [ "LeftCPUs2" "Blank" "Memory" "Swap" ];
+        right =
+          [ "RightCPUs2" "Blank" "Hostname" "Uptime" "Tasks" "LoadAverage" ];
+      };
+    };
 
     alacritty = {
       enable = true;
