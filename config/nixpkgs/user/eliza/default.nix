@@ -5,6 +5,7 @@ let
     name = "Eliza Weisman";
     email = "eliza@buoyant.io";
   };
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [ ./fonts.nix ];
 
@@ -16,7 +17,6 @@ in {
 
   home.packages = with pkgs;
     let
-      unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
     in [
       # toolchains
       vscode
@@ -25,12 +25,13 @@ in {
       llvmPackages.bintools
       nodejs-12_x # required for vscode remote ssh
       # rusty unix utils
-      exa
-      tokei
-      xsv
-      ripgrep
-      fd
-      ytop
+      unstable.exa
+      unstable.tokei
+      unstable.xsv
+      unstable.ripgrep
+      unstable.fd
+      unstable.ytop
+      unstable.broot
       # bat # installed via `programs.bat` 
 
       # networking tools
@@ -74,6 +75,8 @@ in {
       # nix stuff
       nix-prefetch-git
       nixfmt
+
+      wally-cli
     ];
 
   #############################################################################
@@ -141,6 +144,12 @@ in {
     broot = {
       enable = true;
       enableZshIntegration = true;
+      # package = unstable.broot;
+      skin = {
+        default = "gray(23) none";
+        tree = "ansi(94) None / gray(3) None";
+        file = "gray(18) None / gray(15) None";
+      };
     };
 
     direnv = {
@@ -250,13 +259,6 @@ in {
         };
       };
     };
-
-    keychain = {
-      enable = true;
-      enableZshIntegration = true;
-      enableXsessionIntegration = true;
-      keys = [ "id_ed25519" ];
-    };
   };
 
   #############################################################################
@@ -267,5 +269,17 @@ in {
     kbfs.enable = true;
     keybase.enable = true;
     gnome-keyring.enable = true;
+  };
+
+  #############################################################################
+  ## Programs                                                                 #
+  #############################################################################
+  programs = {
+    keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      enableXsessionIntegration = true;
+      keys = [ "id_ed25519" ];
+    };
   };
 }
