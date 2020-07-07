@@ -31,8 +31,13 @@ in {
       unstable.ripgrep
       unstable.fd
       unstable.ytop
-      unstable.broot
+      # unstable.broot
       # bat # installed via `programs.bat` 
+
+      # github cli
+      gitAndTools.gh
+
+      psmisc
 
       # networking tools
       nmap-graphical
@@ -207,7 +212,7 @@ in {
       enable = true;
       highlightBaseName = true;
       highlightThreads = true;
-      showThreadNames = true;
+      # showThreadNames = true;
       # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
       # Because of that, when the whole path is shown, you need a really 
       # wide terminal window, or else the program names are not really 
