@@ -7,7 +7,7 @@ let
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  imports = [ ./fonts.nix ];
+  # imports = [ ./fonts.nix ];
 
   home.sessionVariables = {
     EDITOR = "code --wait";
@@ -15,6 +15,7 @@ in {
     TERMINAL = "alacritty";
   };
 
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs;
     let
     in [
@@ -59,6 +60,7 @@ in {
       # images, etc
       ark
       darktable
+      unstable.inkscape
 
       # chat apps
       slack
@@ -82,6 +84,12 @@ in {
       nixfmt
 
       wally-cli
+
+      # fonts
+      iosevka
+      unstable.cozette
+      #   cherry
+      roboto
     ];
 
   #############################################################################
@@ -101,7 +109,53 @@ in {
         # pasting a command including the prompt character will still work
         character.symbol = ":;";
         rust.symbol = "⚙️ ";
-        package.symbol = "";
+        # package.symbol = "";
+        # nix_shell.use_name = true;
+        kubernetes = { disabled = false; };
+        prompt_order = [
+          "username"
+          "hostname"
+          "directory"
+          "kubernetes"
+          "git_branch"
+          "git_commit"
+          "git_state"
+          "git_status"
+          "hg_branch"
+          "docker_context"
+          "package"
+          "dotnet"
+          "elixir"
+          "elm"
+          "erlang"
+          "golang"
+          "java"
+          "julia"
+          "nim"
+          "nodejs"
+          "ocaml"
+          "php"
+          "purescript"
+          "python"
+          "ruby"
+          "rust"
+          "terraform"
+          "zig"
+          "nix_shell"
+          "conda"
+          "memory_usage"
+          "aws"
+          "env_var"
+          "crystal"
+          "cmd_duration"
+          "custom"
+          "line_break"
+          "jobs"
+          "battery"
+          "time"
+          "character"
+        ];
+
       };
     };
 
@@ -236,9 +290,9 @@ in {
         # Configuration for Alacritty, the GPU enhanced terminal emulator
         # Live config reload (changes require restart)
         live_config_reload = true;
-        dynamic_title = true;
         shell.program = "zsh";
         window = {
+          dynamic_title = true;
           # Window dimensions in character columns and lines
           # (changes require restart)
           dimensions = {
