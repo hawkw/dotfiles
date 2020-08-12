@@ -18,6 +18,12 @@ in {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs;
     let
+      discordRev = import (pkgs.fetchFromGitHub {
+        owner = "NixOS";
+        repo = "nixpkgs";
+        rev = "9fbbe30a44e31db059cd95de6046c01879f8c3dd";
+        sha256 = "0r6fqw1fs5flmn8sg1k6jrgh8s5zf3wkkvnpzr52chjq142dybfq";
+      }) { config = { allowUnfree = true; }; };
     in [
       # toolchains
       vscode
@@ -64,7 +70,7 @@ in {
 
       # chat apps
       slack
-      discord
+      discordRev.discord
       signal-desktop
 
       # stuff
