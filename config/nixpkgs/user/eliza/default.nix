@@ -78,6 +78,7 @@ in {
       neofetch
       wpgtk
       pywal
+      obs-studio
 
       # "crypto"
       keybase
