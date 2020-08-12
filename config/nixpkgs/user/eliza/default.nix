@@ -13,6 +13,7 @@ in {
     EDITOR = "code --wait";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
+    PATH = "$PATH:/$HOME/.cargo/bin/";
   };
 
   fonts.fontconfig.enable = true;
