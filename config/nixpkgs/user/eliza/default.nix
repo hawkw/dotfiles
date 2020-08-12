@@ -13,7 +13,6 @@ in {
     EDITOR = "code --wait";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
-    PATH = "$PATH:/$HOME/.cargo/bin/";
   };
 
   fonts.fontconfig.enable = true;
@@ -171,14 +170,20 @@ in {
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
+      enableVteIntegration = true;
       autocd = true;
       history = {
         ignoreDups = true;
         share = true;
       };
+      # Import wal color scheme
       initExtra = ''
         # Import colorscheme from 'wal' asynchronously
         (cat "''${HOME}/.cache/wal/sequences" &)
+      '';
+      # Ensure cargo binaries are on the PATH
+      envExtra = ''
+        export PATH="$PATH:$HOME/.cargo/bin"
       '';
       plugins = [
         {
