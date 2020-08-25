@@ -18,19 +18,24 @@ in {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs;
     let
-      discordRev = import (pkgs.fetchFromGitHub {
-        owner = "NixOS";
-        repo = "nixpkgs";
-        rev = "9fbbe30a44e31db059cd95de6046c01879f8c3dd";
-        sha256 = "0r6fqw1fs5flmn8sg1k6jrgh8s5zf3wkkvnpzr52chjq142dybfq";
-      }) { config = { allowUnfree = true; }; };
-    in [
+      unfreePkgs = [
+        slack
+        unstable.discord
+        signal-desktop
+        zoom-us
+        steam
+        keybase
+        keybase-gui
+        vscode
+        nodejs-12_x # required for vscode remote ssh
+        unstable._1password
+        # unstable._1password-gui
+      ];
+    in ([
       # toolchains
-      vscode
       rustup
       clang
       llvmPackages.bintools
-      nodejs-12_x # required for vscode remote ssh
       # rusty unix utils
       unstable.exa
       unstable.tokei
@@ -68,21 +73,13 @@ in {
       darktable
       unstable.inkscape
 
-      # chat apps
-      slack
-      discordRev.discord
-      signal-desktop
-
       # stuff
-      steam
       neofetch
       wpgtk
       pywal
       obs-studio
 
       # "crypto"
-      keybase
-      keybase-gui
       kbfs
       gnupg
 
@@ -97,7 +94,7 @@ in {
       unstable.cozette
       #   cherry
       roboto
-    ];
+    ] ++ unfreePkgs);
 
   #############################################################################
   ## Programs                                                                 #
@@ -176,6 +173,7 @@ in {
         ignoreDups = true;
         share = true;
       };
+
       # Import wal color scheme
       initExtra = ''
         # Import colorscheme from 'wal' asynchronously
@@ -185,28 +183,44 @@ in {
       envExtra = ''
         export PATH="$PATH:$HOME/.cargo/bin"
       '';
-      plugins = [
-        {
-          # will source zsh-syntax-highlighting.plugin.zsh
-          name = "zsh-syntax-highlighting";
-          src = pkgs.fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-syntax-highlighting";
-            rev = "0.7.1";
-            sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
-          };
-        }
-        {
-          # will source zsh-z.plugin.zsh
-          name = "zsh-z";
-          src = pkgs.fetchFromGitHub {
-            owner = "agkozak";
-            repo = "zsh-z";
-            rev = "e138de57cd59ed09c3d55ff544ff8f79d2dc4ac1";
-            sha256 = "02b3r4bv8mz16xqngpi2353gv8fb478fwy10786i9j3ymp4hql5j";
-          };
-        }
-      ];
+
+      # Configure ZSH plugins via zplug
+      zplug = {
+        enable = true;
+        plugins = [
+          { # ZSH syntax highlighting.
+            name = "zsh-users/zsh-syntax-highlighting";
+            # this must be loaded after compinit, so use defer.
+            tags = [ "defer:2" ];
+          }
+          {
+            name = "agkozak/zsh-z";
+            tags = [ "from:github" ];
+          }
+        ];
+      };
+      # plugins = [
+      #   {
+      #     # will source zsh-syntax-highlighting.plugin.zsh
+      #     name = "zsh-syntax-highlighting";
+      #     src = pkgs.fetchFromGitHub {
+      #       owner = "zsh-users";
+      #       repo = "zsh-syntax-highlighting";
+      #       rev = "0.7.1";
+      #       sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
+      #     };
+      #   }
+      #   {
+      #     # will source zsh-z.plugin.zsh
+      #     name = "zsh-z";
+      #     src = pkgs.fetchFromGitHub {
+      #       owner = "agkozak";
+      #       repo = "zsh-z";
+      #       rev = "e138de57cd59ed09c3d55ff544ff8f79d2dc4ac1";
+      #       sha256 = "02b3r4bv8mz16xqngpi2353gv8fb478fwy10786i9j3ymp4hql5j";
+      #     };
+      #   }
+      # ];
     };
 
     jq.enable = true;
