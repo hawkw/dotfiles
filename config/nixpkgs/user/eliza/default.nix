@@ -7,7 +7,7 @@ let
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  # imports = [ ./fonts.nix ];
+  imports = [ ./fonts.nix ];
 
   home.sessionVariables = {
     EDITOR = "code --wait";
@@ -15,7 +15,6 @@ in {
     TERMINAL = "alacritty";
   };
 
-  fonts.fontconfig.enable = true;
   home.packages = with pkgs;
     let
       unfreePkgs = [
@@ -29,6 +28,7 @@ in {
         vscode
         nodejs-12_x # required for vscode remote ssh
         unstable._1password
+        spotify
         # unstable._1password-gui
       ];
     in ([
@@ -56,9 +56,11 @@ in {
       mtr-gui
       slurm
       bandwhich
+      nghttp2
       # assorted wiresharks
       wireshark
       termshark
+      caddy2
 
       # kubernetes
       kubectl
@@ -88,12 +90,6 @@ in {
       nixfmt
 
       wally-cli
-
-      # fonts
-      iosevka
-      unstable.cozette
-      #   cherry
-      roboto
     ] ++ unfreePkgs);
 
   #############################################################################
@@ -199,28 +195,6 @@ in {
           }
         ];
       };
-      # plugins = [
-      #   {
-      #     # will source zsh-syntax-highlighting.plugin.zsh
-      #     name = "zsh-syntax-highlighting";
-      #     src = pkgs.fetchFromGitHub {
-      #       owner = "zsh-users";
-      #       repo = "zsh-syntax-highlighting";
-      #       rev = "0.7.1";
-      #       sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
-      #     };
-      #   }
-      #   {
-      #     # will source zsh-z.plugin.zsh
-      #     name = "zsh-z";
-      #     src = pkgs.fetchFromGitHub {
-      #       owner = "agkozak";
-      #       repo = "zsh-z";
-      #       rev = "e138de57cd59ed09c3d55ff544ff8f79d2dc4ac1";
-      #       sha256 = "02b3r4bv8mz16xqngpi2353gv8fb478fwy10786i9j3ymp4hql5j";
-      #     };
-      #   }
-      # ];
     };
 
     jq.enable = true;
@@ -247,6 +221,8 @@ in {
       enable = true;
       userName = userData.name;
       userEmail = userData.email;
+
+      # aliases
       aliases = {
         rb = "rebase";
         rbct = "rebase --continue";
@@ -277,6 +253,12 @@ in {
         publish = "!git push -u origin $(git branch-name)";
         # Delete the remote version of the current branch
         unpublish = "!git push origin :$(git branch-name)";
+      };
+
+      # extra git config
+      extraConfig = {
+        # use the default pull configuration, but stop whinging about it.
+        pull.rebase = false;
       };
 
       # If there is a file called `.git.private.nix` that defines an attribute
@@ -381,11 +363,59 @@ in {
   ## Programs                                                                 #
   #############################################################################
   programs = {
+    # Keychain
     keychain = {
       enable = true;
       enableZshIntegration = true;
       enableXsessionIntegration = true;
       keys = [ "id_ed25519" ];
     };
+
+    tmux = {
+      enable = true;
+      plugins = with pkgs.tmuxPlugins; [
+        sensible
+        cpu
+        continuum
+        prefix-highlight
+        yank
+      ];
+      extraConfig = ''
+        # Status bar settings adapted from powerline
+        set -g status on
+        set -g status-interval 10
+        set -g status-fg white
+        set -g status-bg black
+        set -g status-left-length 20
+        set -g status-left '#{?client_prefix,#[fg=default]#[bg=red]#[bold],#[fg=red]#[bg=black]#[bold]} #S #{?client_prefix,#[fg=red]#[bg=magenta]#[nobold],#[fg=black]#[bg=magenta]#[nobold]}'
+        set -g status-right '#(eval cut -c3- ~/.tmux.conf | sh -s status_right) #h '
+        set -g status-right-length 150
+        set -g window-status-format "#[fg=black,bg=red]#I #[fg=colour240] #[default]#W "
+        set -g window-status-current-format "#[fg=b,bg=blue]#[fg=black,bg=blue] #I  #[fg=black]#W #[fg=blue,bg=black,nobold]"
+        set -g window-status-last-style fg=white
+
+        # ENDOFCONF
+        # status_right() {
+        #   cols=$(tmux display -p '#{client_width}')
+        #   if (( $cols >= 80 )); then
+        #     hoststat=$(hash tmux-mem-cpu-load && tmux-mem-cpu-load -i 10 || uptime | cut -d: -f5)
+        #     echo "#[fg=colour233,bg=default,nobold,noitalics,nounderscore]#[fg=colour247,bg=colour233,nobold,noitalics,nounderscore] ⇑ $hoststat #[fg=colour252,bg=colour233,nobold,noitalics,nounderscore]#[fg=colour16,bg=colour252,bold,noitalics,nounderscore]"
+        #   else
+        #     echo '#[fg=colour252,bg=colour233,nobold,noitalics,nounderscore]#[fg=colour16,bg=colour252,bold,noitalics,nounderscore]'
+        #   fi
+        # }
+        # clone () {
+        #   orig=''${1%-*}
+        #   let i=$( tmux list-sessions -F '#S' | sed -nE "/^''${orig}-[0-9]+$/{s/[^0-9]//g;p}" | tail -n1 )+1
+        #   copy="$orig-$i"
+        #   TMUX= tmux new-session -d -t $orig -s $copy
+        #   tmux switch-client -t $copy
+        #   tmux set -q -t $copy destroy-unattached on
+        # }
+        # $@
+        # # vim: ft=tmux
+      '';
+    };
   };
+
 }
