@@ -30,3 +30,8 @@ Temporary Items
 
 # RLS logs
 rls*.log
+
+
+# Private and local configs
+*.private*
+*.local*

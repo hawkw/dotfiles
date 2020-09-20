@@ -3,15 +3,14 @@
 {
   fonts.fontconfig.enable = true;
 
-  home.packages = with pkgs;
-    let
-      unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-    in [
-
-      # fonts
-      iosevka
-      unstable.cozette
-      #   cherry
-      roboto
-    ];
+  home.packages = let
+    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  in with unstable; [
+    # fonts
+    iosevka
+    cozette
+    # cherry
+    roboto
+    tamzen
+  ];
 }
