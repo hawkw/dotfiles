@@ -7,7 +7,7 @@ let
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  imports = [ ./fonts.nix ];
+  imports = [ ./fonts.nix ../../role/zsh.nix ];
 
   home.sessionVariables = {
     EDITOR = "code --wait";
@@ -44,7 +44,7 @@ in {
       unstable.fd
       unstable.ytop
       # unstable.broot
-      # bat # installed via `programs.bat` 
+      # bat # installed via `programs.bat`
 
       # github cli
       gitAndTools.gh
@@ -97,7 +97,6 @@ in {
   programs = {
     starship = {
       enable = true;
-      enableZshIntegration = true;
       settings = {
         username.show_always = true;
         hostname.ssh_only = false;
@@ -128,62 +127,19 @@ in {
       };
     };
 
-    zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      #      enableVteIntegration = true;
-      autocd = true;
-      history = {
-        ignoreDups = true;
-        share = true;
-      };
-
-      # Import wal color scheme
-      initExtra = ''
-        # Import colorscheme from 'wal' asynchronously
-        (cat "''${HOME}/.cache/wal/sequences" &)
-      '';
-      # Ensure cargo binaries are on the PATH
-      envExtra = ''
-        export PATH="$PATH:$HOME/.cargo/bin"
-      '';
-
-      # Configure ZSH plugins via zplug
-      zplug = {
-        enable = true;
-        plugins = [
-          { # ZSH syntax highlighting.
-            name = "zsh-users/zsh-syntax-highlighting";
-            # this must be loaded after compinit, so use defer.
-            tags = [ "defer:2" ];
-          }
-          {
-            name = "agkozak/zsh-z";
-            tags = [ "from:github" ];
-          }
-        ];
-      };
-    };
-
     jq.enable = true;
     bat.enable = true;
     command-not-found.enable = true;
+    direnv.enable = true;
 
     broot = {
       enable = true;
-      enableZshIntegration = true;
       # package = unstable.broot;
       skin = {
         default = "gray(23) none";
         tree = "ansi(94) None / gray(3) None";
         file = "gray(18) None / gray(15) None";
       };
-    };
-
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
     };
 
     git = {
@@ -268,7 +224,6 @@ in {
         # Configuration for Alacritty, the GPU enhanced terminal emulator
         # Live config reload (changes require restart)
         live_config_reload = true;
-        shell.program = "zsh";
         window = {
           dynamic_title = true;
           # Window dimensions in character columns and lines
@@ -316,7 +271,6 @@ in {
     # Keychain
     keychain = {
       enable = true;
-      enableZshIntegration = true;
       enableXsessionIntegration = true;
       keys = [ "id_ed25519" ];
     };
