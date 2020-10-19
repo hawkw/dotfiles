@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }:
 
-let systemConfig = (import <nixpkgs/nixos> { }).config;
-in lib.mkIf (systemConfig.networking.hostname == "noctis")
-(builtins.trace [ "making config for noctis" systemConfig ] {
-
+{
+  imports = [ ../role/games.nix ];
   home.packages = with pkgs; [ lm_sensors wally-cli ];
 
   #############################################################################
@@ -27,4 +25,4 @@ in lib.mkIf (systemConfig.networking.hostname == "noctis")
       keys = [ "id_ed25519" ];
     };
   };
-})
+}

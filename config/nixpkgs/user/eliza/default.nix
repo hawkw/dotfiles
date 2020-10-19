@@ -60,7 +60,6 @@ in {
       # assorted wiresharks
       wireshark
       termshark
-      caddy2
 
       # kubernetes
       kubectl
@@ -163,7 +162,7 @@ in {
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
-      enableVteIntegration = true;
+      #      enableVteIntegration = true;
       autocd = true;
       history = {
         ignoreDups = true;
@@ -325,26 +324,7 @@ in {
         # When true, bold text is drawn using the bright variant of colors.
         draw_bold_text_with_bright_colors = true;
 
-        # Font configuration (changes require restart)
-        font = {
-          # Point size of the font
-          size = 9;
-          # The normal (roman) font face to use.
-          normal = {
-            family = "Iosevka";
-            style = "Regular";
-          };
-
-          bold = {
-            family = "Iosevka";
-            style = "Bold";
-          };
-
-          italic = {
-            family = "Iosevka";
-            style = "Italic";
-          };
-        };
+        # Fonts are configured in fonts.nix
       };
     };
   };

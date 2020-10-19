@@ -117,6 +117,9 @@
     storageDriver = "overlay2";
     # Prune the docker registry weekly.
     autoPrune.enable = true;
+    extraOptions = ''
+      --experimental
+    '';
   };
 
   #### Hardware ####
@@ -142,8 +145,8 @@
       "wireshark" # of course i want to be in the wireshark group!
     ];
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keyFiles =
-      [ "/home/eliza/.ssh/butterfly.id_ed25519.pub" ];
+    #   openssh.authorizedKeys.keyFiles =
+    #      [ "/home/eliza/.ssh/butterfly.id_ed25519.pub" ];
   };
 
   nixpkgs.config.allowUnfree = true;

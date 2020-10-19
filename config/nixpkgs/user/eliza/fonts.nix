@@ -13,4 +13,26 @@
     roboto
     tamzen
   ];
+
+  #  Font configuration for alacritty (changes require restart)
+  programs.alacritty.settings.font = {
+    # TamzenForPowerline-14
+    # Point size of the font
+    size = 10;
+    # The normal (roman) font face to use.
+    normal = {
+      family = "Iosevka";
+      style = "Regular";
+    };
+
+    bold = {
+      family = "Iosevka";
+      style = "Bold";
+    };
+
+    italic = {
+      family = "Iosevka";
+      style = "Italic";
+    };
+  };
 }

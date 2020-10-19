@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ kdeApplications.spectacle ];
+  environment.systemPackages = with pkgs; [
+    kdeApplications.spectacle
+    libsForQt5.qtstyleplugin-kvantum
+  ];
 
   # Enable the X11 windowing system.
   services.xserver = {

@@ -5,5 +5,5 @@
   # similar to the one in `noctis.nix`.
   # Then, those configs will be applied only if the hostname matches the new
   # machine's hostname.
-  # imports = [ ./noctis.nix ];
+  imports = [ ./noctis.nix ];
 }
