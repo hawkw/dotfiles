@@ -106,54 +106,24 @@ in {
         #
         # why use ":;" as the prompt character? it is a no-op in most (all?) unix shells, so copying and
         # pasting a command including the prompt character will still work
-        character.symbol = ":;";
+        character = {
+          success_symbol = "[:;](bold green)";
+          error_symbol = "[:;](bold red)";
+        };
+
+        hostname.format = "at [$hostname]($style) in ";
+        username.format = "[$user]($style) ";
+        nodejs.disabled = true;
+
         rust.symbol = "⚙️ ";
         # package.symbol = "";
-        # nix_shell.use_name = true;
-        kubernetes = { disabled = false; };
-        prompt_order = [
-          "username"
-          "hostname"
-          "directory"
-          "kubernetes"
-          "git_branch"
-          "git_commit"
-          "git_state"
-          "git_status"
-          "hg_branch"
-          "docker_context"
-          "package"
-          "dotnet"
-          "elixir"
-          "elm"
-          "erlang"
-          "golang"
-          "java"
-          "julia"
-          "nim"
-          "nodejs"
-          "ocaml"
-          "php"
-          "purescript"
-          "python"
-          "ruby"
-          "rust"
-          "terraform"
-          "zig"
-          "nix_shell"
-          "conda"
-          "memory_usage"
-          "aws"
-          "env_var"
-          "crystal"
-          "cmd_duration"
-          "custom"
-          "line_break"
-          "jobs"
-          "battery"
-          "time"
-          "character"
-        ];
+        nix_shell = {
+          impure_msg = "[impure shell](bold red)";
+          pure_msg = "[pure shell](bold green)";
+          format = "with [❄️ $state( ($name))](bold blue) ";
+        };
+        # kubernetes = { disabled = false; };
+        format = "$all";
 
       };
     };
