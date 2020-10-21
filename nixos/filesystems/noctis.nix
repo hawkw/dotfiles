@@ -4,12 +4,13 @@
   boot = {
     supportedFilesystems = [ "zfs" "xfs" ];
     kernelParams = [ "elevator=none" ];
+    # zfs.enableUnstable = true;
   };
 
   # ZFS configuration
   services.zfs = {
     # Enable TRIM
-    trim.enable = true;
+    # trim.enable = true;
     # Enable automatic scrubbing and snapshotting.
     autoScrub.enable = true;
     autoSnapshot = {
@@ -22,7 +23,7 @@
   };
 
   fileSystems."/" = {
-    device = "pool/system/root";
+    device = "nvme-pool/system/root";
     fsType = "zfs";
   };
 
@@ -32,22 +33,22 @@
   };
 
   fileSystems."/nix" = {
-    device = "pool/local/nix";
+    device = "nvme-pool/local/nix";
     fsType = "zfs";
   };
 
   fileSystems."/home/eliza" = {
-    device = "pool/home/eliza";
+    device = "nvme-pool/home/eliza";
     fsType = "zfs";
   };
 
   fileSystems."/root" = {
-    device = "pool/home/root";
+    device = "nvme-pool/home/root";
     fsType = "zfs";
   };
 
   fileSystems."/var/lib/docker" = {
-    device = "/dev/zvol/pool/system/docker";
+    device = "/dev/zvol/nvme-pool/system/docker";
     fsType = "xfs";
   };
 
