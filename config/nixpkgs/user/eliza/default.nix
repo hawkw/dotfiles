@@ -42,7 +42,8 @@ in {
       unstable.xsv
       unstable.ripgrep
       unstable.fd
-      unstable.ytop
+      # unstable.ytop
+      unstable.bottom
       # unstable.broot
       # bat # installed via `programs.bat`
 
@@ -60,14 +61,6 @@ in {
       # assorted wiresharks
       wireshark
       termshark
-
-      # kubernetes
-      kubectl
-      unstable.kube3d
-      kubectx
-      k9s
-      stern
-      helm
 
       # images, etc
       ark

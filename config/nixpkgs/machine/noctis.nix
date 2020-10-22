@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ../role/games.nix ];
+  imports = [ ../role/games.nix ../role/k8s.nix ];
   home.packages = with pkgs; [ lm_sensors wally-cli ];
 
   #############################################################################
@@ -20,7 +20,6 @@
   programs = {
     keychain = {
       enable = true;
-      enableZshIntegration = true;
       enableXsessionIntegration = true;
       keys = [ "id_ed25519" ];
     };
