@@ -12,7 +12,7 @@
     };
 
     # Use the latest available linux kernel. I like to live dangerously!
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_5_8;
   };
 
   #### Networking Configuration ####
@@ -124,11 +124,16 @@
 
   #### Hardware ####
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    bluetooth.enable = true;
 
-  # needed by steam
-  hardware.pulseaudio.support32Bit = true;
-  hardware.opengl.driSupport32Bit = true;
+    # needed by steam
+    pulseaudio.support32Bit = true;
+    opengl = {
+      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+      driSupport32Bit = true;
+    };
+  };
 
   # Enable sound.
   sound.enable = true;

@@ -25,5 +25,6 @@
     dconf.enable = true;
     # Used specifically for its (quite magical) "copy as html" function.
     gnome-terminal.enable = true;
+    steam.enable = true;
   };
 }
