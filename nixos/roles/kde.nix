@@ -19,4 +19,8 @@
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
   };
+
+  # It's necessary to enable Gnome keyring to make VS Code happy...
+  services.gnome3.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
 }
