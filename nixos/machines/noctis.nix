@@ -5,6 +5,7 @@
     ../common.nix
     ../roles/zsh.nix
     ../roles/kde.nix
+    ../roles/games.nix
     ../filesystems/noctis.nix
   ];
 
@@ -25,6 +26,5 @@
     dconf.enable = true;
     # Used specifically for its (quite magical) "copy as html" function.
     gnome-terminal.enable = true;
-    steam.enable = true;
   };
 }

@@ -124,16 +124,7 @@
 
   #### Hardware ####
 
-  hardware = {
-    bluetooth.enable = true;
-
-    # needed by steam
-    pulseaudio.support32Bit = true;
-    opengl = {
-      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-      driSupport32Bit = true;
-    };
-  };
+  hardware = { bluetooth.enable = true; };
 
   # Enable sound.
   sound.enable = true;
