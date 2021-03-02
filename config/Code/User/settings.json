@@ -19,4 +19,8 @@
         "editor.formatOnSave": false,
         "editor.trimAutoWhitespace": false,
     },
+    "window.zoomLevel": 0,
+    "git.suggestSmartCommit": false,
+    "rust-analyzer.cargo.allFeatures": true,
+    "git.confirmSync": false,
 }

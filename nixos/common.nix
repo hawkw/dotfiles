@@ -1,9 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
+  # # Define `nixPath` here so that included config files can conditionally add overlays.
+  # nix.nixPath =
+  #   # Prepend default nixPath values.
+  #   options.nix.nixPath.default;
 
   #### Boot configuration ####
-
   boot = {
     loader = {
       # Use the systemd-boot EFI boot loader.
@@ -12,7 +15,7 @@
     };
 
     # Use the latest available linux kernel. I like to live dangerously!
-    kernelPackages = pkgs.linuxPackages_5_8;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   #### Networking Configuration ####

@@ -22,7 +22,7 @@ in {
         unstable.discord
         signal-desktop
         zoom-us
-        steam
+        unstable.steam
         keybase
         keybase-gui
         vscode
@@ -72,6 +72,7 @@ in {
       wpgtk
       pywal
       obs-studio
+      dtrx # Do The Right eXtraction --- extract any kind of archive file
 
       # "crypto"
       kbfs
@@ -82,6 +83,7 @@ in {
       nixfmt
 
       wally-cli
+      chromium
     ] ++ unfreePkgs);
 
   #############################################################################
@@ -100,7 +102,7 @@ in {
         # pasting a command including the prompt character will still work
         character = {
           success_symbol = "[:;](bold green)";
-          error_symbol = "[:;](bold red)";
+          error_symbol = "[:](bold green)[;](bold red)";
         };
 
         hostname.format = "at [$hostname]($style) in ";
@@ -110,12 +112,70 @@ in {
         rust.symbol = "⚙️ ";
         # package.symbol = "";
         nix_shell = {
-          impure_msg = "[impure shell](bold red)";
-          pure_msg = "[pure shell](bold green)";
-          format = "with [❄️ $state( ($name))](bold blue) ";
+          symbol = "❄️ ";
+          impure_msg = "[\\[impure\\]](bold red)";
+          pure_msg = "[\\[pure\\]](bold green)";
+          format = "in [$symbol$name]($style) $state ";
         };
-        # kubernetes = { disabled = false; };
-        format = "$all";
+
+        format = lib.concatStrings [
+          # Start the first line with a shell comment so that the entire prompt
+          # can be copied and pasted.
+          "[:#](bold green) "
+          "$username"
+          "$hostname"
+          "$shlvl"
+          "$kubernetes"
+          "$directory"
+          "$git_branch"
+          "$git_commit"
+          "$git_state"
+          "$git_status"
+          "$hg_branch"
+          "$docker_context"
+          "$package"
+          "$cmake"
+          # "$dart"
+          "$dotnet"
+          "$elixir"
+          "$elm"
+          "$erlang"
+          "$golang"
+          "$helm"
+          "$java"
+          "$julia"
+          # "$kotlin"
+          # "$nim"
+          "$nodejs"
+          "$ocaml"
+          "$perl"
+          "$php"
+          # "$purescript"
+          "$python"
+          "$ruby"
+          "$rust"
+          "$swift"
+          # "$terraform"
+          "$vagrant"
+          # "$zig"
+          "$nix_shell"
+          "$conda"
+          "$memory_usage"
+          "$aws"
+          "$gcloud"
+          # "$openstack"
+          "$env_var"
+          "$crystal"
+          "$custom"
+          "$cmd_duration"
+          "$lua"
+          "$jobs"
+          "$battery"
+          "$time"
+          "$status"
+          "$line_break"
+          "$character"
+        ];
 
       };
     };
