@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, makeWrapper, perl, mono, gtk2, curl }:
+{ stdenv, lib, fetchFromGitHub, makeWrapper, perl, mono, gtk2, curl }:
 
 stdenv.mkDerivation rec {
   pname = "ckan";
@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   doCheck = false;
   checkTarget = "test";
 
-  libraries = stdenv.lib.makeLibraryPath [ gtk2 curl ];
+  libraries = lib.makeLibraryPath [ gtk2 curl ];
 
   installPhase = ''
     mkdir -p $out/bin
@@ -37,8 +37,8 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Mod manager for Kerbal Space Program";
     homepage = "https://github.com/KSP-CKAN/CKAN";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.Baughn ];
-    platforms = stdenv.lib.platforms.all;
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.Baughn ];
+    platforms = lib.platforms.all;
   };
 }

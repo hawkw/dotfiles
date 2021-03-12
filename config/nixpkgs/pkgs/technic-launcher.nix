@@ -1,5 +1,5 @@
-{ stdenv, fetchurl, makeDesktopItem, jre, libX11, libXext, libXcursor, libXrandr
-, libXxf86vm, mesa, openal, pulseaudioLight }:
+{ stdenv, lib, fetchurl, makeDesktopItem, jre, libX11, libXext, libXcursor
+, libXrandr, libXxf86vm, mesa, openal, pulseaudioLight }:
 
 # let
 #   desktopItem = stdenv.makeDesktopItem {
@@ -35,6 +35,6 @@ stdenv.mkDerivation {
   meta = {
     description = "Modded minecraft launcher";
     homepage = "http://www.feed-the-beast.com";
-    license = stdenv.lib.licenses.unfreeRedistributable;
+    license = lib.licenses.unfreeRedistributable;
   };
 }
