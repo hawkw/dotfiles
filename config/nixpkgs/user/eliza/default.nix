@@ -28,8 +28,8 @@ in {
         vscode
         nodejs-12_x # required for vscode remote ssh
         unstable._1password
+        unstable._1password-gui
         spotify
-        # unstable._1password-gui
       ];
     in ([
       # toolchains
@@ -237,6 +237,16 @@ in {
       extraConfig = {
         # use the default pull configuration, but stop whinging about it.
         pull.rebase = false;
+        # Assembly-style commit message comments (`;` as the comment delimiter).
+        # Why use `;`?
+        # - The default character, `#`, conflicts with both Markdown headings
+        #   and with GitHub issue links beginning a line (which I need to be
+        #   able to use in commit messages).
+        # - `*` conflicts with Markdown lists
+        # - Git only supports a single character comment delimiter, so C-style
+        #   line comments (`//`) are out...
+        # - I can't think of any compelling reason to begin a line with `;`...
+        core.commentchar = ";";
       };
 
       # If there is a file called `.git.private.nix` that defines an attribute
