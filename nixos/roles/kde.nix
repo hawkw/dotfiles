@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    kdeApplications.spectacle
+    spectacle
     libsForQt5.qtstyleplugin-kvantum
   ];
 
