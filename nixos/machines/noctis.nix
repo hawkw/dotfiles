@@ -6,6 +6,7 @@
     ../roles/zsh.nix
     ../roles/kde.nix
     ../roles/games.nix
+    ../roles/perftools.nix
     ../filesystems/noctis.nix
   ];
 
@@ -16,7 +17,7 @@
 
   environment.systemPackages =
     let unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
-    in with pkgs; [ unstable.openrgb linuxPackages_latest.perf perf-tools ];
+    in with pkgs; [ unstable.openrgb ];
 
   ## HAHA LOL GNOME BULLSHIT
   programs = {
@@ -26,5 +27,7 @@
     dconf.enable = true;
     # Used specifically for its (quite magical) "copy as html" function.
     gnome-terminal.enable = true;
+    # enable the correct perf tools for this kernel version
+    perftools.enable = true;
   };
 }
