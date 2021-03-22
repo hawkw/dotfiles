@@ -7,8 +7,13 @@
     keychain.enableZshIntegration = true;
     starship.enableZshIntegration = true;
     broot.enableZshIntegration = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     alacritty.settings.shell.program = "zsh";
+
     # zsh config
     zsh = {
       enable = true;
@@ -34,17 +39,11 @@
       # Configure ZSH plugins via zplug
       zplug = {
         enable = true;
-        plugins = [
-          { # ZSH syntax highlighting.
-            name = "zsh-users/zsh-syntax-highlighting";
-            # this must be loaded after compinit, so use defer.
-            tags = [ "defer:2" ];
-          }
-          {
-            name = "agkozak/zsh-z";
-            tags = [ "from:github" ];
-          }
-        ];
+        plugins = [{ # ZSH syntax highlighting.
+          name = "zsh-users/zsh-syntax-highlighting";
+          # this must be loaded after compinit, so use defer.
+          tags = [ "defer:2" ];
+        }];
       };
     };
   };
