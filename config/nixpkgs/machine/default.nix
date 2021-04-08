@@ -1,9 +1,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  # To add new per-machine configs, add a new config file with a `mkIf` here
-  # similar to the one in `noctis.nix`.
-  # Then, those configs will be applied only if the hostname matches the new
-  # machine's hostname.
-  imports = [ ./noctis.nix ];
+  # Per-machine configs are added in `~/.machine.nix`. This can be a symlink to
+  # another config file in this directory.
+  imports = let 
+      path = ~/.machine.nix;
+      exists = builtins.pathExists path; 
+    in if exists then (builtins.trace "~/.machine.nix exists" [path]) 
+    else (builtins.trace "~/.machine.nix does not exist" [ ]);
 }
