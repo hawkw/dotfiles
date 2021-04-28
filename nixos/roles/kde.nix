@@ -28,4 +28,8 @@
     sddm.enableGnomeKeyring = true;
     login.enableGnomeKeyring = true;
   };
+  # without dconf you can't change settings in gnome-terminal, so you are
+  # stuck with extremely broken font rendering. this is because gnome is
+  # extremely well designed.
+  programs.dconf.enable = true;
 }
