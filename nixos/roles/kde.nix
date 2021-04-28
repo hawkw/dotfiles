@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     spectacle
     libsForQt5.qtstyleplugin-kvantum
+    firefox-devedition-bin
   ];
 
   services = {
