@@ -7,7 +7,7 @@ let
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  imports = [ ./fonts.nix ../../role/zsh.nix ];
+  imports = [ ./fonts.nix ../../role/zsh.nix ../../role/vscode.nix ];
 
   home.sessionVariables = {
     EDITOR = "code --wait";
@@ -25,8 +25,6 @@ in {
         unstable.steam
         keybase
         keybase-gui
-        vscode
-        nodejs-12_x # required for vscode remote ssh
         unstable._1password
         unstable._1password-gui
         spotify

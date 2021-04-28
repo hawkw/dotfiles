@@ -11,17 +11,16 @@
     gpg-agent = { enable = true; };
     kbfs.enable = true;
     keybase.enable = true;
-    gnome-keyring.enable = true;
   };
 
   #############################################################################
   ## Programs                                                                 #
   #############################################################################
-  programs = {
-    keychain = {
-      enable = true;
-      enableXsessionIntegration = true;
-      keys = [ "id_ed25519" ];
-    };
-  };
+  # programs = {
+  #   keychain = {
+  #     enable = true;
+  #     enableXsessionIntegration = true;
+  #     keys = [ "id_ed25519" ];
+  #   };
+  # };
 }
