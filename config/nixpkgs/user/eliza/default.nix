@@ -7,7 +7,12 @@ let
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  imports = [ ./fonts.nix ../../role/zsh.nix ../../role/vscode.nix ];
+  imports = [
+    ./fonts.nix
+    ../../role/zsh.nix
+    ../../role/vscode.nix
+    ../../role/rusty.nix
+  ];
 
   home.sessionVariables = {
     EDITOR = "code --wait";
@@ -30,20 +35,14 @@ in {
         spotify
       ];
     in ([
-      # toolchains
+      ### toolchains ###
       rustup
       clang
+
+      ### devtools ###
       llvmPackages.bintools
-      # rusty unix utils
-      unstable.exa
-      unstable.tokei
-      unstable.xsv
-      unstable.ripgrep
-      unstable.fd
-      # unstable.ytop
-      unstable.bottom
-      # unstable.broot
-      # bat # installed via `programs.bat`
+      # use lldb from unstable, since it's on a newer version
+      unstable.lldb
 
       # github cli
       gitAndTools.gh
@@ -79,6 +78,7 @@ in {
       # nix stuff
       nix-prefetch-git
       nixfmt
+      nix-index
 
       wally-cli
       chromium
