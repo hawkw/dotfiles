@@ -9,7 +9,7 @@ let
     # displays system status in the gnome-shell status bar
     system-monitor
     # displays system temperatures, fan RPMs, and voltages
-    freon
+    # freon
     # allows selecting the sound output device in the sound menu
     sound-output-device-chooser
     # POP!_OS shell tiling extensions for Gnome 3
@@ -22,6 +22,8 @@ in {
     [
       # useful for testing webcams, etc
       gnome3.cheese
+      # A tool to customize advanced GNOME 3 options
+      gnome3.gnome-tweak-tool
       # KDE breeze-like Gnome UI theme
       gnome-breeze
       # A nice way to view information about use of system resources, like memory
