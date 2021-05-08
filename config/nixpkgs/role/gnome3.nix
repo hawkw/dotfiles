@@ -17,6 +17,20 @@ let
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
     (pkgs.callPackage ../pkgs/pop_os_shell { })
   ];
+  # configure Gnome themes
+  themes = with pkgs; [
+    ant-theme
+    ant-nebula-theme
+    dracula-theme
+    arc-theme
+    arc-icon-theme
+    equilux-theme
+    pop-gtk-theme
+    pop-icon-theme
+    qogir-theme
+    yaru-theme
+    matcha-gtk-theme
+  ];
 in {
   home.packages = with pkgs;
     [
@@ -24,12 +38,10 @@ in {
       gnome3.cheese
       # A tool to customize advanced GNOME 3 options
       gnome3.gnome-tweak-tool
-      # KDE breeze-like Gnome UI theme
-      gnome-breeze
       # A nice way to view information about use of system resources, like memory
       # and disk space
       gnome-usage
-    ] ++ gnome_extensions;
+    ] ++ gnome_extensions ++ themes;
   # services = {
   #   # necessary for `programs.firefox.enableGnomeExtensions` i guess?
   #   gnome3.chrome-gnome-shell.enable = true;

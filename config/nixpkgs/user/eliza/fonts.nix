@@ -18,7 +18,7 @@
   programs.alacritty.settings.font = {
     # TamzenForPowerline-14
     # Point size of the font
-    size = 10;
+    size = 12;
     # The normal (roman) font face to use.
     normal = {
       family = "Iosevka";
