@@ -72,7 +72,6 @@
       openssh
       bluedevil
       bluez
-      firefox-devedition-bin
       tailscale
     ];
 

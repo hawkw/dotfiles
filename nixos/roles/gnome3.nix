@@ -8,6 +8,7 @@
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = true;
       desktopManager.gnome3.enable = true;
+      displayManager.defaultSession = "gnome";
     };
     dbus.packages = [ pkgs.gnome3.dconf ];
     udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
@@ -26,4 +27,8 @@
   #     pinentryFlavor = "gnome3";
   #   };
   environment.systemPackages = [ pkgs.firefox-wayland ];
+  programs = {
+    # gpaste, a clipboard manager for Gnome
+    gpaste.enable = true;
+  };
 }

@@ -12,6 +12,7 @@ in {
     ../../role/zsh.nix
     ../../role/vscode.nix
     ../../role/rusty.nix
+    ../../role/gnome3.nix
   ];
 
   home.sessionVariables = {
@@ -82,6 +83,7 @@ in {
 
       wally-cli
       chromium
+      asciinema
     ] ++ unfreePkgs);
 
   #############################################################################
@@ -319,22 +321,25 @@ in {
   ## Services                                                                 #
   #############################################################################
   services = {
-    gpg-agent = { enable = true; };
+    # gpg-agent = { enable = true; };
     kbfs.enable = true;
     keybase.enable = true;
-    gnome-keyring.enable = true;
+    gnome-keyring = {
+      enable = true;
+      components = [ "pkcs11" "secrets" "ssh" ];
+    };
   };
 
   #############################################################################
   ## Programs                                                                 #
   #############################################################################
   programs = {
-    # Keychain
-    keychain = {
-      enable = true;
-      enableXsessionIntegration = true;
-      keys = [ "id_ed25519" ];
-    };
+    # # Keychain
+    # keychain = {
+    #   enable = true;
+    #   enableXsessionIntegration = true;
+    #   keys = [ "id_ed25519" ];
+    # };
 
     tmux = {
       enable = true;
@@ -381,6 +386,8 @@ in {
         # # vim: ft=tmux
       '';
     };
+
+    firefox = { enable = true; };
   };
 
 }
