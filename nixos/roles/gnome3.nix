@@ -20,13 +20,11 @@
       sushi.enable = true;
     };
   };
+
   security.pam.services = { login.enableGnomeKeyring = true; };
-  #   programs.gnupg.agent = {
-  #     enable = true;
-  #     enableSSHSupport = true;
-  #     pinentryFlavor = "gnome3";
-  #   };
-  environment.systemPackages = [ pkgs.firefox-wayland ];
+
+  environment.systemPackages = with pkgs; [ firefox-wayland seahorse ];
+
   programs = {
     # gpaste, a clipboard manager for Gnome
     gpaste.enable = true;

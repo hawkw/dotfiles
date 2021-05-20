@@ -9,9 +9,13 @@
     # fonts
     iosevka
     cozette
-    # cherry
     roboto
     tamzen
+    # noto, and friends --- manish says its good
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
   ];
 
   #  Font configuration for alacritty (changes require restart)
