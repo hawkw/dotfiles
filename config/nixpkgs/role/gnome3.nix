@@ -42,13 +42,22 @@ in {
       # and disk space
       gnome-usage
     ] ++ gnome_extensions ++ themes;
+
   # services = {
   #   # necessary for `programs.firefox.enableGnomeExtensions` i guess?
   #   gnome3.chrome-gnome-shell.enable = true;
   # };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
     enableGnomeExtensions = true;
   };
+
+  # #### gnome-keyring ########################################################
+  # services.gnome-keyring = {
+  #   enable = true;
+  #   components = [ "pkcs11" "secrets" "ssh" ];
+  # };
+  # programs.ssh.enable = true;
 }

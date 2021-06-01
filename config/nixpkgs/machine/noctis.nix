@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ../role/games.nix ../role/k8s.nix ];
+  imports = [ ../role/games.nix ../role/k8s.nix ../role/gnome3.nix ];
   home.packages = with pkgs; [ lm_sensors wally-cli ];
 
   #############################################################################
@@ -16,11 +16,11 @@
   #############################################################################
   ## Programs                                                                 #
   #############################################################################
-  # programs = {
-  #   keychain = {
-  #     enable = true;
-  #     enableXsessionIntegration = true;
-  #     keys = [ "id_ed25519" ];
-  #   };
-  # };
+  programs = {
+    keychain = {
+      enable = true;
+      enableXsessionIntegration = true;
+      keys = [ "id_ed25519" ];
+    };
+  };
 }

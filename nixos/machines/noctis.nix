@@ -30,6 +30,6 @@
 
   services = {
     # openrgb.enable = true;
-    logid.enable = true;
+    # logid.enable = true;
   };
 }

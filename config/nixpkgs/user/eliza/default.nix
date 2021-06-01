@@ -12,7 +12,6 @@ in {
     ../../role/zsh.nix
     ../../role/vscode.nix
     ../../role/rusty.nix
-    ../../role/gnome3.nix
   ];
 
   home.sessionVariables = {
@@ -41,16 +40,17 @@ in {
       clang
 
       ### devtools ###
-      llvmPackages.bintools
+      # llvmPackages.bintools
       # use lldb from unstable, since it's on a newer version
       unstable.lldb
-
       # github cli
       gitAndTools.gh
+      # the good `time`, not the shell builtin
+      time
 
       psmisc
 
-      # networking tools
+      ### networking tools ##
       nmap-graphical
       mtr-gui
       slurm
@@ -60,23 +60,23 @@ in {
       wireshark
       termshark
 
-      # images, etc
+      ### images, etc ###
       ark
       darktable
       unstable.inkscape
+      obs-studio
 
-      # stuff
+      ### stuff ###
       neofetch
       wpgtk
       pywal
-      obs-studio
       dtrx # Do The Right eXtraction --- extract any kind of archive file
 
-      # "crypto"
+      ### "crypto" ###
       kbfs
       gnupg
 
-      # nix stuff
+      ### nix stuff ###
       nix-prefetch-git
       nixfmt
       nix-index

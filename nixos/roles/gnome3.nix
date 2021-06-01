@@ -15,18 +15,21 @@
 
     # Enable gnome3 components
     gnome3 = {
-      gnome-keyring.enable = true;
       # Sushi, a quick previewer for Nautilus
       sushi.enable = true;
     };
   };
 
-  security.pam.services = { login.enableGnomeKeyring = true; };
-
-  environment.systemPackages = with pkgs; [ firefox-wayland seahorse ];
+  environment.systemPackages = [ pkgs.firefox-wayland ];
 
   programs = {
     # gpaste, a clipboard manager for Gnome
     gpaste.enable = true;
   };
+
+  ### gnome-keyring #########################################################
+  # enable the Gnome keyring
+  services.gnome3.gnome-keyring.enable = true;
+  # enable gnome keyring unlock on login
+  security.pam.services = { login.enableGnomeKeyring = true; };
 }
