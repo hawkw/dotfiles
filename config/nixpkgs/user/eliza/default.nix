@@ -261,22 +261,22 @@ in {
 
     htop = {
       enable = true;
-      highlightBaseName = true;
-      highlightThreads = true;
-      # showThreadNames = true;
-      # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
-      # Because of that, when the whole path is shown, you need a really 
-      # wide terminal window, or else the program names are not really 
-      # readable. So let's turn off paths.
-      showProgramPath = false;
-      # This is rarely useful but it's cool to see, if you're me.
-      hideKernelThreads = false;
+      settings = {
+        highlight_base_name = true;
+        highlight_threads = true;
+        # showThreadNames = true;
+        # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
+        # Because of that, when the whole path is shown, you need a really
+        # wide terminal window, or else the program names are not really
+        # readable. So let's turn off paths.
+        show_program_path = false;
+        # This is rarely useful but it's cool to see, if you're me.
+        hide_kernel_threads = false;
 
-      # I have entirely too many cores for the default meter configuration to
-      # be useable. :)
-      meters = {
-        left = [ "LeftCPUs2" "Blank" "Memory" "Swap" ];
-        right =
+        # I have entirely too many cores for the default meter configuration to
+        # be useable. :)
+        left_meter_modes = [ "LeftCPUs2" "Blank" "Memory" "Swap" ];
+        right_meter_modes =
           [ "RightCPUs2" "Blank" "Hostname" "Uptime" "Tasks" "LoadAverage" ];
       };
     };
