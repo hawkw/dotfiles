@@ -6,11 +6,6 @@
     direnv.enableZshIntegration = true;
     keychain.enableZshIntegration = true;
     starship.enableZshIntegration = true;
-    broot.enableZshIntegration = true;
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     alacritty.settings.shell.program = "zsh";
 

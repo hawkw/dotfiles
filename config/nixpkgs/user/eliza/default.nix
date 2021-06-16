@@ -12,6 +12,7 @@ in {
     ../../role/zsh.nix
     ../../role/vscode.nix
     ../../role/rusty.nix
+    ../../role/git.nix
   ];
 
   home.sessionVariables = {
@@ -20,6 +21,7 @@ in {
     TERMINAL = "alacritty";
   };
 
+  # programs.steam.enable = true;
   home.packages = with pkgs;
     let
       unfreePkgs = [
@@ -43,8 +45,6 @@ in {
       # llvmPackages.bintools
       # use lldb from unstable, since it's on a newer version
       unstable.lldb
-      # github cli
-      gitAndTools.gh
       # the good `time`, not the shell builtin
       time
 
@@ -89,6 +89,25 @@ in {
   #############################################################################
   ## Programs                                                                 #
   #############################################################################
+  # my custom config modules
+  programs.eliza = {
+    # use a collection of Rust versions of common unix utilities.
+    rustyUtils = {
+      enable = true;
+      enableAliases = true;
+    };
+
+    # custom git configs
+    git = {
+      enable = true;
+      user = {
+        name = userData.name;
+        email = userData.email;
+        privateConfig = ./git.private.nix;
+      };
+    };
+  };
+
   programs = {
     starship = {
       enable = true;
@@ -181,83 +200,72 @@ in {
     };
 
     jq.enable = true;
-    bat.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
 
-    broot = {
-      enable = true;
-      # package = unstable.broot;
-      skin = {
-        default = "gray(23) none";
-        tree = "ansi(94) None / gray(3) None";
-        file = "gray(18) None / gray(15) None";
-      };
-    };
+    # git = {
+    #   enable = true;
+    #   userName = userData.name;
+    #   userEmail = userData.email;
 
-    git = {
-      enable = true;
-      userName = userData.name;
-      userEmail = userData.email;
+    #   # aliases
+    #   aliases = {
+    #     rb = "rebase";
+    #     rbct = "rebase --continue";
+    #     # sign the last commit
+    #     sign = "commit --amend --reuse-message=HEAD -sS";
+    #     uncommit = "reset --hard HEAD";
+    #     ls = ''
+    #       log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
+    #     ll = ''
+    #       log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
+    #     lt = "log --graph --oneline --decorate --all";
+    #     st = "status --short --branch";
+    #     stu = "status -uno";
+    #     co = "checkout";
+    #     ci = "commit";
+    #     pr =
+    #       "!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr";
+    #     lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
+    #     lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+    #     please = "push --force-with-lease";
+    #     commend = "commit --amend --no-edit";
+    #     squash = "merge --squash";
+    #     # Get the current branch name (not so useful in itself, but used in
+    #     # other aliases)
+    #     branch-name = "!git rev-parse --abbrev-ref HEAD";
+    #     # Push the current branch to the remote "origin", and set it to track
+    #     # the upstream branch
+    #     publish = "!git push -u origin $(git branch-name)";
+    #     # Delete the remote version of the current branch
+    #     unpublish = "!git push origin :$(git branch-name)";
+    #   };
 
-      # aliases
-      aliases = {
-        rb = "rebase";
-        rbct = "rebase --continue";
-        # sign the last commit
-        sign = "commit --amend --reuse-message=HEAD -sS";
-        uncommit = "reset --hard HEAD";
-        ls = ''
-          log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
-        ll = ''
-          log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
-        lt = "log --graph --oneline --decorate --all";
-        st = "status --short --branch";
-        stu = "status -uno";
-        co = "checkout";
-        ci = "commit";
-        pr =
-          "!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr";
-        lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-        lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
-        please = "push --force-with-lease";
-        commend = "commit --amend --no-edit";
-        squash = "merge --squash";
-        # Get the current branch name (not so useful in itself, but used in
-        # other aliases)
-        branch-name = "!git rev-parse --abbrev-ref HEAD";
-        # Push the current branch to the remote "origin", and set it to track
-        # the upstream branch
-        publish = "!git push -u origin $(git branch-name)";
-        # Delete the remote version of the current branch
-        unpublish = "!git push origin :$(git branch-name)";
-      };
+    #   # extra git config
+    #   extraConfig = {
+    #     # use the default pull configuration, but stop whinging about it.
+    #     pull.rebase = false;
+    #     # Assembly-style commit message comments (`;` as the comment delimiter).
+    #     # Why use `;`?
+    #     # - The default character, `#`, conflicts with both Markdown headings
+    #     #   and with GitHub issue links beginning a line (which I need to be
+    #     #   able to use in commit messages).
+    #     # - `*` conflicts with Markdown lists
+    #     # - Git only supports a single character comment delimiter, so C-style
+    #     #   line comments (`//`) are out...
+    #     # - I can't think of any compelling reason to begin a line with `;`...
+    #     core.commentchar = ";";
+    #   };
 
-      # extra git config
-      extraConfig = {
-        # use the default pull configuration, but stop whinging about it.
-        pull.rebase = false;
-        # Assembly-style commit message comments (`;` as the comment delimiter).
-        # Why use `;`?
-        # - The default character, `#`, conflicts with both Markdown headings
-        #   and with GitHub issue links beginning a line (which I need to be
-        #   able to use in commit messages).
-        # - `*` conflicts with Markdown lists
-        # - Git only supports a single character comment delimiter, so C-style
-        #   line comments (`//`) are out...
-        # - I can't think of any compelling reason to begin a line with `;`...
-        core.commentchar = ";";
-      };
-
-      # If there is a file called `.git.private.nix` that defines an attribute
-      # "key", sign commits with that key.
-      signing = let path = ./git.private.nix;
-      in if builtins.pathExists path then {
-        key = with import path; key;
-        signByDefault = true;
-      } else
-        { };
-    };
+    #   # If there is a file called `.git.private.nix` that defines an attribute
+    #   # "key", sign commits with that key.
+    #   signing = let path = ./git.private.nix;
+    #   in if builtins.pathExists path then {
+    #     key = with import path; key;
+    #     signByDefault = true;
+    #   } else
+    #     { };
+    # };
 
     htop = {
       enable = true;
