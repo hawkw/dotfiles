@@ -13,6 +13,7 @@ in {
     ../../role/vscode.nix
     ../../role/rusty.nix
     ../../role/git.nix
+    ../../pkgs/atuin.nix
   ];
 
   home.sessionVariables = {
@@ -95,6 +96,7 @@ in {
     rustyUtils = {
       enable = true;
       enableAliases = true;
+      atuin = { enable = true; };
     };
 
     # custom git configs
@@ -109,6 +111,17 @@ in {
   };
 
   programs = {
+    nushell = {
+      enable = true;
+      settings = {
+        pivot_mode = "always";
+        nonzero_exit_errors = "true";
+      };
+    };
+
+    # mcfly.enable = true;
+    atuin = { enable = true; };
+
     starship = {
       enable = true;
       settings = {
@@ -323,6 +336,7 @@ in {
         # Fonts are configured in fonts.nix
       };
     };
+
   };
 
   #############################################################################

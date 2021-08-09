@@ -2,9 +2,6 @@
 
 let
   cfg = config.programs.eliza.rustyUtils;
-  zshEnabled = config.programs.zsh.enable;
-  bashEnabled = config.programs.bash.enable;
-  fishEnabled = config.programs.fish.enable;
   unstable = import <nixos-unstable> { config = config; };
 in with lib; {
   options = {
@@ -14,10 +11,20 @@ in with lib; {
         type = types.bool;
         default = false;
       };
+      atuin = {
+        enable = mkEnableOption "atuin: shell history with cloud sync";
+      };
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = let
+    mcflyEnabled = config.programs.mcfly.enable;
+    atuinEnabled = cfg.atuin.enable;
+    # which shells are enabled?
+    zshEnabled = config.programs.zsh.enable;
+    bashEnabled = config.programs.bash.enable;
+    fishEnabled = config.programs.fish.enable;
+  in mkIf cfg.enable (mkMerge [
     {
       home.packages = with unstable; [
         tokei
@@ -64,6 +71,15 @@ in with lib; {
         };
       };
     }
+
+    # mcfly: shell history (ctrl-r) replacement
+    (mkIf mcflyEnabled (mkMerge [
+      { programs.mcfly = { enableFuzzySearch = true; }; }
+
+      (mkIf zshEnabled { programs.mcfly.enableZshIntegration = true; })
+      (mkIf bashEnabled { programs.mcfly.enableBashIntegration = true; })
+      (mkIf fishEnabled { programs.mcfly.enableFishIntegration = true; })
+    ]))
 
     # If aliases are enabled, alias common unix utils with their rustier replacements.
     (mkIf cfg.enableAliases (mkMerge [
