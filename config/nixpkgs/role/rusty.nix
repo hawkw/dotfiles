@@ -20,7 +20,6 @@ in with lib; {
   config = mkIf cfg.enable (mkMerge [
     {
       home.packages = with unstable; [
-        ### rusty unix utils ###
         tokei
         xsv
         ripgrep
@@ -28,6 +27,8 @@ in with lib; {
         # unstable.ytop
         bottom
         glances
+        # dust: like `du` but good
+        du-dust
       ];
 
       programs = {
@@ -44,35 +45,48 @@ in with lib; {
           }];
         };
 
+        # exa: a (non-backwards-compatible) ls-like tool
         exa = { enable = true; };
         zoxide = { enable = true; };
+        # lsd: a backwards compatible `ls` replacement
+        lsd = {
+          enable = true;
+          settings = {
+            icons = {
+              when = "auto";
+              # use unicode icons rather than fontawesome or whatever (for compatibility).
+              theme = "unicode";
+              separator = "  ";
+            };
+          };
+        };
       };
     }
 
     # If aliases are enabled, alias common unix utils with their rustier replacements.
     (mkIf cfg.enableAliases (mkMerge [
-      # enable exa aliases
-      { programs.exa.enableAliases = true; }
+      { programs.lsd.enableAliases = true; }
 
       (mkIf zshEnabled {
         programs.zsh.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/exa --tree";
+          tree = "${pkgs.exa}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
         };
       })
       (mkIf bashEnabled {
         programs.bash.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/exa --tree";
+          tree = "${pkgs.exa}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
         };
       })
       (mkIf fishEnabled {
         programs.bash.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/exa --tree";
+          tree = "${pkgs.exa}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
+          ls = "${pkgs.lsd}/bin/lsd";
         };
       })
     ]))
