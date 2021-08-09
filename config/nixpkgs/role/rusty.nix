@@ -29,6 +29,8 @@ in with lib; {
         glances
         # dust: like `du` but good
         du-dust
+        # procs: list processes
+        procs
       ];
 
       programs = {
