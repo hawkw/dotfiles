@@ -88,23 +88,22 @@ in with lib; {
       (mkIf zshEnabled {
         programs.zsh.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/lsd --tree";
+          tree = "${pkgs.lsd}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
         };
       })
       (mkIf bashEnabled {
         programs.bash.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/lsd --tree";
+          tree = "${pkgs.lsd}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
         };
       })
       (mkIf fishEnabled {
         programs.bash.shellAliases = {
           # hahaha get rekt tree
-          tree = "${pkgs.exa}/bin/lsd --tree";
+          tree = "${pkgs.lsd}/bin/lsd --tree";
           grep = "${pkgs.ripgrep}/bin/rg";
-          ls = "${pkgs.lsd}/bin/lsd";
         };
       })
     ]))
