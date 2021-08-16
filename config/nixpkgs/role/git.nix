@@ -44,27 +44,15 @@ in with lib; {
 
         # aliases
         aliases = {
-          rb = "rebase";
-          rbct = "rebase --continue";
-          # sign the last commit
-          sign = "commit --amend --reuse-message=HEAD -sS";
-          uncommit = "reset --hard HEAD";
-          ls = ''
-            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
-          ll = ''
-            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
-          lt = "log --graph --oneline --decorate --all";
-          st = "status --short --branch";
-          stu = "status -uno";
+          ### short aliases for common commands ###
           co = "checkout";
           ci = "commit";
-          pr =
-            "!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr";
-          lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-          lola =
-            "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+          rb = "rebase";
+          rbct = "rebase --continue";
           please = "push --force-with-lease";
           commend = "commit --amend --no-edit";
+
+          ### nicer commit and branch verbs ###
           squash = "merge --squash";
           # Get the current branch name (not so useful in itself, but used in
           # other aliases)
@@ -74,6 +62,39 @@ in with lib; {
           publish = "!git push -u origin $(git branch-name)";
           # Delete the remote version of the current branch
           unpublish = "!git push origin :$(git branch-name)";
+          # sign the last commit
+          sign = "commit --amend --reuse-message=HEAD -sS";
+          uncommit = "reset --hard HEAD";
+          # XXX(eliza) AGH THIS DOESNT WORK
+          # # Gets the parent of the current branch.
+          # parent = ''
+          #   show-branch -a \
+          #     | grep '\*' \
+          #     | grep -v `git rev-parse --abbrev-ref HEAD` \
+          #     | head -n1 \
+          #     | sed 's/.*\[\(.*\)\].*/\1/' \
+          #     | sed 's/[\^~].*//'
+          # '';
+
+          ### various git log aliases ###
+          ls = ''
+            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
+          ll = ''
+            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
+          lt = "log --graph --oneline --decorate --all";
+          summarize-branch = ''
+            log --pretty=format:"* %h %s%n%n%w(72,2,2)%b" --decorate
+          '';
+          lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
+          lola =
+            "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+
+          ### status ###
+          st = "status --short --branch";
+          stu = "status -uno";
+
+          pr =
+            "!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr";
         };
 
         # extra git config
