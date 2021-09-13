@@ -123,6 +123,12 @@
       --experimental
     '';
   };
+  
+  # It's good to do this every now and then.
+  nix.gc = {
+    automatic = true;
+    dates = "monthly"; # See `man systemd.time 7`
+  };
 
   #### Hardware ####
 
