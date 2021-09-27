@@ -10,6 +10,7 @@
     ../roles/perftools.nix
     # local packages
     ../pkgs/logiops/logid.nix
+    ../pkgs/openrgb.nix
     # filesystems for this machine
     ../filesystems/noctis.nix
   ];

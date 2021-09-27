@@ -7,7 +7,7 @@
     "workbench.colorTheme": "Wal",
     "window.titleBarStyle": "custom",
     "workbench.preferredDarkColorTheme": "Wal",
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "files.associations": {
         "zshrc": "shellscript"
     },
@@ -22,7 +22,6 @@
     "git.suggestSmartCommit": false,
     "rust-analyzer.cargo.allFeatures": true,
     "git.confirmSync": false,
-    "gitlens.advanced.messages": {
-        "suppressRebaseSwitchToTextWarning": true
-    },
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "window.zoomLevel": 1,
 }

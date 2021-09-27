@@ -19,7 +19,6 @@ in with lib; {
 
   config = let
     mcflyEnabled = config.programs.mcfly.enable;
-    atuinEnabled = cfg.atuin.enable;
     # which shells are enabled?
     zshEnabled = config.programs.zsh.enable;
     bashEnabled = config.programs.bash.enable;
