@@ -3,9 +3,14 @@
 with lib;
 
 let
+
   cfg = config.programs.atuin;
+
   tomlFormat = pkgs.formats.toml { };
+
 in {
+  meta.maintainers = [ maintainers.hawkw ];
+
   options.programs.atuin = {
     enable = mkEnableOption "atuin";
 
@@ -16,15 +21,26 @@ in {
       description = "The package to use for atuin.";
     };
 
-    enableBashIntegration = mkEnableOption "Bash integration" // {
+    enableBashIntegration = mkOption {
+      type = types.bool;
       default = true;
+      description = ''
+        Whether to enable Atuin's Bash integration. This will bind
+        <literal>ctrl-r</literal> to open the Atuin history.
+      '';
     };
 
     enableZshIntegration = mkEnableOption "Zsh integration" // {
       default = true;
+      description = ''
+        Whether to enable Atuin's Zsh integration.
+        </para><para>
+        If enabled, this will bind <literal>ctrl-r</literal> and the up-arrow
+        key to open the Atuin history.
+      '';
     };
 
-    settings = mkOption {
+    config = mkOption {
       type = with types;
         let
           prim = oneOf [ bool int str ];
@@ -40,27 +56,20 @@ in {
           # mac: ~/Library/Application Support/com.elliehuxtable.atuin/history.db
           # linux: ~/.local/share/atuin/history.db
           db_path = "~/.history.db";
-
           ## where to store your encryption key, default is your system data directory
           key_path = "~/.key";
-
           ## where to store your auth session token, default is your system data directory
           session_path = "~/.key";
-
           ## date format used, either "us" or "uk"
           dialect = "uk";
-
           ## enable or disable automatic sync
           auto_sync = true;
-
           ## how often to sync history. note that this is only triggered when a command
           ## is ran, so sync intervals may well be longer
           ## set it to 0 to sync after every command
           sync_frequency = "5m";
-
           ## address of the sync server
           sync_address = "https://api.atuin.sh";
-
           ## which search mode to use
           ## possible values: prefix, fulltext, fuzzy
           search_mode = "prefix";
@@ -76,20 +85,17 @@ in {
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf cfg.enable {
+
     # Always add the configured `atuin` package.
-    {
-      home.packages = [ cfg.package ];
-    }
+    home.packages = [ cfg.package ];
 
     # If there are user-provided settings, generate the config file.
-    (mkIf (cfg.settings != { }) {
-      xdg.configFile."atuin/config.toml" = {
-        source = tomlFormat.generate "atuin-config" cfg.settings;
-      };
-    })
+    xdg.configFile."atuin/config.toml" = mkIf (cfg.config != { }) {
+      source = tomlFormat.generate "atuin-config" cfg.config;
+    };
 
-    (mkIf cfg.enableBashIntegration (let
+    programs.bash.initExtra = mkIf cfg.enableBashIntegration (let
       # This adds hooks which are required for `atuin`'s bash integration.
       # See https://github.com/ellie/atuin#bash
       bashPreexecPkg = { stdenv, lib, pkgs }:
@@ -117,23 +123,19 @@ in {
               "preexec and precmd functions for Bash just like Zsh.";
             license = licenses.mit;
             homepage = "https://github.com/rcaloras/bash-preexec";
-            # platforms = platforms.linux;
-            # maintainers = with maintainers; [ remunds ];
+            maintainers = [ maintainers.hawkw ];
           };
         };
       bashPreexec = (pkgs.callPackage bashPreexecPkg { });
-    in {
-      home.packages = [ bashPreexec ];
-      programs.bash.initExtra = ''
-        source ${bashPreexec}/bash-preexec.sh
-        eval "$(${cfg.package}/bin/atuin init bash)
-      '';
-    }))
+    in ''
+      # Atuin
+      [[ -f ${bashPreexec}/bash-preexec.sh ]] && source ${bashPreexec}/bash-preexec.sh
+      eval "$(${cfg.package}/bin/atuin init bash)"
+    '');
 
-    (mkIf cfg.enableZshIntegration {
-      programs.zsh.initExtra = ''
-        eval "$(${cfg.package}/bin/atuin init zsh)"
-      '';
-    })
-  ]);
+    programs.zsh.initExtra = mkIf cfg.enableZshIntegration ''
+        # Atuin
+      eval "$(${cfg.package}/bin/atuin init zsh)"
+    '';
+  };
 }

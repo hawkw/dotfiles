@@ -15,7 +15,7 @@ let
     # POP!_OS shell tiling extensions for Gnome 3
     # TODO(eliza): replace local package with upstream nixpkgs when
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
-    (pkgs.callPackage ../pkgs/pop_os_shell { })
+    # (pkgs.callPackage ../pkgs/pop_os_shell { })
   ];
   # configure Gnome themes
   themes = with pkgs; [
@@ -51,13 +51,12 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
-    enableGnomeExtensions = true;
   };
 
-  # #### gnome-keyring ########################################################
-  # services.gnome-keyring = {
-  #   enable = true;
-  #   components = [ "pkcs11" "secrets" "ssh" ];
-  # };
-  # programs.ssh.enable = true;
+  #### gnome-keyring ########################################################
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "pkcs11" "secrets" "ssh" ];
+  };
+  programs.ssh.enable = true;
 }

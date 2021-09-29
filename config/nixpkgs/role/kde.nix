@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-    programs = {
-        # enable gpaste, a gnome clipboard manager.
-        gpaste.enable = true;
-    }
+  programs = {
+    # enable gpaste, a gnome clipboard manager.
+    gpaste.enable = true;
+  };
 }

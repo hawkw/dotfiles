@@ -13,6 +13,7 @@ in {
     ../../role/vscode.nix
     ../../role/rusty.nix
     ../../role/git.nix
+    ../../role/devbox.nix
     ../../pkgs/atuin.nix
   ];
 
@@ -38,18 +39,6 @@ in {
         spotify
       ];
     in ([
-      ### toolchains ###
-      rustup
-      clang
-
-      ### devtools ###
-      # llvmPackages.bintools
-      # use lldb from unstable, since it's on a newer version
-      unstable.lldb
-      # the good `time`, not the shell builtin
-      time
-
-      psmisc
 
       ### networking tools ##
       nmap-graphical
@@ -60,12 +49,16 @@ in {
       # assorted wiresharks
       wireshark
       termshark
+      tcpdump
 
-      ### images, etc ###
+      ### images, media, etc ###
       ark
       darktable
       unstable.inkscape
       obs-studio
+      llpp # fast & lightweight PDF pager
+      krita # like the GNU Image Manipulation Photoshop, but more good
+      gimp
 
       ### stuff ###
       neofetch
@@ -96,7 +89,6 @@ in {
     rustyUtils = {
       enable = true;
       enableAliases = true;
-      atuin = { enable = true; };
     };
 
     # custom git configs
@@ -119,8 +111,13 @@ in {
       };
     };
 
-    # mcfly.enable = true;
-    atuin = { enable = true; };
+    atuin = {
+      enable = true;
+      config = {
+        dialect = "us";
+        auto_sync = true;
+      };
+    };
 
     starship = {
       enable = true;
@@ -215,70 +212,6 @@ in {
     jq.enable = true;
     command-not-found.enable = true;
     direnv.enable = true;
-
-    # git = {
-    #   enable = true;
-    #   userName = userData.name;
-    #   userEmail = userData.email;
-
-    #   # aliases
-    #   aliases = {
-    #     rb = "rebase";
-    #     rbct = "rebase --continue";
-    #     # sign the last commit
-    #     sign = "commit --amend --reuse-message=HEAD -sS";
-    #     uncommit = "reset --hard HEAD";
-    #     ls = ''
-    #       log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
-    #     ll = ''
-    #       log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
-    #     lt = "log --graph --oneline --decorate --all";
-    #     st = "status --short --branch";
-    #     stu = "status -uno";
-    #     co = "checkout";
-    #     ci = "commit";
-    #     pr =
-    #       "!pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr";
-    #     lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
-    #     lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
-    #     please = "push --force-with-lease";
-    #     commend = "commit --amend --no-edit";
-    #     squash = "merge --squash";
-    #     # Get the current branch name (not so useful in itself, but used in
-    #     # other aliases)
-    #     branch-name = "!git rev-parse --abbrev-ref HEAD";
-    #     # Push the current branch to the remote "origin", and set it to track
-    #     # the upstream branch
-    #     publish = "!git push -u origin $(git branch-name)";
-    #     # Delete the remote version of the current branch
-    #     unpublish = "!git push origin :$(git branch-name)";
-    #   };
-
-    #   # extra git config
-    #   extraConfig = {
-    #     # use the default pull configuration, but stop whinging about it.
-    #     pull.rebase = false;
-    #     # Assembly-style commit message comments (`;` as the comment delimiter).
-    #     # Why use `;`?
-    #     # - The default character, `#`, conflicts with both Markdown headings
-    #     #   and with GitHub issue links beginning a line (which I need to be
-    #     #   able to use in commit messages).
-    #     # - `*` conflicts with Markdown lists
-    #     # - Git only supports a single character comment delimiter, so C-style
-    #     #   line comments (`//`) are out...
-    #     # - I can't think of any compelling reason to begin a line with `;`...
-    #     core.commentchar = ";";
-    #   };
-
-    #   # If there is a file called `.git.private.nix` that defines an attribute
-    #   # "key", sign commits with that key.
-    #   signing = let path = ./git.private.nix;
-    #   in if builtins.pathExists path then {
-    #     key = with import path; key;
-    #     signByDefault = true;
-    #   } else
-    #     { };
-    # };
 
     htop = {
       enable = true;
