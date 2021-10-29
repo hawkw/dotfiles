@@ -32,23 +32,45 @@ let
 in {
   options.programs.gdb.dashboard = {
     enable = mkEnableOption "dashboard";
+
     enablePygments = mkEnableOption "pygments" // {
       description = "whether to enable Pygments syntax highlighting";
     };
+
+    extraConfig = mkOption {
+      default = "";
+      type = types.lines;
+      description = ''
+        Extra user configuration that should be added to <filename>$XDG_CONFIG_HOME/gdb-dashboard</filename>.
+        See <a href="https://github.com/cyrus-and/gdb-dashboard/wiki/Use-personal-configuration-files">
+        the documentation</a> for details.
+      '';
+      example = ''
+        dashboard -layout assembly breakpoints expressions history memory registers source stack threads variables
+        dashboard registers -style column-major True
+        dashboard registers -style list 'rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15 rip eflags cs ss ds es fs gs fs_base gs_base k_gs_base cr0 cr2 cr3 cr4 cr8 efe msxr'
+      '';
+    };
+
     gdbPackage = mkOption {
       type = types.package;
       default = pkgs.gdb;
       defaultText = literalExample "pkgs.gdb";
       description = "The package to use for gdb.";
     };
+
   };
 
   config = mkIf cfg.enable {
+
     home.packages = mkMerge [
       (mkIf cfg.enablePygments [ pkgs.python39Packages.pygments ])
       [ cfg.gdbPackage ]
     ];
+
     home.file.".gdbinit".text = let pkg = pkgs.callPackage gdbinitPkg { };
     in builtins.readFile "${pkg}/.gdbinit";
+
+    xdg.configFile."gdb-dashboard/extraConfig".text = cfg.extraConfig;
   };
 }
