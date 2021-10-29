@@ -14,7 +14,6 @@ in {
     ../../role/rusty.nix
     ../../role/git.nix
     ../../role/devbox.nix
-    ../../pkgs/atuin.nix
   ];
 
   home.sessionVariables = {
@@ -113,7 +112,7 @@ in {
 
     atuin = {
       enable = true;
-      config = {
+      settings = {
         dialect = "us";
         auto_sync = true;
       };
