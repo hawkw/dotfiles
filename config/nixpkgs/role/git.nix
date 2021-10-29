@@ -99,8 +99,12 @@ in with lib; {
 
         # extra git config
         extraConfig = {
-          # use the default pull configuration, but stop whinging about it.
-          pull.rebase = false;
+          # use rebase in `git pull` to avoid gross merge commits.
+          pull.rebase = true;
+          # when fetching, prune unreachable objects in the local repository.
+          fetch.prune = true;
+          # differentiate between moved and added lines in diffs
+          diff.colorMoved = "zebra";
           # Assembly-style commit message comments (`;` as the comment delimiter).
           # Why use `;`?
           # - The default character, `#`, conflicts with both Markdown headings
