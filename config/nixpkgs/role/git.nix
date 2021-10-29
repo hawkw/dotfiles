@@ -29,12 +29,15 @@ in with lib; {
       # GitHub CLI tool
       gh = {
         enable = true;
-        # use ssh whenever possible
-        gitProtocol = "ssh";
-        aliases = {
-          co = "pr checkout";
-          pv = "pr view";
+        settings = {
+          # use ssh whenever possible
+          git_protocol = "ssh";
+          aliases = {
+            co = "pr checkout";
+            pv = "pr view";
+          };
         };
+
       };
 
       git = {
