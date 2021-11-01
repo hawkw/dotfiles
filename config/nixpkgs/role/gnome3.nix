@@ -15,7 +15,7 @@ let
     # POP!_OS shell tiling extensions for Gnome 3
     # TODO(eliza): replace local package with upstream nixpkgs when
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
-    # (pkgs.callPackage ../pkgs/pop_os_shell { })
+    (pkgs.callPackage ../pkgs/pop_os_shell { })
   ];
   # configure Gnome themes
   themes = with pkgs; [
@@ -42,11 +42,6 @@ in {
       # and disk space
       gnome-usage
     ] ++ gnome_extensions ++ themes;
-
-  # services = {
-  #   # necessary for `programs.firefox.enableGnomeExtensions` i guess?
-  #   gnome3.chrome-gnome-shell.enable = true;
-  # };
 
   programs.firefox = {
     enable = true;
