@@ -118,6 +118,8 @@ in with lib; {
           #   line comments (`//`) are out...
           # - I can't think of any compelling reason to begin a line with `;`...
           core.commentchar = ";";
+          # Set the default branch name to `main`.
+          init.defaultBranch = "main";
         };
         # If there is a file called `.git.private.nix` that defines an attribute
         # "key", sign commits with that key.
