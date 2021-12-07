@@ -16,6 +16,7 @@
     time
     docker-compose
     psmisc
+    valgrind
   ];
 
   # Nice terminal UI for gdb
