@@ -11,7 +11,9 @@ in with lib; {
   };
   config = mkMerge [
     {
-      environment.systemPackages = [ unstable.openrgb ];
+      environment.systemPackages = [ unstable.openrgb unstable.i2c-tools ];
+      boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
+      services.udev.packages = [ unstable.openrgb ];
     }
 
     # if the systemd service is enabled
@@ -31,7 +33,8 @@ in with lib; {
       environment.systemPackages = let
         desktopItem = pkgs.makeDesktopItem {
           type = "Application";
-          encoding = "UTF-8";
+          # encoding = "UTF-8";
+          name = "OpenRGB";
           desktopName = "OpenRGB";
           comment = "Control RGB lighting";
           icon = "OpenRGB";

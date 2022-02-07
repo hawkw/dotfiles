@@ -26,11 +26,36 @@
     gnome-terminal.enable = true;
     # enable the correct perf tools for this kernel version
     perftools.enable = true;
-    # openrgb.enable = true;
+    openrgb.enable = true;
   };
 
   services = {
-    # openrgb.enable = true;
+    openrgb.enable = true;
     # logid.enable = true;
+  };
+
+  ### pipewire ###
+  # don't use the default `sound` config (alsa)
+  sound.enable = false;
+  # Use PipeWire as the system audio/video bus
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    jack.enable = true;
+    pulse.enable = true;
+    socketActivation = true;
+  };
+
+  ### enable flakes ###
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 }
