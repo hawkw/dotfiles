@@ -21,8 +21,12 @@
   #### Networking Configuration ####
 
   networking = {
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
+    # disable wpa_supplicant, as NetworkManager is used instead.
+    wireless.enable = false;
+    # `dhcpcd` conflicts with NetworkManager's `dhclient`, as they try to bind
+    # the same address; it needs to be explicitly disabled.
+    dhcpcd.enable = false;
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -123,7 +127,7 @@
       --experimental
     '';
   };
-  
+
   # It's good to do this every now and then.
   nix.gc = {
     automatic = true;
@@ -133,10 +137,6 @@
   #### Hardware ####
 
   hardware = { bluetooth.enable = true; };
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eliza = {
