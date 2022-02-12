@@ -1,0 +1,1 @@
+/home/eliza/dotfiles/config/nvim/init.vim

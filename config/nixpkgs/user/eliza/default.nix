@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  userData = {
+  user = {
     name = "Eliza Weisman";
     email = "eliza@buoyant.io";
   };
@@ -29,7 +29,6 @@ in rec {
         discord
         signal-desktop
         zoom-us
-        steam
         keybase
         keybase-gui
         _1password

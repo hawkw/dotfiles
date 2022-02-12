@@ -1,13 +1,18 @@
 {
-    "editor.fontFamily": "'Iosevka', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Iosevka', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "editor.fontLigatures": "'calt', 'dlig', 'ss08'",
     "editor.renderWhitespace": "boundary",
     "wal.tokenColorTheme": "Wal",
     "terminal.explorerKind": "external",
-    "workbench.colorTheme": "Wal",
+    // "workbench.colorTheme": "Wal",
     "window.titleBarStyle": "custom",
+<<<<<<< Updated upstream
     "workbench.preferredDarkColorTheme": "Wal",
     "editor.fontSize": 18,
+=======
+    // "workbench.preferredDarkColorTheme": "Wal",
+    "editor.fontSize": 16,
+>>>>>>> Stashed changes
     "files.associations": {
         "zshrc": "shellscript"
     },
@@ -24,4 +29,13 @@
     "git.confirmSync": false,
     "rust-analyzer.checkOnSave.command": "clippy",
     "window.zoomLevel": 1,
+    "gitlens.advanced.messages": {
+        "suppressRebaseSwitchToTextWarning": true
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "default",
+            "filenamePattern": "git-rebase-todo"
+        }
+    ],
 }
