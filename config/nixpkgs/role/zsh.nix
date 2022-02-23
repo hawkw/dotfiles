@@ -24,7 +24,9 @@
       # Import wal color scheme
       initExtra = ''
         # Import colorscheme from 'wal' asynchronously
-        (cat "''${HOME}/.cache/wal/sequences" &)
+        if [[ "''${TERM}" = "alacritty" ]]; then
+          (cat "''${HOME}/.cache/wal/sequences" &)
+        fi
       '';
       # Ensure cargo binaries are on the PATH
       envExtra = ''

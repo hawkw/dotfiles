@@ -58,6 +58,8 @@ in {
       llpp # fast & lightweight PDF pager
       krita # like the GNU Image Manipulation Photoshop, but more good
       gimp
+      syncplay
+      vlc
 
       ### stuff ###
       neofetch
@@ -77,6 +79,7 @@ in {
       wally-cli
       chromium
       asciinema
+      torrential
     ] ++ unfreePkgs);
 
   #############################################################################

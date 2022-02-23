@@ -23,8 +23,8 @@ in with lib; {
         description = "OpenRGB RGB controller";
         serviceConfig = {
           Type = "simple";
-          User = "nobody";
-          ExecStart = "${unstable.openrgb} --server";
+          DynamicUser = "yes";
+          ExecStart = "${unstable.openrgb}/bin/openrgb --server";
         };
       };
     })
@@ -38,7 +38,7 @@ in with lib; {
           desktopName = "OpenRGB";
           comment = "Control RGB lighting";
           icon = "OpenRGB";
-          exec = "${unstable.openrgb} --startminimized";
+          exec = "${unstable.openrgb}/bin/openrgb";
           terminal = "false";
           categories = "Utility";
         };
