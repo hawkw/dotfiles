@@ -16,6 +16,8 @@ let
     # TODO(eliza): replace local package with upstream nixpkgs when
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
     (pkgs.callPackage ../pkgs/pop_os_shell { })
+    # POP!_OS Cosmic Dock
+    (pkgs.callPackage ../pkgs/cosmic_dock.nix { })
   ];
   # configure Gnome themes
   themes = with pkgs; [
@@ -25,7 +27,7 @@ let
     arc-theme
     arc-icon-theme
     equilux-theme
-    pop-gtk-theme
+    (pkgs.callPackage ../pkgs/pop_gtk_theme.nix { })
     pop-icon-theme
     qogir-theme
     yaru-theme
@@ -37,10 +39,11 @@ in {
       # useful for testing webcams, etc
       gnome3.cheese
       # A tool to customize advanced GNOME 3 options
-      gnome3.gnome-tweak-tool
+      gnome3.gnome-tweaks
       # A nice way to view information about use of system resources, like memory
       # and disk space
       gnome-usage
+      # (pkgs.callPackage ../pkgs/pop_desktop_widget.nix { })
     ] ++ gnome_extensions ++ themes;
 
   programs.firefox = {
