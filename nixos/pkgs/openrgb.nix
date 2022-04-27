@@ -39,7 +39,7 @@ in with lib; {
           comment = "Control RGB lighting";
           icon = "OpenRGB";
           exec = "${unstable.openrgb}/bin/openrgb";
-          terminal = "false";
+          terminal = false;
           categories = [ "Utility" ];
         };
       in [ desktopItem ];
