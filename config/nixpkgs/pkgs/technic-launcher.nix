@@ -1,5 +1,5 @@
 { stdenv, lib, fetchurl, makeDesktopItem, jre, libX11, libXext, libXcursor
-, libXrandr, libXxf86vm, mesa, openal, pulseaudioLight }:
+, libXrandr, libXxf86vm, mesa, openal, pulseaudio }:
 
 # let
 #   desktopItem = stdenv.makeDesktopItem {
@@ -27,7 +27,7 @@ stdenv.mkDerivation {
     #!${stdenv.shell}
     # wrapper for minecraft
     export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${libX11}/lib/:${libXext}/lib/:${libXcursor}/lib/:${libXrandr}/lib/:${libXxf86vm}/lib/:${mesa}/lib/:${openal}/lib/
-    ${pulseaudioLight}/bin/padsp ${jre}/bin/java -jar $out/TechnicLauncher.jar
+    ${pulseaudio}/bin/padsp ${jre}/bin/java -jar $out/TechnicLauncher.jar
     EOF
     chmod +x $out/bin/technic-launcher
   '';
