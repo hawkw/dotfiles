@@ -13,7 +13,7 @@ in {
       linuxpkgs.perf
       # also include userspace perf-tools and flamegraph scripts
       perf-tools
-      flameGraph
+      flamegraph
     ];
     # this does the same thing as above (using the correct `linuxPackages`) but
     # for `bcc`...sad there's no version of this for perf out of the box.
