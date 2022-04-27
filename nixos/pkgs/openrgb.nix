@@ -40,7 +40,7 @@ in with lib; {
           icon = "OpenRGB";
           exec = "${unstable.openrgb}/bin/openrgb";
           terminal = "false";
-          categories = "Utility";
+          categories = [ "Utility" ];
         };
       in [ desktopItem ];
     })
