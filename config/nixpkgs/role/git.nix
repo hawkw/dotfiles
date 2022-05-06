@@ -108,16 +108,19 @@ in with lib; {
           fetch.prune = true;
           # differentiate between moved and added lines in diffs
           diff.colorMoved = "zebra";
-          # Assembly-style commit message comments (`;` as the comment delimiter).
-          # Why use `;`?
-          # - The default character, `#`, conflicts with both Markdown headings
-          #   and with GitHub issue links beginning a line (which I need to be
-          #   able to use in commit messages).
-          # - `*` conflicts with Markdown lists
-          # - Git only supports a single character comment delimiter, so C-style
-          #   line comments (`//`) are out...
-          # - I can't think of any compelling reason to begin a line with `;`...
-          core.commentchar = ";";
+          core = {
+            # Assembly-style commit message comments (`;` as the comment delimiter).
+            # Why use `;`?
+            # - The default character, `#`, conflicts with both Markdown headings
+            #   and with GitHub issue links beginning a line (which I need to be
+            #   able to use in commit messages).
+            # - `*` conflicts with Markdown lists
+            # - Git only supports a single character comment delimiter, so C-style
+            #   line comments (`//`) are out...
+            # - I can't think of any compelling reason to begin a line with `;`...
+            commentchar = ";";
+            editor = "code";
+          };
           # Set the default branch name to `main`.
           init.defaultBranch = "main";
         };
