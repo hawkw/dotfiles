@@ -119,7 +119,7 @@ in with lib; {
             #   line comments (`//`) are out...
             # - I can't think of any compelling reason to begin a line with `;`...
             commentchar = ";";
-            editor = "code";
+            editor = "code --wait";
           };
           # Set the default branch name to `main`.
           init.defaultBranch = "main";
