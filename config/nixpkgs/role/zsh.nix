@@ -13,6 +13,7 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
       enableCompletion = true;
       enableVteIntegration = true;
       autocd = true;
@@ -32,16 +33,6 @@
       envExtra = ''
         export PATH="$PATH:$HOME/.cargo/bin"
       '';
-
-      # Configure ZSH plugins via zplug
-      zplug = {
-        enable = true;
-        plugins = [{ # ZSH syntax highlighting.
-          name = "zsh-users/zsh-syntax-highlighting";
-          # this must be loaded after compinit, so use defer.
-          tags = [ "defer:2" ];
-        }];
-      };
     };
   };
 
