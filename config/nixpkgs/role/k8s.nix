@@ -1,5 +1,5 @@
 # kubernetes`
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, home, ... }:
 
 {
   home.packages = let
@@ -23,4 +23,5 @@
       }
     '';
   };
+
 }

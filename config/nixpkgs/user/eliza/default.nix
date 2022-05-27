@@ -6,7 +6,7 @@ let
     email = "eliza@buoyant.io";
   };
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in {
+in rec {
   imports = [
     ./fonts.nix
     ../../role/zsh.nix
@@ -81,6 +81,16 @@ in {
       asciinema
       torrential
     ] ++ unfreePkgs);
+
+  # automagically add zsh completions from packages
+  xdg.configFile."zsh/vendor-completions".source = with pkgs;
+    runCommandNoCC "vendored-zsh-completions" { } ''
+      mkdir -p $out
+      ${fd}/bin/fd -t f '^_[^.]+$' \
+        ${lib.escapeShellArgs home.packages} \
+        | xargs -0 -I {} bash -c '${ripgrep}/bin/rg -0l "^#compdef" $@ || :' _ {} \
+        | xargs -0 cp -t $out/
+    '';
 
   #############################################################################
   ## Programs                                                                 #
