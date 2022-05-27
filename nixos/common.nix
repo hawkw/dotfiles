@@ -62,22 +62,30 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    let unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
-    in [
-      wget
-      vim
-      ddate
-      testdisk
-      git
-      nano
-      networkmanager
-      networkmanagerapplet
-      openssh
-      bluedevil
-      bluez
-      tailscale
-    ];
+  environment = {
+    systemPackages = with pkgs;
+      let
+        unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+      in [
+        wget
+        vim
+        ddate
+        testdisk
+        git
+        nano
+        networkmanager
+        networkmanagerapplet
+        openssh
+        bluedevil
+        bluez
+        tailscale
+      ];
+
+    # "Don't forget to add `environment.pathsToLink = [ "/share/zsh" ];` to your
+    # system configuration to get completion for system packages (e.g. systemd)."
+    #  --- https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enableCompletion
+    pathsToLink = [ "/share/zsh" ];
+  };
 
   programs = {
     # Some programs need SUID wrappers, can be configured further or are

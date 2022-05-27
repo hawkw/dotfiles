@@ -27,14 +27,14 @@ in {
     let
       unfreePkgs = [
         slack
-        unstable.discord
+        discord
         signal-desktop
         zoom-us
-        unstable.steam
+        steam
         keybase
         keybase-gui
-        unstable._1password
-        unstable._1password-gui
+        _1password
+        _1password-gui
         spotify
       ];
     in ([
@@ -53,7 +53,7 @@ in {
       ### images, media, etc ###
       ark
       darktable
-      unstable.inkscape
+      inkscape
       obs-studio
       llpp # fast & lightweight PDF pager
       krita # like the GNU Image Manipulation Photoshop, but more good
@@ -211,8 +211,8 @@ in {
       };
     };
 
-    jq.enable = true;
-    command-not-found.enable = true;
+    # this conflicts with `nix-index`, which is nicer imo
+    # command-not-found.enable = true;
     direnv.enable = true;
 
     htop = {
@@ -345,6 +345,11 @@ in {
     };
 
     firefox = { enable = true; };
+
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
 }
