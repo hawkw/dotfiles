@@ -4,9 +4,7 @@
   fonts.fontconfig.enable = true;
 
   # fonts
-  home.packages = let
-    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  in with unstable; [
+  home.packages = with pkgs; [
     # nice monospace and bitmap fonts
     iosevka
     cozette

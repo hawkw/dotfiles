@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-  cfg = config.programs.eliza.rustyUtils;
-  unstable = import <nixos-unstable> { config = config; };
+let cfg = config.programs.eliza.rustyUtils;
 in with lib; {
   options = {
     programs.eliza.rustyUtils = {
@@ -25,12 +23,12 @@ in with lib; {
     fishEnabled = config.programs.fish.enable;
   in mkIf cfg.enable (mkMerge [
     {
-      home.packages = with unstable; [
+      home.packages = with pkgs; [
         tokei
         xsv
         ripgrep
         fd
-        # unstable.ytop
+        # ytop
         bottom
         glances
         # dust: like `du` but good

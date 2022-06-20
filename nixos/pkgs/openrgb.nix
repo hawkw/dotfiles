@@ -3,7 +3,6 @@
 let
   enableService = config.services.openrgb.enable;
   enableDesktop = config.programs.openrgb.enable;
-  unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 in with lib; {
   options = {
     services.openrgb.enable = mkEnableOption "OpenRGB background service";
@@ -11,9 +10,9 @@ in with lib; {
   };
   config = mkMerge [
     {
-      environment.systemPackages = [ unstable.openrgb unstable.i2c-tools ];
+      environment.systemPackages = with pkgs; [ openrgb i2c-tools ];
       boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
-      services.udev.packages = [ unstable.openrgb ];
+      services.udev.packages = with pkgs; [ openrgb ];
     }
 
     # if the systemd service is enabled
@@ -24,7 +23,7 @@ in with lib; {
         serviceConfig = {
           Type = "simple";
           DynamicUser = "yes";
-          ExecStart = "${unstable.openrgb}/bin/openrgb --server";
+          ExecStart = "${pkgs.openrgb}/bin/openrgb --server";
         };
       };
     })
@@ -38,7 +37,7 @@ in with lib; {
           desktopName = "OpenRGB";
           comment = "Control RGB lighting";
           icon = "OpenRGB";
-          exec = "${unstable.openrgb}/bin/openrgb";
+          exec = "${pkgs.openrgb}/bin/openrgb";
           terminal = false;
           categories = [ "Utility" ];
         };

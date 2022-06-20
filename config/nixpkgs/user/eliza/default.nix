@@ -5,7 +5,6 @@ let
     name = "Eliza Weisman";
     email = "eliza@buoyant.io";
   };
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in rec {
   imports = [
     ./fonts.nix
@@ -80,6 +79,10 @@ in rec {
       chromium
       asciinema
       torrential
+
+      ### chat clients & stuff
+      element-desktop-wayland
+      # element-desktop
     ] ++ unfreePkgs);
 
   # automagically add zsh completions from packages

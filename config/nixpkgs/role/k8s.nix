@@ -2,12 +2,10 @@
 { config, pkgs, lib, home, ... }:
 
 {
-  home.packages = let
-    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  in with pkgs; [
+  home.packages = with pkgs; [
     kubectl
     kubespy
-    unstable.kube3d
+    kube3d
     kubectx
     k9s
     stern

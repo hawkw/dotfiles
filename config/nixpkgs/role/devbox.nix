@@ -2,8 +2,7 @@
 
 {
   imports = [ ../pkgs/gdb-dashboard.nix ];
-  home.packages = let unstable = import <nixos-unstable> { config = config; };
-  in with pkgs; [
+  home.packages = with pkgs; [
     # ## toolchains ###
     rustup
     clang
@@ -11,7 +10,7 @@
     ### devtools ###
     # llvmPackages.bintools
     # use lldb from unstable, since it's on a newer version
-    unstable.lldb
+    lldb
     # the good `time`, not the shell builtin
     time
     docker-compose
