@@ -8,10 +8,11 @@
   #   }/modules/vsliveshare/home.nix"
   # ];
 
-  home.packages = with pkgs; [
-    vscode
-    nodejs-12_x # required for vscode remote ssh
-  ];
+  home.packages = with pkgs;
+    [
+      vscode
+      # nodejs-12_x # required for vscode remote ssh
+    ];
 
   # # enable VS Code Liveshare
   # services.vsliveshare = {
