@@ -39,7 +39,7 @@ in rec {
     in ([
 
       ### networking tools ##
-      nmap-graphical
+      nmap
       mtr-gui
       slurm
       bandwhich
