@@ -10,6 +10,7 @@
     k9s
     stern
     kubernetes-helm
+    step-cli
   ];
 
   programs.zsh = {
