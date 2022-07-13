@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   programs = {
     # enable zsh integration options on other packages
     direnv.enableZshIntegration = true;
@@ -33,6 +34,14 @@
       envExtra = ''
         export PATH="$PATH:$HOME/.cargo/bin"
       '';
+
+      # aliases
+      shellAliases = {
+        # im a dumbass
+        cagro = "cargo";
+        carg = "cargo";
+        gti = "git";
+      };
     };
   };
 
