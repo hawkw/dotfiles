@@ -120,10 +120,14 @@ in rec {
   programs = {
     nushell = {
       enable = true;
-      settings = {
-        pivot_mode = "always";
-        nonzero_exit_errors = "true";
-      };
+      configFile.text = ''
+        let $config = {
+          pivot_mode: always
+          nonzero_exit_errors: true
+          use_ls_colors: true
+          table_mode: rounded
+        };
+      '';
     };
 
     atuin = {
