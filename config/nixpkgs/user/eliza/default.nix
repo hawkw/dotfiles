@@ -265,8 +265,8 @@ in rec {
           # Window dimensions in character columns and lines
           # (changes require restart)
           dimensions = {
-            columns = 99;
-            lines = 50;
+            columns = 120;
+            lines = 80;
           };
 
           # Adds this many blank pixels of padding around the window
@@ -280,6 +280,11 @@ in rec {
           # Window decorations
           # Setting this to false will result in window without borders and title bar.
           # decorations: false
+          gtk_theme_variant = "dark";
+          class = {
+            instance = "Alacritty";
+            general = "Alacritty";
+          };
         };
 
         # When true, bold text is drawn using the bright variant of colors.
@@ -366,6 +371,20 @@ in rec {
     nix-index = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    ssh = {
+      enable = true;
+      # forwardAgent = true;
+      # matchBlocks = {
+      #   "*" = {
+      #     extraOptions = {
+      #       # enable 1password's SSH agent for key management.
+      #       IdentityAgent = "~/.1password/agent.sock";
+      #     };
+      #   };
+
+      # };
     };
   };
 
