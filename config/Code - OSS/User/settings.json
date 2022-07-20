@@ -13,13 +13,11 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Wal",
     "git.autofetch": true,
-    "window.zoomLevel": 1,
     "files.associations": {
         "zshrc": "shellscript"
     },
     "rewrap.autoWrap.enabled": true,
     "rewrap.reformat": true,
-    "editor.formatOnSave": true,
     "[markdown]": {
         "files.trimTrailingWhitespace": false,
         "editor.formatOnSave": false,
@@ -35,5 +33,7 @@
     "rust-analyzer.cargo.loadOutDirsFromCheck": true,
     "rust-analyzer.procMacro.enable": true,
     "terminal.explorerKind": "external",
-    "rust-analyzer.checkOnSave.command": "clippy"
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "window.zoomLevel": 1,
+    "editor.formatOnSave": true
 }

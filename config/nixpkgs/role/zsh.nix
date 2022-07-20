@@ -51,6 +51,7 @@
       envExtra = ''
         # Ensure cargo binaries are on the PATH
         export PATH="$PATH:$HOME/.cargo/bin"
+        export PATH="$PATH:$HOME/.linkerd2/bin"
       '';
 
       # aliases
