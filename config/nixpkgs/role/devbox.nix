@@ -42,5 +42,11 @@
     };
 
     jq.enable = true;
+
+    zsh = {
+      envExtra = ''
+        export PATH="$PATH:$HOME/Code/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin"
+      '';
+    };
   };
 }
