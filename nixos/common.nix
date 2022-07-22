@@ -46,6 +46,10 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
+
+    # Strict reverse path filtering breaks Tailscale exit node use and some
+    # subnet routing setups.
+    firewall.checkReversePath = "loose";
   };
 
   # Select internationalisation properties.
@@ -133,15 +137,29 @@
     '';
   };
 
-  # It's good to do this every now and then.
-  nix.gc = {
-    automatic = true;
-    dates = "monthly"; # See `man systemd.time 7`
+  #### nix configurations ####
+
+  nixpkgs.config.allowUnfree = true;
+
+  nix = {
+    # enable flakes
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
+    # It's good to do this every now and then.
+    gc = {
+      automatic = true;
+      dates = "monthly"; # See `man systemd.time 7`
+    };
   };
 
   #### Hardware ####
 
   hardware = { bluetooth.enable = true; };
+
+  #### users ####
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eliza = {
@@ -157,6 +175,4 @@
     #   openssh.authorizedKeys.keyFiles =
     #      [ "/home/eliza/.ssh/butterfly.id_ed25519.pub" ];
   };
-
-  # nixpkgs.config.allowUnfree = true;
 }

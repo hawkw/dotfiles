@@ -50,12 +50,4 @@
     pulse.enable = true;
     socketActivation = true;
   };
-
-  ### enable flakes ###
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 }
