@@ -47,6 +47,9 @@ in with lib; {
 
         # aliases
         aliases = {
+          # list all aliases
+          aliases = "config --get-regexp '^alias.'";
+
           ### short aliases for common commands ###
           co = "checkout";
           ci = "commit";
