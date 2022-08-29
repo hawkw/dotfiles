@@ -59,6 +59,7 @@ in rec {
       gimp
       syncplay
       vlc
+      plex-media-player
 
       ### stuff ###
       neofetch

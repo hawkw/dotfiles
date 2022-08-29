@@ -12,6 +12,7 @@ let
     # freon
     # allows selecting the sound output device in the sound menu
     sound-output-device-chooser
+    zfs-status-monitor
     # POP!_OS shell tiling extensions for Gnome 3
     # TODO(eliza): replace local package with upstream nixpkgs when
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
