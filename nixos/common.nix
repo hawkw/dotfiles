@@ -15,7 +15,9 @@
     };
 
     # Use the latest available linux kernel. I like to live dangerously!
-    kernelPackages = pkgs.linuxPackages_latest;
+    # use linux kernel 5.18 because the zfs version in nixpkgs zfs hasn't marked
+    # 5.19 as supported yet (but it should be soon!)
+    kernelPackages = pkgs.linuxPackages_5_18;
   };
 
   #### Networking Configuration ####
