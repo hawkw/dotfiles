@@ -4,7 +4,15 @@
   fonts.fontconfig.enable = true;
 
   # fonts
-  home.packages = with pkgs; [
+  home.packages = let
+    # until https://github.com/NixOS/nixpkgs/issues/185633 is fixed
+    iosevka = (import (pkgs.fetchFromGitHub {
+      owner = "NixOS";
+      repo = "nixpkgs";
+      rev = "0d440c18119406feb8a32cd5ec2ff0b83fc9104b";
+      sha256 = "sha256-Fw6zRNBonu9wwVSQ0Cj9zHliw6yChMQPf3GPQFJZ4us=";
+    }) { }).iosevka;
+  in with pkgs; [
     # nice monospace and bitmap fonts
     iosevka
     cozette
