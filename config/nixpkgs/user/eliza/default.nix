@@ -54,7 +54,8 @@ in rec {
       darktable
       inkscape
       obs-studio
-      llpp # fast & lightweight PDF pager
+      # broken due to https://github.com/NixOS/nixpkgs/issues/188525
+      # llpp # fast & lightweight PDF pager
       krita # like the GNU Image Manipulation Photoshop, but more good
       gimp
       syncplay
