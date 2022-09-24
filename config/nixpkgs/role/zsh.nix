@@ -51,10 +51,6 @@
       envExtra = ''
         # Ensure cargo binaries are on the PATH
         export PATH="$PATH:$HOME/.cargo/bin"
-
-        # Apparently necessary for VSCode 1.71+'s `code` command to work under
-        # Wayland?
-        export DISPLAY=":0"
       '';
 
       # aliases
