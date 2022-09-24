@@ -20,7 +20,6 @@
     hostId = "FADEFACE";
   };
 
-  ## HAHA LOL GNOME BULLSHIT
   programs = {
     # Used specifically for its (quite magical) "copy as html" function.
     gnome-terminal.enable = true;
@@ -50,4 +49,13 @@
     pulse.enable = true;
     socketActivation = true;
   };
+
+  # additional kernel modules
+  boot.initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
+  # high-DPI console font
+  console.font =
+    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+
+  # i have 24 cores
+  nix.settings.max-jobs = 24;
 }
