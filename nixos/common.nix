@@ -23,6 +23,7 @@
   #### Networking Configuration ####
 
   networking = {
+    # use networkmanager.
     networkmanager.enable = true;
     # disable wpa_supplicant, as NetworkManager is used instead.
     wireless.enable = false;
@@ -52,6 +53,13 @@
     # Strict reverse path filtering breaks Tailscale exit node use and some
     # subnet routing setups.
     firewall.checkReversePath = "loose";
+
+    # use Tailscale MagicDNS as the default resolver so that DNS names of
+    # other servers on the tailscale network can be resolved.
+    nameservers = [ "100.100.100.100" ];
+    # don't let NetworkManager do DNS resolution, as it will conflict with the
+    # above configuration.
+    networkmanager.dns = "none";
   };
 
   # Select internationalisation properties.
