@@ -128,7 +128,7 @@
     # enable tailscale
     tailscale.enable = true;
 
-    cpupower-gui.enable = true;
+    # cpupower-gui.enable = true;
   };
 
   # Enable the Docker daemon.
