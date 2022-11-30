@@ -10,8 +10,8 @@
       desktopManager.gnome.enable = true;
       displayManager.defaultSession = "gnome";
     };
-    dbus.packages = [ pkgs.dconf ];
-    udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+    dbus.packages = with pkgs; [ dconf ];
+    udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
     # Enable gnome3 components
     gnome = {
@@ -23,7 +23,7 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.firefox-wayland ];
+  environment.systemPackages = with pkgs; [ firefox-wayland ];
   nixpkgs.config.firefox.enableGnomeExtensions = true;
   programs = {
     # gpaste, a clipboard manager for Gnome

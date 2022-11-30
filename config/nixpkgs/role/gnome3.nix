@@ -5,7 +5,7 @@ let
   # note: these have to be *enabled* manually in the gnome extensions UI...
   gnome_extensions = with pkgs.gnomeExtensions; [
     # a nicer application menu for gnome
-    # gnomeExtensions.arc-menu
+    arc-menu
     # displays system status in the gnome-shell status bar
     system-monitor
     # displays system temperatures, fan RPMs, and voltages
@@ -16,7 +16,8 @@ let
     # POP!_OS shell tiling extensions for Gnome 3
     # TODO(eliza): replace local package with upstream nixpkgs when
     # https://github.com/NixOS/nixpkgs/pull/104160 merges
-    (pkgs.callPackage ../pkgs/pop_os_shell { })
+    # (pkgs.callPackage ../pkgs/pop_os_shell { })
+    pop-shell
     # POP!_OS Cosmic Dock
     (pkgs.callPackage ../pkgs/cosmic_dock.nix { })
   ];
