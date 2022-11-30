@@ -35,6 +35,7 @@ in rec {
         _1password
         _1password-gui
         spotify
+        tdesktop
       ];
     in ([
 
@@ -61,6 +62,7 @@ in rec {
       syncplay
       vlc
       plex-media-player
+      ghostscriptX
 
       ### stuff ###
       neofetch
@@ -85,6 +87,9 @@ in rec {
       ### chat clients & stuff
       element-desktop-wayland
       # element-desktop
+
+      ### zfs stuff
+      httm
     ] ++ unfreePkgs);
 
   # automagically add zsh completions from packages
@@ -96,6 +101,8 @@ in rec {
         | xargs -0 -I {} bash -c '${ripgrep}/bin/rg -0l "^#compdef" $@ || :' _ {} \
         | xargs -0 cp -t $out/
     '';
+
+  # configure discord to launch even when an update is available
 
   #############################################################################
   ## Programs                                                                 #
@@ -236,24 +243,34 @@ in rec {
 
     htop = {
       enable = true;
-      settings = {
-        highlight_base_name = true;
-        highlight_threads = true;
-        # showThreadNames = true;
-        # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
-        # Because of that, when the whole path is shown, you need a really
-        # wide terminal window, or else the program names are not really
-        # readable. So let's turn off paths.
-        show_program_path = false;
-        # This is rarely useful but it's cool to see, if you're me.
-        hide_kernel_threads = false;
-
-        # I have entirely too many cores for the default meter configuration to
-        # be useable. :)
-        left_meter_modes = [ "LeftCPUs2" "Blank" "Memory" "Swap" ];
-        right_meter_modes =
-          [ "RightCPUs2" "Blank" "Hostname" "Uptime" "Tasks" "LoadAverage" ];
-      };
+      # settings = {
+      #   highlight_base_name = true;
+      #   highlight_threads = true;
+      #   tree_view = true;
+      #   # showThreadNames = true;
+      #   # on NixOS, pretty much every path starts with /nix/store/(LONG SHA).
+      #   # Because of that, when the whole path is shown, you need a really
+      #   # wide terminal window, or else the program names are not really
+      #   # readable. So let's turn off paths.
+      #   show_program_path = false;
+      #   # This is rarely useful but it's cool to see, if you're me.
+      #   hide_kernel_threads = false;
+      #   show_custom_thread_names = true;
+      #   highlight_new_and_old_processes = true;
+      #   left_meters = [
+      #     "Hostname"
+      #     "Uptime"
+      #     "Tasks"
+      #     "LoadAverage"
+      #     "Systemd"
+      #     "Blank"
+      #     "NetworkIO"
+      #     "DiskIO"
+      #   ];
+      #   # I have entirely too many cores for the default meter configuration to
+      #   # be useable. :)
+      #   right_meters = [ "AllCPUs2" "Blank" "Memory" "Swap" ];
+      # };
     };
 
     alacritty = {

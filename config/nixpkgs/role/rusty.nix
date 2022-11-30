@@ -41,7 +41,7 @@ in with lib; {
         bat = { enable = true; };
         broot = {
           enable = true;
-          verbs = [{
+          settings.verbs = [{
             name = "view";
             invocation = "view";
             key = "enter";
