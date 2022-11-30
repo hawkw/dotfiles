@@ -4,6 +4,7 @@
   imports = [
     ../common.nix
     # role-based configurations
+    ../roles/docs.nix
     ../roles/zsh.nix
     ../roles/gnome3.nix
     ../roles/games.nix
