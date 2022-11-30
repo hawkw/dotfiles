@@ -17,13 +17,13 @@ in with lib; {
 
     # if the systemd service is enabled
     (mkIf enableService {
-      systemd.services.openrgb = {
-        wantedBy = [ "default.target" ];
+      systemd.user.services.openrgb = {
+        wantedBy = [ "multi-user.target" ];
         description = "OpenRGB RGB controller";
         serviceConfig = {
           Type = "simple";
-          DynamicUser = "yes";
           ExecStart = "${pkgs.openrgb}/bin/openrgb --server";
+          Group = "i2c";
         };
       };
     })
