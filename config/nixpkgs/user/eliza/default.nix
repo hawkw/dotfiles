@@ -299,7 +299,7 @@ in rec {
           # Window decorations
           # Setting this to false will result in window without borders and title bar.
           # decorations: false
-          gtk_theme_variant = "dark";
+          window.decorations_theme_variant = "dark";
           class = {
             instance = "Alacritty";
             general = "Alacritty";
