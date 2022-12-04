@@ -16,6 +16,18 @@
     ../filesystems/noctis.nix
   ];
 
+  #### Boot configuration ####
+  boot = {
+    loader = {
+      # Use the systemd-boot EFI boot loader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    # Use the latest available linux kernel that supports ZFS.
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  };
+
   networking = {
     hostName = "noctis"; # Define your hostname.
     hostId = "FADEFACE";

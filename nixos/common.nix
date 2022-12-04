@@ -6,20 +6,6 @@
   #   # Prepend default nixPath values.
   #   options.nix.nixPath.default;
 
-  #### Boot configuration ####
-  boot = {
-    loader = {
-      # Use the systemd-boot EFI boot loader.
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-
-    # Use the latest available linux kernel. I like to live dangerously!
-    # use linux kernel 5.18 because the zfs version in nixpkgs zfs hasn't marked
-    # 5.19 as supported yet (but it should be soon!)
-    kernelPackages = pkgs.linuxPackages_5_18;
-  };
-
   #### Networking Configuration ####
 
   networking = {
@@ -83,6 +69,7 @@
       bluedevil
       bluez
       tailscale
+      ethtool
     ];
 
     # "Don't forget to add `environment.pathsToLink = [ "/share/zsh" ];` to your
