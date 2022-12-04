@@ -24,9 +24,17 @@
       efi.canTouchEfiVariables = true;
     };
 
-    # Use the latest available linux kernel that supports ZFS.
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    # Use this to track the latest Linux kernel that has ZFS support.
+    # This is generally not as necessary while using `zfsUnstable = true`.
+    # kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+
+    # The Zen kernel is tuned for better performance on desktop/workstation
+    # machines, rather than power efficiency on laptops/small devices. Use that!
+    kernelPackages = pkgs.linuxPackages_zen;
   };
+
+  # This is a deskop machine.
+  powerManagement.cpuFreqGovernor = "performance";
 
   networking = {
     hostName = "noctis"; # Define your hostname.
