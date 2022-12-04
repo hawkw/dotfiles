@@ -151,7 +151,6 @@
   #### Hardware ####
 
   hardware = { bluetooth.enable = true; };
-  powerManagement.cpuFreqGovernor = "performance";
 
   #### users ####
 

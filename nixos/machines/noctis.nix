@@ -31,16 +31,31 @@
     # The Zen kernel is tuned for better performance on desktop/workstation
     # machines, rather than power efficiency on laptops/small devices. Use that!
     kernelPackages = pkgs.linuxPackages_zen;
+
+    # additional kernel modules
+    initrd.availableKernelModules = [ "usb_storage" "sd_mod" ]
   };
 
-  # This is a deskop machine.
-  powerManagement.cpuFreqGovernor = "performance";
-
+  #### System configuration ####
   networking = {
-    hostName = "noctis"; # Define your hostname.
+    # machine's hostname
+    hostName = "noctis";
+    # this has to be a unique 32-bit number. ZFS requires us to define this.
     hostId = "FADEFACE";
   };
 
+  # This is a deskop machine. Use the high-performance frequency profile rather
+  # than the low-power one.
+  powerManagement.cpuFreqGovernor = "performance";
+
+  # high-DPI console font
+  console.font =
+    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+
+  # i have 24 cores
+  nix.settings.max-jobs = 24;
+
+  #### Programs ####
   programs = {
     # Used specifically for its (quite magical) "copy as html" function.
     gnome-terminal.enable = true;
@@ -49,6 +64,7 @@
     openrgb.enable = true;
   };
 
+  #### Services ####
   services = {
     openrgb.enable = true;
     # logid.enable = true;
@@ -70,13 +86,4 @@
     pulse.enable = true;
     socketActivation = true;
   };
-
-  # additional kernel modules
-  boot.initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
-  # high-DPI console font
-  console.font =
-    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-
-  # i have 24 cores
-  nix.settings.max-jobs = 24;
 }
