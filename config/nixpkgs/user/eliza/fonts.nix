@@ -17,6 +17,10 @@
     iosevka
     cozette
     tamzen
+    tamsyn
+    nerdfonts
+    # requires `input-fonts.acceptLicense = true` in `config.nix`.
+    input-fonts
 
     # some nice ui fonts
     roboto
