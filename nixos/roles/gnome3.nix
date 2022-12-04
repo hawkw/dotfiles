@@ -19,7 +19,7 @@
       sushi.enable = true;
 
       # necessary for `programs.firefox.enableGnomeExtensions` i guess?
-      chrome-gnome-shell.enable = true;
+      gnome-browser-connector.enable = true;
     };
   };
 
