@@ -17,7 +17,7 @@
     iosevka
     cozette
     tamzen
-    tamsyn
+    # tamsyn
     nerdfonts
     # requires `input-fonts.acceptLicense = true` in `config.nix`.
     input-fonts
