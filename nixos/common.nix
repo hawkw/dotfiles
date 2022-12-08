@@ -70,6 +70,7 @@
       bluez
       tailscale
       ethtool
+      pciutils
     ];
 
     # "Don't forget to add `environment.pathsToLink = [ "/share/zsh" ];` to your
