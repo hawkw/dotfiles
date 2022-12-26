@@ -113,6 +113,16 @@ in rec {
       enable = true;
       enableAliases = true;
     };
+
+    # custom git configs
+    git = {
+      enable = true;
+      user = {
+        name = user.name;
+        email = user.email;
+        privateConfig = ./git.private.nix;
+      };
+    };
   };
 
   programs = {
