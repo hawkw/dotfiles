@@ -118,8 +118,8 @@ in rec {
     git = {
       enable = true;
       user = {
-        name = userData.name;
-        email = userData.email;
+        name = user.name;
+        email = user.email;
         privateConfig = ./git.private.nix;
       };
     };
