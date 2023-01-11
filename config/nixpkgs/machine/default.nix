@@ -8,5 +8,5 @@
   #     exists = builtins.pathExists path; 
   #   in if exists then (builtins.trace "~/.machine.nix exists" [path]) 
   #   else (builtins.trace "~/.machine.nix does not exist" [ ]);
-  imports = [ ./butterfly.nix ];
+  imports = [ ./noctis.nix ];
 }
