@@ -78,10 +78,12 @@ in rec {
       nixfmt
       nix-index
 
+      ### misc
       wally-cli
       chromium
       asciinema
       torrential
+      usbutils
 
       ### chat clients & stuff
       element-desktop-wayland
