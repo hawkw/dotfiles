@@ -6,13 +6,8 @@
     "terminal.explorerKind": "external",
     // "workbench.colorTheme": "Wal",
     "window.titleBarStyle": "custom",
-<<<<<<< Updated upstream
     "workbench.preferredDarkColorTheme": "Wal",
     "editor.fontSize": 18,
-=======
-    // "workbench.preferredDarkColorTheme": "Wal",
-    "editor.fontSize": 16,
->>>>>>> Stashed changes
     "files.associations": {
         "zshrc": "shellscript"
     },
@@ -38,4 +33,6 @@
             "filenamePattern": "git-rebase-todo"
         }
     ],
+    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "Wal",
 }
