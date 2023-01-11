@@ -33,7 +33,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     # additional kernel modules
-    initrd.availableKernelModules = [ "usb_storage" "sd_mod" ]
+    initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
   };
 
   #### System configuration ####
