@@ -8,7 +8,10 @@
   ## Services                                                                 #
   #############################################################################
   services = {
-    gpg-agent = { enable = true; };
+    gpg-agent = {
+      enable = true;
+      pinentryFlavor = "gnome3";
+    };
     kbfs.enable = true;
     keybase.enable = true;
   };

@@ -320,7 +320,7 @@ in rec {
   ## Services                                                                 #
   #############################################################################
   services = {
-    # gpg-agent = { enable = true; };
+    gpg-agent.enable = true;
     kbfs.enable = true;
     keybase.enable = true;
     gnome-keyring = {
