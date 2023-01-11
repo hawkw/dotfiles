@@ -164,6 +164,7 @@
       "audio"
       "docker" # Enable docker.
       "wireshark" # of course i want to be in the wireshark group!
+      "dialout" # allows writing to serial ports
     ];
     shell = pkgs.zsh;
     #   openssh.authorizedKeys.keyFiles =
