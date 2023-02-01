@@ -68,6 +68,28 @@
   services = {
     openrgb.enable = true;
     # logid.enable = true;
+
+    # DNS configurations --- Avahi (mDNS)
+    avahi = {
+      enable = true;
+      # allow local applications to resolve `local.` domains using avahi.
+      nssmdns = true;
+      ipv4 = true;
+      ipv6 = true;
+      # publish this machine on mDNS.
+      publish = {
+        enable = true;
+        addresses = true;
+        # publish ._workstation._tcp
+        workstation = true;
+        domain = true;
+        # publish user services running on this machine
+        userServices = true;
+        # publish a HINFO record, which contains information about the local
+        # operating system and CPU.
+        hinfo = true;
+      };
+    };
   };
 
   ### pipewire ###
