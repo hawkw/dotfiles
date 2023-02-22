@@ -9,6 +9,7 @@
     ../roles/gnome3.nix
     ../roles/games.nix
     ../roles/perftools.nix
+    ../roles/observability.nix
     # local packages
     ../pkgs/logiops/logid.nix
     ../pkgs/openrgb.nix
