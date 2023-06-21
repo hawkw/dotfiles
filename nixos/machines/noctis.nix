@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
-{
+
+let
+  xfel = pkgs.callPackage ../pkgs/xfel.nix {};
+in {
   imports = [
     ../common.nix
     # role-based configurations
@@ -91,7 +94,14 @@
         hinfo = true;
       };
     };
+
+
   };
+
+  ### xfel ###
+  # add xfel udev rules
+  services.udev.packages = [ xfel ];
+  environment.systemPackages = [ xfel ];
 
   ### pipewire ###
   # don't use the default `sound` config (alsa)
@@ -109,4 +119,9 @@
     pulse.enable = true;
     socketActivation = true;
   };
+
+  security.sudo.configFile = ''
+    Defaults    env_reset,pwfeedback
+  '';
+
 }
