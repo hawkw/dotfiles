@@ -14,7 +14,11 @@ in {
       server = {
         domain = "grafana.local";
         http_port = 9094;
-        http_addr = "127.0.0.1";
+        http_addr = "0.0.0.0";
+      };
+      security = {
+        admin_user = "admin";
+        admin_password = "admin";
       };
     };
   };

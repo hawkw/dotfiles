@@ -1,11 +1,13 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  # xfel = (pkgs.callPackage ../pkgs/xfel.nix { });
+in {
   imports = [ ../pkgs/gdb-dashboard.nix ];
   home.packages = with pkgs; [
     # ## toolchains ###
     rustup
-    clang
+    # clang
 
     ### devtools ###
     # llvmPackages.bintools
@@ -13,12 +15,19 @@
     lldb
     # the good `time`, not the shell builtin
     time
-    docker-compose
     psmisc
     valgrind
 
     # `just` --- a command runner
     just
+    # TURNS OUT THIS HAS TO BE IN SYSTEMPACKAGES LOL
+    # # xfel --- FEL tools for Allwinner SoCs
+    # xfel
+    colordiff
+
+    # docker stuff
+    docker-compose
+    docker-credential-helpers
   ];
 
   # Dev tools with extra configuration
@@ -44,4 +53,7 @@
       '';
     };
   };
+
+  # # add xfel's udev rules
+  # services.udev.packages = [ xfel ];
 }

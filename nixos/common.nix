@@ -100,7 +100,7 @@
     # Enable the OpenSSH daemon.
     openssh = {
       enable = true;
-      forwardX11 = true;
+      settings = { X11Forwarding = true; };
     };
 
     # Enable CUPS to print documents.

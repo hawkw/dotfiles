@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
-
-let
-  xfel = pkgs.callPackage ../pkgs/xfel.nix {};
+let xfel = pkgs.callPackage ../pkgs/xfel.nix { };
 in {
   imports = [
     ../common.nix
@@ -30,11 +28,11 @@ in {
 
     # Use this to track the latest Linux kernel that has ZFS support.
     # This is generally not as necessary while using `zfsUnstable = true`.
-    # kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
     # The Zen kernel is tuned for better performance on desktop/workstation
     # machines, rather than power efficiency on laptops/small devices. Use that!
-    kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_zen;
 
     # additional kernel modules
     initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
@@ -94,7 +92,6 @@ in {
         hinfo = true;
       };
     };
-
 
   };
 

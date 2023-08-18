@@ -7,6 +7,8 @@
     kubespy
     kube3d
     kubectx
+    kubelogin
+    azure-cli
     k9s
     stern
     kubernetes-helm
