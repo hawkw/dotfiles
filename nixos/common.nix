@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-{
+let unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+in {
   # # Define `nixPath` here so that included config files can conditionally add overlays.
   # nix.nixPath =
   #   # Prepend default nixPath values.
@@ -129,6 +130,10 @@
     extraOptions = ''
       --experimental
     '';
+    # workaround for https://github.com/moby/moby/issues/45935, see
+    # https://github.com/armbian/build/issues/5586#issuecomment-1677708996
+    # or i could try podman...
+    package = unstable.pkgs.docker_24;
   };
 
   #### nix configurations ####
