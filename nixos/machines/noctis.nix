@@ -64,6 +64,10 @@ in {
     # enable the correct perf tools for this kernel version
     perftools.enable = true;
     openrgb.enable = true;
+
+    # makes dynamic binaries not built for NixOS work! :D
+    # see: https://github.com/Mic92/nix-ld
+    nix-ld.enable = true;
   };
 
   #### Services ####
