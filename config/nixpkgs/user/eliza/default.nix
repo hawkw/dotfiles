@@ -151,8 +151,6 @@ in rec {
     starship = {
       enable = true;
       settings = {
-        username.show_always = true;
-        hostname.ssh_only = false;
 
         # Replace the "❯" symbol in the prompt with ":;"
         #
@@ -163,72 +161,54 @@ in rec {
           error_symbol = "[:](bold green)[;](bold red)";
         };
 
-        hostname.format = "at [$hostname]($style) in ";
-        username.format = "[$user]($style) ";
-        nodejs.disabled = true;
+        hostname = {
+          format = "at [$hostname]($style) in ";
+          ssh_only = false;
+        };
+
+        username = {
+          format = "[$user]($style) ";
+          show_always = true;
+        };
+
+        # nodejs.disabled = true;
+
+        kubernetes = {
+          disabled = false;
+          context_aliases = {
+            # OpenShift contexts carry the namespace and user in the kube context: `namespace/name/user`:
+            ".*/(?P<var_cluster>[\\w-]+)/.*" = "$var_cluster";
+
+            # Contexts from GKE, AWS and other cloud providers usually carry additional information, like the region/zone.
+            # The following entry matches on the GKE format (`gke_projectname_zone_cluster-name`)
+            # and renames every matching kube context into a more readable format (`gke-cluster-name`):
+            "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster";
+          };
+          detect_files = [ "*.yml" "*.yaml" ];
+          detect_folders = [ "linkerd2" "linkerd2-proxy" ];
+        };
 
         rust.symbol = "⚙️ ";
         # package.symbol = "";
+
+        sudo.disabled = false;
+
         nix_shell = {
           symbol = "❄️ ";
-          impure_msg = "[\\[impure\\]](bold red)";
-          pure_msg = "[\\[pure\\]](bold green)";
-          format = "in [$symbol$name]($style) $state ";
+          impure_msg = "[impure](bold red)";
+          pure_msg = "[pure](bold green)";
+          format = "in [$symbol$name\\($state\\)]($style) ";
+          heuristic = true;
         };
 
         format = lib.concatStrings [
           # Start the first line with a shell comment so that the entire prompt
           # can be copied and pasted.
-          "[:#](bold green) "
+          "[#;](bold green) "
           "$username"
           "$hostname"
-          "$shlvl"
+          "$all"
           "$kubernetes"
-          "$directory"
-          "$git_branch"
-          "$git_commit"
-          "$git_state"
-          "$git_status"
-          "$hg_branch"
-          "$docker_context"
-          "$package"
-          "$cmake"
-          # "$dart"
-          "$dotnet"
-          "$elixir"
-          "$elm"
-          "$erlang"
-          "$golang"
-          "$helm"
-          "$java"
-          "$julia"
-          # "$kotlin"
-          # "$nim"
-          "$nodejs"
-          "$ocaml"
-          "$perl"
-          "$php"
-          # "$purescript"
-          "$python"
-          "$ruby"
-          "$rust"
-          "$swift"
-          # "$terraform"
-          "$vagrant"
-          # "$zig"
-          "$nix_shell"
-          "$conda"
-          "$memory_usage"
-          "$aws"
-          "$gcloud"
-          # "$openstack"
-          "$env_var"
-          "$crystal"
-          "$custom"
-          "$cmd_duration"
-          "$lua"
-          "$jobs"
-          "$battery"
           "$time"
           "$status"
           "$line_break"
