@@ -175,6 +175,7 @@ in rec {
 
         kubernetes = {
           disabled = false;
+          format = "on [$symbol$context(\\($namespace\\))]($style) ";
           context_aliases = {
             # OpenShift contexts carry the namespace and user in the kube context: `namespace/name/user`:
             ".*/(?P<var_cluster>[\\w-]+)/.*" = "$var_cluster";
@@ -209,7 +210,7 @@ in rec {
           "$hostname"
           "$all"
           "$kubernetes"
-          "$time"
+          "$cmd_duration"
           "$status"
           "$line_break"
           "$character"
