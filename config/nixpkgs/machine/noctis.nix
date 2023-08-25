@@ -2,7 +2,7 @@
 
 {
   imports = [ ../role/games.nix ../role/k8s.nix ../role/gnome3.nix ];
-  home.packages = with pkgs; [ lm_sensors wally-cli ];
+  home.packages = with pkgs; [ lm_sensors wally-cli conky ];
   # roles = { games.enable = true; };
   #############################################################################
   ## Services                                                                 #
