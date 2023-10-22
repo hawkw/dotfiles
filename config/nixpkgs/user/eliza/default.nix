@@ -35,6 +35,7 @@ in rec {
         _1password-gui
         spotify
         tdesktop
+        obsidian
       ];
     in ([
 
@@ -68,6 +69,7 @@ in rec {
       wpgtk
       pywal
       dtrx # Do The Right eXtraction --- extract any kind of archive file
+      unzip
 
       ### "crypto" ###
       kbfs
@@ -376,16 +378,20 @@ in rec {
 
     ssh = {
       enable = true;
+      # includes = .config/ssh-extra.conf;
       # forwardAgent = true;
-      # matchBlocks = {
-      #   "*" = {
-      #     extraOptions = {
-      #       # enable 1password's SSH agent for key management.
-      #       IdentityAgent = "~/.1password/agent.sock";
-      #     };
-      #   };
+      matchBlocks = {
+        "dev" = {
+          hostname = "20.237.171.61";
+          user = "eliza";
+          port = 22;
+          # batchMode = "yes";
+          serverAliveInterval = 60;
+          serverAliveCountMax = 5;
+          extraOptions = { "BatchMode" = "yes"; };
+        };
 
-      # };
+      };
     };
   };
 
