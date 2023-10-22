@@ -5,7 +5,8 @@
   home.packages = with pkgs; [
     kubectl
     kubespy
-    kube3d
+    # kube3d
+    k3d
     kubectx
     kubelogin
     azure-cli
