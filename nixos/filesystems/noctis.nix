@@ -12,7 +12,7 @@
   # ZFS configuration
   services.zfs = {
     # Enable TRIM
-    # trim.enable = true;
+    trim.enable = true;
     # Enable automatic scrubbing and snapshotting.
     autoScrub.enable = true;
     autoSnapshot = {

@@ -50,7 +50,7 @@ in {
   };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  # time.timeZone = "Europe/Amsterdam";k3d
 
   #### Programs & Packages ####
 
@@ -135,6 +135,15 @@ in {
     # or i could try podman...
     package = unstable.pkgs.docker_24;
   };
+  # virtualisation = {
+  #   docker.enable = false;
+  #   podman = {
+  #     enable = true;
+  #     dockerCompat = true;
+  #     dockerSocket.enable = true;
+  #     extraPackages = [ pkgs.zfs ];
+  #   };
+  # };
 
   #### nix configurations ####
 
@@ -168,6 +177,7 @@ in {
       "networkmanager"
       "audio"
       "docker" # Enable docker.
+      "podman" # Enable podman.
       "wireshark" # of course i want to be in the wireshark group!
       "dialout" # allows writing to serial ports
     ];
