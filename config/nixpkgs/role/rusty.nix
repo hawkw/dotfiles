@@ -52,7 +52,7 @@ in with lib; {
         };
 
         # exa: a (non-backwards-compatible) ls-like tool
-        exa = { enable = true; };
+        eza = { enable = true; };
         zoxide = { enable = true; };
         # lsd: a backwards compatible `ls` replacement
         lsd = {
@@ -61,7 +61,7 @@ in with lib; {
             icons = {
               when = "auto";
               # use unicode icons rather than fontawesome or whatever (for compatibility).
-              theme = "unicode";
+              # theme = "unicode";
               separator = "  ";
             };
           };
