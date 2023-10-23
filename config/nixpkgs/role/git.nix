@@ -83,13 +83,15 @@ in with lib; {
           # '';
 
           ### various git log aliases ###
-          ls = ''
-            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate'';
-          ll = ''
-            log --pretty=format:"%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]" --decorate --numstat'';
+          # `ls` and `ll` are broken under the latest git for reasons i don't
+          # really understand...fortunately i don'tactually use them.
+          # ls =
+          # "log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate";
+          # ll =
+          # "log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat";
           lt = "log --graph --oneline --decorate --all";
           summarize-branch = ''
-            log --pretty=format:"* %h %s%n%n%w(72,2,2)%b" --decorate
+            log --pretty=format:'* %h %s%n%n%w(72,2,2)%bz' --decorate
           '';
           lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
           lola =
@@ -121,7 +123,7 @@ in with lib; {
             # - Git only supports a single character comment delimiter, so C-style
             #   line comments (`//`) are out...
             # - I can't think of any compelling reason to begin a line with `;`...
-            commentchar = ";";
+            commentchar = ''";"'';
             editor = "code --wait";
           };
           # Set the default branch name to `main`.
